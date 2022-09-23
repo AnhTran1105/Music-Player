@@ -130,8 +130,10 @@
   
   /* PLAYLIST */
   .playlist {
-    margin-top: 408px;
+    margin-top: 400px;
+    margin-bottom: 40px;
     padding: 12px;
+    background-color: #f3f2f7;
   }
   
   .song {
@@ -187,3 +189,19 @@
     font-size: 18px;
   }
   
+  .footer {
+    padding: 8px 8px;
+    background-color: #14103b;
+    position: fixed;
+    bottom: 0;
+    max-width: 480px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .footer .footer-btn {
+    font-size: 24px;
+    color: #534e80;
+  }

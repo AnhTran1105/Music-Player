@@ -3,8 +3,9 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Music player</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" /> -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
+        <script src="https://kit.fontawesome.com/600b270ef7.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./assets/style.css">
     </head>
@@ -52,6 +53,23 @@
             <!-- Playlist -->
             <div class="playlist">
                 
+            </div>
+            <div class="footer">
+                <div class="footer-btn btn-house">
+                    <i class="fas fa-thin fa-house"></i>
+                </div>
+                <div class="footer-btn btn-list">
+                    <i class="fas fa-light fa-music"></i>
+                </div>
+                <div class="footer-btn btn-play">
+                    <i class="fas fa-thin fa-circle-play"></i>
+                </div>
+                <div class="footer-btn btn-search">
+                    <i class="fas fa-thin fa-magnifying-glass"></i>
+                </div>
+                <div class="footer-btn btn-bars">
+                    <i class="fas fa-thin fa-bars-staggered"></i>
+                </div>
             </div>
         </div>
     
@@ -138,7 +156,8 @@
                     singer: "Tóc Tiên",
                     path: "./assets/music/song10.mp3",
                     image: "./assets/img/img10.jfif"
-                    }
+                    },
+
                 ],
 
                 render: function() {
