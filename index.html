@@ -49,7 +49,7 @@
         
                 <audio id="audio" src=""></audio>
             </div>
-        
+            
             <!-- Playlist -->
             <div class="playlist">
                 
@@ -67,13 +67,13 @@
                 <div class="footer-btn btn btn-search">
                     <i class="fas fa-thin fa-magnifying-glass"></i>
                 </div>
-                <div class="footer-btn btn btn-bars">
+                <div class="footer-btn btn btn-bars btn-profile">
                     <i class="fas fa-thin fa-bars-staggered"></i>
                 </div>
             </div>
             <!-- Navigation -->
             <div id="browse">
-                <div class="browse-header header">
+                <div class="header">
                     <i class="btn-back fas fa-thin fa-chevron-left"></i>
                     <p>Browse</p>
                     <i class="btn-gear fas fa-regular fa-gear"></i>
@@ -111,7 +111,7 @@
 
             <div id="AudioInProgress">
                 <div class="progress-bar">
-                    <div class="audio-progress">
+                    <div class="audio-progress"></div>
                     <div class="progressed"></div>
                 </div>
                 <div class="song-IP">
@@ -130,7 +130,49 @@
                     </div>
                 </div>
             </div>
+
+            <div id="profile">
+                <div class="header">
+                    <i class="btn-back fas fa-thin fa-chevron-left"></i>
+                    <p>Your profile</p>
+                    <i class="btn-gear fas fa-regular fa-gear"></i>
+                </div>
+                <div class="person-content">
+                    <img src="./assets/img/img6.jfif" alt="">
+                    <div class="person-info">
+                        <p class="person-name">Anh Tran</p>
+                        <div class="person-data">
+                            <div class="numOfSongs">
+                                10 songs
+                            </div>
+                            <div class="numOfPlaylists">
+                                25 playlists
+                            </div>
+                            <div class="numOfFriends">
+                                40 friends
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="person-option">
+                    <div>
+                        <div class="option-social">
+                            Social
+                        </div>
+                        <div class="option-playlists">
+                            Playlists
+                        </div>
+                    </div>
+                </div>
+                <div class="person-playlists">
+                    
+                </div>
+                <div class="person-social">
+                    
+                </div>
+            </div>
         </div>
+        
         
     
         <!-- Design from: https://static.collectui.com/shots/3671744/musicloud-revolutionary-app-for-music-streaming-large -->
@@ -140,6 +182,7 @@
             const $$ = document.querySelectorAll.bind(document);
             const player = $('.player');
             const playlist = $('.playlist');
+            const profileBtn = $('.btn-profile');
             const dashboardBtn = $('.btn-dashboard');
             const heading = $('header h2');
             const cdThumb = $('.cd-thumb');
@@ -160,7 +203,7 @@
             const genresBtn = $('.btn-genres');
             const AudioInProgress = $('#AudioInProgress');
             const PLAYER_STORAGE_KEY = 'F8-player';
-
+            const playlistsBtn = $('.option-playlists');
 
             const app = {
                 currentIndex: 0,
@@ -252,6 +295,26 @@
                     playlist.innerHTML = htmls.join('');
                 },
 
+                renderPlaylists: function() {
+                    let htmls = this.songs.map(song => {
+                        return `
+                            <div class="song fix-margin-error" >
+                                <div class="thumb"
+                                    style="background-image: url('${song.image}');">
+                                </div>
+                                <div class="body">
+                                    <h3 class="title">${song.name}</h3>
+                                    <p class="author">${song.singer}</p>
+                                </div>
+                                <div class="option">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </div>
+                            </div>
+                        `          
+                    })
+                    $('.person-playlists').innerHTML = htmls.join('');
+                },
+
                 defineProperties: function() {
                     Object.defineProperty(this, 'currentSong', {
                         get: function() {
@@ -275,6 +338,28 @@
                         }
                     )
 
+                    const cdThumbIPAnimate = thumbIP.animate([
+                        {
+                            transform: 'rotate(360deg)'
+                        }],
+                        {
+                            duration: 10000,
+                            iterations: Infinity
+                        }
+                    )
+                    
+                    profileBtn.onclick = function() {
+                        for (var i of footerBtn) {
+                            i.classList.remove('active');
+                        }
+                        this.classList.add('active');
+                        $('.dashboard').style.display = "none";
+                        playlist.style.display = "none";
+                        AudioInProgress.style.display = "block";
+                        $('#profile').style.display = "block";
+                        $('#browse').style.display = "none";
+                    }
+
                     dashboardBtn.onclick = function() {
                         for (var i of footerBtn) {
                             i.classList.remove('active');
@@ -284,6 +369,7 @@
                         playlist.style.display = "block";
                         AudioInProgress.style.display = "none";
                         $('#browse').style.display = "none";
+                        $('#profile').style.display = "none";
                     }
 
                     genresBtn.onclick = function() {
@@ -295,6 +381,7 @@
                         playlist.style.display = "none";
                         $('#browse').style.display = "block";
                         AudioInProgress.style.display = "block";
+                        $('#profile').style.display = "none";
                     }
 
                     // Xu li khi click play
@@ -314,11 +401,16 @@
                         }
                     }
 
+                    playlistsBtn.onclick = function() {
+                        _this.renderPlaylists();
+                    }
+
                     // Khi bai hat duoc play
                     audio.onplay = function() {
                         _this.isPlaying = true;
                         player.classList.add('playing');
                         cdThumbAnimate.play();
+                        cdThumbIPAnimate.play();
                     }
 
                     // Khi pause bai hat
@@ -326,6 +418,7 @@
                         _this.isPlaying = false;
                         player.classList.remove('playing');
                         cdThumbAnimate.pause();
+                        cdThumbIPAnimate.pause();
                     }
 
                     // Khi tien do bai hat thay doi
