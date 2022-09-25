@@ -145,18 +145,20 @@
                             <div class="numOfSongs">
                                 10 songs
                             </div>
+                            <p>.</p>
                             <div class="numOfPlaylists">
                                 25 playlists
                             </div>
+                            <p>.</p>
                             <div class="numOfFriends">
                                 40 friends
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="person-option">
+                <div class="person-options">
                     <div>
-                        <div class="option-social">
+                        <div class="option-social active-option">
                             Social
                         </div>
                         <div class="option-playlists">
@@ -197,19 +199,66 @@
                         </div>
                     </div>
                     <div class="album">
-                        <img src="./assets/img/img5.jfif" alt="">
+                        <img src="./assets/img/download 1.jfif" alt="">
                         <div class="album-text">
-                            <p class="album-title">Tháng tư là lời nói dối của em</p>
-                            <p class="album-sub-title">Hà Anh Tuấn</p>
+                            <p class="album-title">Có ai thương em như anh</p>
+                            <p class="album-sub-title">Tóc Tiên</p>
                         </div>
                     </div>
                     <div class="album">
-                        <img src="./assets/img/img9.jfif" alt="">
+                        <img src="./assets/img/download.jfif" alt="">
                         <div class="album-text">
                             <p class="album-title">Từng là của nhau</p>
                             <p class="album-sub-title">Bảo Anh ft Táo</p>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div id="more">
+                <div class="header">
+                    <i class="btn-back fas fa-thin fa-chevron-left"></i>
+                    <p>More</p>
+                    <i></i>
+                </div>
+                <div class="person-content">
+                    <div class="person-info">
+                        <img src="./assets/img/img6.jfif" alt="">
+                        <p class="person-name">Anh Tran</p>
+                    </div>
+                    <i class="fas fa-thin fa-chevron-right"></i>
+                </div>   
+                <ul class="more-options">
+                    <li>
+                        Subscription
+                        <i class="fas fa-thin fa-chevron-right"></i>
+                        <div class="overlay-row"></div>
+                    </li>
+                    <li>
+                        Playback
+                        <i class="fas fa-thin fa-chevron-right"></i>
+                        <div class="overlay-row"></div>
+
+                    </li>
+                    <li>
+                        Quality
+                        <i class="fas fa-thin fa-chevron-right"></i>
+                        <div class="overlay-row"></div>
+
+                    </li>
+                    <li>
+                        Offline
+                        <i class="fas fa-thin fa-chevron-right"></i>
+                        <div class="overlay-row"></div>
+
+                    </li>
+                    <li>
+                        Social
+                        <i class="fas fa-thin fa-chevron-right"></i>
+                    </li>
+                </ul>
+                <div class="log-out">
+                    Logout
                 </div>
             </div>
         </div>
@@ -229,7 +278,7 @@
             const cdThumb = $('.cd-thumb');
             const thumbIP = $('.thumb-IP');
             const audio = $('#audio');
-            const playBtn = $$('.btn-toggle-play');
+            const playBtns = $$('.btn-toggle-play');
             const footerBtn = $$('.footer-btn');
             const cd = $('.cd');
             const cdWidth = cd.offsetWidth;
@@ -246,6 +295,9 @@
             const AudioInProgress = $('#AudioInProgress');
             const PLAYER_STORAGE_KEY = 'F8-player';
             const playlistsBtn = $('.option-playlists');
+            const socialBtn = $('.option-social');
+            const gearBtns = $$('.btn-gear');
+            const more = $('#more');
 
             const app = {
                 currentIndex: 0,
@@ -380,8 +432,8 @@
                         }
                         )
                         
-                        const cdThumbIPAnimate = thumbIP.animate([
-                            {
+                    const cdThumbIPAnimate = thumbIP.animate([
+                        {
                             transform: 'rotate(360deg)'
                         }],
                         {
@@ -389,6 +441,28 @@
                             iterations: Infinity
                         }
                     )
+                
+                    for (var gearBtn of gearBtns) {
+                        const gearAnimate = gearBtn.animate([
+                            {
+                                transform: 'rotate(360deg)'
+                            }],
+                            {
+                                duration: 300,
+                                iterations: 1
+                            }
+                        )
+                        gearBtn.onclick = function() {
+                            gearAnimate.play();
+                        }
+                        more.style.display = "block";  
+                        playlist.style.display = "none";
+                        AudioInProgress.style.display = "none";
+                        $('.dashboard').style.display = "none";
+                        $('#profile').style.display = "none";
+                        $('#browse').style.display = "none";   
+                    }
+                    
                     
                     profileBtn.onclick = function() {
                         for (var i of footerBtn) {
@@ -427,24 +501,29 @@
                     }
 
                     // Xu li khi click play
-                    playBtn[0].onclick = function() {  
-                        if (_this.isPlaying) {
-                            audio.pause();
-                        } else {
-                            audio.play();
-                        }
-                    }
-
-                    playBtn[1].onclick = function() {  
-                        if (_this.isPlaying) {
-                            audio.pause();
-                        } else {
-                            audio.play();
+                    for (var playBtn of playBtns) {
+                        playBtn.onclick = function() {
+                            if (_this.isPlaying) {
+                                audio.pause();
+                            } else {
+                                audio.play();
+                            }
                         }
                     }
 
                     playlistsBtn.onclick = function() {
                         _this.renderPlaylists();
+                        socialBtn.classList.remove("active-option");
+                        playlistsBtn.classList.add("active-option");
+                        $('.person-social').style.display = "none";
+                        $('.person-playlists').style.display = "block";
+                    }
+
+                    socialBtn.onclick = function() {
+                        playlistsBtn.classList.remove("active-option");
+                        socialBtn.classList.add("active-option");
+                        $('.person-social').style.display = "flex";
+                        $('.person-playlists').style.display = "none";
                     }
 
                     // Khi bai hat duoc play

@@ -364,33 +364,35 @@
   }
 
   .person-data > div {
-    padding-right: 16px;
     color: var(--primary-color);
     font-size: 12px;
   }
 
-  .person-option {
+  .person-data p {
+    line-height: 50%;
+    padding: 0 8px;
+    color: var(--primary-color);
+  }
+
+  .person-options {
     color: #fff;
     background-color: var(--primary-color);
     padding: 8px;
     margin-bottom: 12px;
   }
 
-  .person-option > div {
+  .person-options > div {
     display: flex;
     border: #fff solid 1px;
+
     border-radius: 4px;
   }
   
-  .person-option div > div {
+  .person-options div > div {
     display: block;
     flex: 1;
     text-align: center;
     font-size: 14px;
-  }
-
-  .person-option div > div:first-child {
-    border-right: #fff solid 1px;
   }
 
   .person-social {
@@ -412,20 +414,100 @@
 
   .album-text {
     position: absolute;
-    bottom: 16px;
-    left: 12px;
+    bottom: 6%;
+    left: 5%;
     color: #fff;
   }
 
   .album-text .album-title {
     color: #fff;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   .album-text .album-sub-title {
     color: var(--primary-color);
-    font-size: 14px;
+    font-size: 13px;
   }
+
+  .active-option {
+    background-color: #fff;
+    color: var(--primary-color);
+    border: none!important;
+    border-radius: 4px;
+  }
+
+  #more {
+    margin-bottom: 300px;
+  }
+
+  #more .person-info {
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+  }
+
+  #more .person-name {
+    padding-left: 16px;
+  }
+
+  #more .person-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+
+  #more .person-content {
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #more .person-content i {
+    color: var(--primary-color);
+    font-size: 22px;
+  }
+
+  .more-options {
+    
+  }
+
+  .more-options li {
+    list-style: none;
+    display: block;
+    padding: 16px 16px;
+    position: relative;
+  }
+
+  .more-options li i {
+    float: right;
+    opacity: 0.3;
+  }
+  
+  .more-options {
+    border-top: 1.5px solid rgb(0 0 0 / 12%);
+    border-bottom: 1.5px solid rgb(0 0 0 / 12%);
+  }
+
+  .more-options .overlay-row {
+    position: absolute;
+    bottom: 0;
+    height: 1.5px;
+    width: 464px;
+    background-color: rgb(0 0 0 / 9%);
+  }
+
+  .log-out {
+    margin: 32px 0;
+    text-align: center;
+    padding: 16px 16px;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 16%);
+    color: var(--primary-color);
+    font-weight: 510;
+  }
+
+
+
+
   
   
   
