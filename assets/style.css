@@ -1,6 +1,6 @@
 :root {
-    --primary-color: #ec1f55;
-    --text-color: #333;
+    --primary-color: #ec1f55!important;
+    --text-color: #333!important;
   }
   
   * {
@@ -220,6 +220,7 @@
     justify-content: space-around;
     align-items: center;
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%);
+    z-index: 1000;
   }
   
   .footer .footer-btn {
@@ -283,6 +284,7 @@
     max-width: 480px;
     width: 100%;
     display: none;
+    z-index: 9999;
   }
 
   .song-IP {
@@ -329,8 +331,12 @@
   }
 
   .progressed {
+    position: absolute;
+    top: 0;
+    z-index: 9999;
     height: 3px;
     background-color: var(--primary-color);
+    transition: all 2s;
   }
 
   #profile {
@@ -387,6 +393,39 @@
     border-right: #fff solid 1px;
   }
 
+  .person-social {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 112px;
+  }
+
+  .album {
+    width: calc(50% - 8px);
+    margin: 0 4px;
+    position: relative;
+  }
+  
+  .album > img {
+    width: 100%;
+    height: auto;
+  }
+
+  .album-text {
+    position: absolute;
+    bottom: 16px;
+    left: 12px;
+    color: #fff;
+  }
+
+  .album-text .album-title {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .album-text .album-sub-title {
+    color: var(--primary-color);
+    font-size: 14px;
+  }
   
   
   

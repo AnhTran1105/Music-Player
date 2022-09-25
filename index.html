@@ -167,16 +167,57 @@
                 <div class="person-playlists">
                     
                 </div>
-                <div class="person-social">
-                    
+                <div class="person-social row">
+                    <div class="album">
+                        <img src="./assets/img/img1.jfif" alt="">
+                        <div class="album-text">
+                            <p class="album-title">Nàng thơ</p>
+                            <p class="album-sub-title">Hoàng Dũng</p>
+                        </div>
+                    </div>
+                    <div class="album">
+                        <img src="./assets/img/img2.jfif" alt="">
+                        <div class="album-text">
+                            <p class="album-title">Có khi</p>
+                            <p class="album-sub-title">Hoài Lâm</p>
+                        </div>
+                    </div>
+                    <div class="album">
+                        <img src="./assets/img/img3.jfif" alt="">
+                        <div class="album-text">
+                            <p class="album-title">Như những phút ban đầu</p>
+                            <p class="album-sub-title">Hoài Lâm</p>
+                        </div>
+                    </div>
+                    <div class="album">
+                        <img src="./assets/img/img8.jfif" alt="">
+                        <div class="album-text">
+                            <p class="album-title">Lời tạm biệt chưa nói</p>
+                            <p class="album-sub-title">GreyD</p>
+                        </div>
+                    </div>
+                    <div class="album">
+                        <img src="./assets/img/img5.jfif" alt="">
+                        <div class="album-text">
+                            <p class="album-title">Tháng tư là lời nói dối của em</p>
+                            <p class="album-sub-title">Hà Anh Tuấn</p>
+                        </div>
+                    </div>
+                    <div class="album">
+                        <img src="./assets/img/img9.jfif" alt="">
+                        <div class="album-text">
+                            <p class="album-title">Từng là của nhau</p>
+                            <p class="album-sub-title">Bảo Anh ft Táo</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         
         
-    
+        
         <!-- Design from: https://static.collectui.com/shots/3671744/musicloud-revolutionary-app-for-music-streaming-large -->
-
+        
         <script>
             const $ = document.querySelector.bind(document);
             const $$ = document.querySelectorAll.bind(document);
@@ -193,6 +234,7 @@
             const cd = $('.cd');
             const cdWidth = cd.offsetWidth;
             const progress = $('#progress');
+            const progressed = $('.progressed');
             const audioProgress = $('.audio-progress');
             const title = $('.title');
             const author = $('.author');
@@ -265,16 +307,16 @@
                     singer: "Bảo Anh ft Táo",
                     path: "./assets/music/song9.mp3",
                     image: "./assets/img/img9.jfif"
-                    },
-                    {
+                },
+                {
                     name: "Có ai thương em như anh",
                     singer: "Tóc Tiên",
                     path: "./assets/music/song10.mp3",
                     image: "./assets/img/img10.jfif"
-                    },
-
+                },
+                
                 ],
-
+                
                 render: function() {
                     let htmls = this.songs.map((song, index) => {
                         return `
@@ -290,7 +332,7 @@
                                     <i class="fas fa-ellipsis-h"></i>
                                 </div>
                             </div>
-                        `          
+                            `          
                     })
                     playlist.innerHTML = htmls.join('');
                 },
@@ -300,20 +342,20 @@
                         return `
                             <div class="song fix-margin-error" >
                                 <div class="thumb"
-                                    style="background-image: url('${song.image}');">
+                                style="background-image: url('${song.image}');">
                                 </div>
                                 <div class="body">
                                     <h3 class="title">${song.name}</h3>
                                     <p class="author">${song.singer}</p>
-                                </div>
+                                    </div>
                                 <div class="option">
                                     <i class="fas fa-ellipsis-h"></i>
-                                </div>
-                            </div>
-                        `          
-                    })
-                    $('.person-playlists').innerHTML = htmls.join('');
-                },
+                                    </div>
+                                    </div>
+                                    `          
+                                })
+                                $('.person-playlists').innerHTML = htmls.join('');
+                            },
 
                 defineProperties: function() {
                     Object.defineProperty(this, 'currentSong', {
@@ -327,7 +369,7 @@
                     const _this = this;
                     
                     // Xu li dia quay / dung
-
+                    
                     const cdThumbAnimate = cdThumb.animate([
                         {
                             transform: 'rotate(360deg)'
@@ -336,10 +378,10 @@
                             duration: 10000,
                             iterations: Infinity
                         }
-                    )
-
-                    const cdThumbIPAnimate = thumbIP.animate([
-                        {
+                        )
+                        
+                        const cdThumbIPAnimate = thumbIP.animate([
+                            {
                             transform: 'rotate(360deg)'
                         }],
                         {
@@ -353,21 +395,21 @@
                             i.classList.remove('active');
                         }
                         this.classList.add('active');
-                        $('.dashboard').style.display = "none";
                         playlist.style.display = "none";
                         AudioInProgress.style.display = "block";
+                        $('.dashboard').style.display = "none";
                         $('#profile').style.display = "block";
                         $('#browse').style.display = "none";
                     }
-
+                    
                     dashboardBtn.onclick = function() {
                         for (var i of footerBtn) {
                             i.classList.remove('active');
                         }
                         this.classList.add('active');
-                        $('.dashboard').style.display = "block";
                         playlist.style.display = "block";
                         AudioInProgress.style.display = "none";
+                        $('.dashboard').style.display = "block";
                         $('#browse').style.display = "none";
                         $('#profile').style.display = "none";
                     }
@@ -377,10 +419,10 @@
                             i.classList.remove('active');
                         }
                         this.classList.add('active');
-                        $('.dashboard').style.display = "none";
                         playlist.style.display = "none";
-                        $('#browse').style.display = "block";
                         AudioInProgress.style.display = "block";
+                        $('#browse').style.display = "block";
+                        $('.dashboard').style.display = "none";
                         $('#profile').style.display = "none";
                     }
 
@@ -426,7 +468,6 @@
                     audio.ontimeupdate = function() {
                         if (audio.duration) {
                             const progressPercent = Math.floor(audio.currentTime / audio.duration * 100);
-                            const progressed = $('.progressed');
                             progress.value = progressPercent;
                             audioProgress.value = progressPercent;
                             progressed.style.width = progressPercent + '%';
