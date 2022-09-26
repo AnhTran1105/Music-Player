@@ -10,54 +10,303 @@
         <link rel="stylesheet" href="./assets/style.css">
     </head>
     <body>
-        <div class="player">
-            <!-- Dashboard -->
-            <div id="main-window">
-                <div class="dashboard">
-                    <!-- Header -->
-                    <header>
-                        <h4>Now playing:</h4>
-                        <h2>String 57th & 9th</h2>
-                    </header>
-            
-                    <!-- CD -->
-                    <div class="cd">
-                        <div class="cd-thumb">
+        <div id="main-site">
+            <div class="player">
+                <!-- Dashboard -->
+                <div id="main-window">
+                    <div class="dashboard">
+                        <!-- Header -->
+                        <header>
+                            <h4>Now playing:</h4>
+                            <h2>String 57th & 9th</h2>
+                        </header>
+                
+                        <!-- CD -->
+                        <div class="cd">
+                            <div class="cd-thumb">
+                            </div>
                         </div>
+                
+                        <!-- Control -->
+                        <div class="control">
+                            <div class="btn btn-repeat">
+                                <i class="fas fa-redo"></i>
+                            </div>
+                            <div class="btn btn-prev">
+                                <i class="fas fa-step-backward"></i>
+                            </div>
+                            <div class="btn btn-toggle-play">
+                                <i class="fas fa-pause icon-pause"></i>
+                                <i class="fas fa-play icon-play"></i>
+                            </div>
+                            <div class="btn btn-next">
+                                <i class="fas fa-step-forward"></i>
+                            </div>
+                            <div class="btn btn-random">
+                                <i class="fas fa-random"></i>
+                            </div>
+                        </div>
+                
+                        <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+                
+                        <audio id="audio" src=""></audio>
                     </div>
-            
-                    <!-- Control -->
-                    <div class="control">
-                        <div class="btn btn-repeat">
-                            <i class="fas fa-redo"></i>
-                        </div>
-                        <div class="btn btn-prev">
-                            <i class="fas fa-step-backward"></i>
-                        </div>
-                        <div class="btn btn-toggle-play">
-                            <i class="fas fa-pause icon-pause"></i>
-                            <i class="fas fa-play icon-play"></i>
-                        </div>
-                        <div class="btn btn-next">
-                            <i class="fas fa-step-forward"></i>
-                        </div>
-                        <div class="btn btn-random">
-                            <i class="fas fa-random"></i>
-                        </div>
+                    
+                    <!-- Playlist -->
+                    <div class="playlist">
+                        
                     </div>
-            
-                    <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
-            
-                    <audio id="audio" src=""></audio>
                 </div>
                 
-                <!-- Playlist -->
-                <div class="playlist">
-                    
+                <!-- Navigation -->
+                <div id="browse">
+                    <div class="header">
+                        <i class="btn-back fas fa-thin fa-chevron-left"></i>
+                        <p>Browse</p>
+                        <i class="btn-gear fas fa-regular fa-gear"></i>
+                    </div>
+                    <div class="browse-content">
+                        <p>Genres</p>
+                        <div class="genres row">
+                            <div class="type">
+                                <img src="./assets/img/micro.png" alt="">
+                                <p>Pop</p>
+                            </div>
+                            <div class="type">
+                                <img src="./assets/img/loud-speaker.png" alt="">
+                                <p>Rock</p>
+                            </div>
+                            <div class="type">
+                                <img src="./assets/img/radio.png" alt="">
+                                <p>Hip Hop</p>
+                            </div>
+                            <div class="type">
+                                <img src="./assets/img/organ.png" alt="">
+                                <p>Blues</p>
+                            </div>
+                            <div class="type">
+                                <img src="./assets/img/violin.png" alt="">
+                                <p>Classic</p>
+                            </div>
+                            <div class="type">
+                                <img src="./assets/img/camera.png" alt="">
+                                <p>R&B/Soul</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div id="AudioInProgress">
+                    <div class="progress-bar">
+                        <div class="audio-progress"></div>
+                        <div class="progressed"></div>
+                    </div>
+                    <div class="song-IP">
+                        <div class="thumb-IP" 
+                            style="background-image: ''">
+                        </div>
+                        <div class="body">
+                            <h3 class="title"></h3>
+                            <p class="author"></p>
+                        </div>
+                        <div class="option">
+                            <div class="btn btn-toggle-play">
+                                <i class="fas fa-regular fa-circle-play icon-play"></i>
+                                <i class="fas fa-sharp fa-solid fa-circle-pause icon-pause"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div id="profile">
+                    <div class="header">
+                        <i class="btn-back fas fa-thin fa-chevron-left"></i>
+                        <p>Your profile</p>
+                        <i class="btn-gear fas fa-regular fa-gear"></i>
+                    </div>
+                    <div class="person-content">
+                        <img src="./assets/img/img6.jfif" alt="">
+                        <div class="person-info">
+                            <p class="person-name">Anh Tran</p>
+                            <div class="person-data">
+                                <div class="numOfSongs">
+                                    10 songs
+                                </div>
+                                <p>.</p>
+                                <div class="numOfPlaylists">
+                                    25 playlists
+                                </div>
+                                <p>.</p>
+                                <div class="numOfFriends">
+                                    40 friends
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="person-options">
+                        <div>
+                            <div class="option-social active-option">
+                                Social
+                            </div>
+                            <div class="option-playlists">
+                                Playlists
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-playlists person-playlists">
+                        
+                    </div>
+                    <div class="person-social content-image row">
+                        <div class="album">
+                            <img src="./assets/img/img1.jfif" alt="">
+                            <div class="album-text">
+                                <p class="album-title">Nàng thơ</p>
+                                <p class="album-sub-title">Hoàng Dũng</p>
+                            </div>
+                        </div>
+                        <div class="album">
+                            <img src="./assets/img/img2.jfif" alt="">
+                            <div class="album-text">
+                                <p class="album-title">Có khi</p>
+                                <p class="album-sub-title">Hoài Lâm</p>
+                            </div>
+                        </div>
+                        <div class="album">
+                            <img src="./assets/img/img3.jfif" alt="">
+                            <div class="album-text">
+                                <p class="album-title">Như những phút ban đầu</p>
+                                <p class="album-sub-title">Hoài Lâm</p>
+                            </div>
+                        </div>
+                        <div class="album">
+                            <img src="./assets/img/img8.jfif" alt="">
+                            <div class="album-text">
+                                <p class="album-title">Lời tạm biệt chưa nói</p>
+                                <p class="album-sub-title">GreyD</p>
+                            </div>
+                        </div>
+                        <div class="album">
+                            <img src="./assets/img/download 1.jfif" alt="">
+                            <div class="album-text">
+                                <p class="album-title">Có ai thương em như anh</p>
+                                <p class="album-sub-title">Tóc Tiên</p>
+                            </div>
+                        </div>
+                        <div class="album">
+                            <img src="./assets/img/download.jfif" alt="">
+                            <div class="album-text">
+                                <p class="album-title">Từng là của nhau</p>
+                                <p class="album-sub-title">Bảo Anh ft Táo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div id="more">
+                    <div class="header">
+                        <i class="btn-back fas fa-thin fa-chevron-left"></i>
+                        <p>More</p>
+                        <i></i>
+                    </div>
+                    <div class="person-content">
+                        <div class="person-info">
+                            <img src="./assets/img/img6.jfif" alt="">
+                            <p class="person-name">Anh Tran</p>
+                        </div>
+                        <i class="fas fa-thin fa-chevron-right"></i>
+                    </div>   
+                    <ul class="more-options">
+                        <li>
+                            Subscription
+                            <i class="fas fa-thin fa-chevron-right"></i>
+                            <div class="overlay-row"></div>
+                        </li>
+                        <li>
+                            Playback
+                            <i class="fas fa-thin fa-chevron-right"></i>
+                            <div class="overlay-row"></div>
+    
+                        </li>
+                        <li>
+                            Quality
+                            <i class="fas fa-thin fa-chevron-right"></i>
+                            <div class="overlay-row"></div>
+    
+                        </li>
+                        <li>
+                            Offline
+                            <i class="fas fa-thin fa-chevron-right"></i>
+                            <div class="overlay-row"></div>
+    
+                        </li>
+                        <li>
+                            Social
+                            <i class="fas fa-thin fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                    <div class="log-out">
+                        Logout
+                    </div>
+                </div>
+    
+                <div id="home">
+                    <div class="header">
+                        <i>&nbsp; &nbsp;</i>
+                        <p>Home</p>
+                        <i class="fas fa-light fa-bell"></i>
+                    </div>
+                    <div class="content">
+                        <div class="content-new-albums">
+                            <div class="content-image-heading row">
+                                <p>New albums</p>
+                                <p>See more</p>
+                            </div>
+                            <div class="content-image row">
+                                <div class="album">
+                                    <img src="./assets/img/img1.jfif" alt="">
+                                    <div class="album-text">
+                                        <p class="album-title">Nàng thơ</p>
+                                        <p class="album-sub-title">Hoàng Dũng</p>
+                                    </div>
+                                </div>
+                                <div class="album">
+                                    <img src="./assets/img/img2.jfif" alt="">
+                                    <div class="album-text">
+                                        <p class="album-title">Có khi</p>
+                                        <p class="album-sub-title">Hoài Lâm</p>
+                                    </div>
+                                </div>
+                                <div class="album">
+                                    <img src="./assets/img/img3.jfif" alt="">
+                                    <div class="album-text">
+                                        <p class="album-title">Như những phút ban đầu</p>
+                                        <p class="album-sub-title">Hoài Lâm</p>
+                                    </div>
+                                </div>
+                                <div class="album">
+                                    <img src="./assets/img/img8.jfif" alt="">
+                                    <div class="album-text">
+                                        <p class="album-title">Lời tạm biệt chưa nói</p>
+                                        <p class="album-sub-title">GreyD</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="hot-songs">
+                            <div class="content-image-heading row">
+                                <p>Hot songs</p>
+                                <p>See more</p>
+                            </div>
+                            <div class="content-playlists home">
+    
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="footer">
-                <div class="footer-btn btn btn-house">
+                <div class="footer-btn btn btn-house btn-home">
                     <i class="fas fa-thin fa-house"></i>
                 </div>
                 <div class="footer-btn btn btn-genres">
@@ -73,237 +322,7 @@
                     <i class="fas fa-thin fa-bars-staggered"></i>
                 </div>
             </div>
-            <!-- Navigation -->
-            <div id="browse">
-                <div class="header">
-                    <i class="btn-back fas fa-thin fa-chevron-left"></i>
-                    <p>Browse</p>
-                    <i class="btn-gear fas fa-regular fa-gear"></i>
-                </div>
-                <div class="browse-content">
-                    <p>Genres</p>
-                    <div class="genres row">
-                        <div class="type">
-                            <img src="./assets/img/micro.png" alt="">
-                            <p>Pop</p>
-                        </div>
-                        <div class="type">
-                            <img src="./assets/img/loud-speaker.png" alt="">
-                            <p>Rock</p>
-                        </div>
-                        <div class="type">
-                            <img src="./assets/img/radio.png" alt="">
-                            <p>Hip Hop</p>
-                        </div>
-                        <div class="type">
-                            <img src="./assets/img/organ.png" alt="">
-                            <p>Blues</p>
-                        </div>
-                        <div class="type">
-                            <img src="./assets/img/violin.png" alt="">
-                            <p>Classic</p>
-                        </div>
-                        <div class="type">
-                            <img src="./assets/img/camera.png" alt="">
-                            <p>R&B/Soul</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="AudioInProgress">
-                <div class="progress-bar">
-                    <div class="audio-progress"></div>
-                    <div class="progressed"></div>
-                </div>
-                <div class="song-IP">
-                    <div class="thumb-IP" 
-                        style="background-image: ''">
-                    </div>
-                    <div class="body">
-                        <h3 class="title"></h3>
-                        <p class="author"></p>
-                    </div>
-                    <div class="option">
-                        <div class="btn btn-toggle-play">
-                            <i class="fas fa-regular fa-circle-play icon-play"></i>
-                            <i class="fas fa-sharp fa-solid fa-circle-pause icon-pause"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="profile">
-                <div class="header">
-                    <i class="btn-back fas fa-thin fa-chevron-left"></i>
-                    <p>Your profile</p>
-                    <i class="btn-gear fas fa-regular fa-gear"></i>
-                </div>
-                <div class="person-content">
-                    <img src="./assets/img/img6.jfif" alt="">
-                    <div class="person-info">
-                        <p class="person-name">Anh Tran</p>
-                        <div class="person-data">
-                            <div class="numOfSongs">
-                                10 songs
-                            </div>
-                            <p>.</p>
-                            <div class="numOfPlaylists">
-                                25 playlists
-                            </div>
-                            <p>.</p>
-                            <div class="numOfFriends">
-                                40 friends
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="person-options">
-                    <div>
-                        <div class="option-social active-option">
-                            Social
-                        </div>
-                        <div class="option-playlists">
-                            Playlists
-                        </div>
-                    </div>
-                </div>
-                <div class="person-playlists">
-                    
-                </div>
-                <div class="person-social row">
-                    <div class="album">
-                        <img src="./assets/img/img1.jfif" alt="">
-                        <div class="album-text">
-                            <p class="album-title">Nàng thơ</p>
-                            <p class="album-sub-title">Hoàng Dũng</p>
-                        </div>
-                    </div>
-                    <div class="album">
-                        <img src="./assets/img/img2.jfif" alt="">
-                        <div class="album-text">
-                            <p class="album-title">Có khi</p>
-                            <p class="album-sub-title">Hoài Lâm</p>
-                        </div>
-                    </div>
-                    <div class="album">
-                        <img src="./assets/img/img3.jfif" alt="">
-                        <div class="album-text">
-                            <p class="album-title">Như những phút ban đầu</p>
-                            <p class="album-sub-title">Hoài Lâm</p>
-                        </div>
-                    </div>
-                    <div class="album">
-                        <img src="./assets/img/img8.jfif" alt="">
-                        <div class="album-text">
-                            <p class="album-title">Lời tạm biệt chưa nói</p>
-                            <p class="album-sub-title">GreyD</p>
-                        </div>
-                    </div>
-                    <div class="album">
-                        <img src="./assets/img/download 1.jfif" alt="">
-                        <div class="album-text">
-                            <p class="album-title">Có ai thương em như anh</p>
-                            <p class="album-sub-title">Tóc Tiên</p>
-                        </div>
-                    </div>
-                    <div class="album">
-                        <img src="./assets/img/download.jfif" alt="">
-                        <div class="album-text">
-                            <p class="album-title">Từng là của nhau</p>
-                            <p class="album-sub-title">Bảo Anh ft Táo</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="more">
-                <div class="header">
-                    <i class="btn-back fas fa-thin fa-chevron-left"></i>
-                    <p>More</p>
-                    <i></i>
-                </div>
-                <div class="person-content">
-                    <div class="person-info">
-                        <img src="./assets/img/img6.jfif" alt="">
-                        <p class="person-name">Anh Tran</p>
-                    </div>
-                    <i class="fas fa-thin fa-chevron-right"></i>
-                </div>   
-                <ul class="more-options">
-                    <li>
-                        Subscription
-                        <i class="fas fa-thin fa-chevron-right"></i>
-                        <div class="overlay-row"></div>
-                    </li>
-                    <li>
-                        Playback
-                        <i class="fas fa-thin fa-chevron-right"></i>
-                        <div class="overlay-row"></div>
-
-                    </li>
-                    <li>
-                        Quality
-                        <i class="fas fa-thin fa-chevron-right"></i>
-                        <div class="overlay-row"></div>
-
-                    </li>
-                    <li>
-                        Offline
-                        <i class="fas fa-thin fa-chevron-right"></i>
-                        <div class="overlay-row"></div>
-
-                    </li>
-                    <li>
-                        Social
-                        <i class="fas fa-thin fa-chevron-right"></i>
-                    </li>
-                </ul>
-                <div class="log-out">
-                    Logout
-                </div>
-            </div>
-
-            <div id="home">
-                <div class="header">
-                    <i></i>
-                    <p>Home</p>
-                    <i class="fas fa-light fa-bell"></i>
-                </div>
-                <div class="browse-content">
-                    <p>New albums</p>
-                    <p>See more</p>
-                    <div class="genres row">
-                        <div class="type">
-                            <img src="./assets/img/micro.png" alt="">
-                            <p>Pop</p>
-                        </div>
-                        <div class="type">
-                            <img src="./assets/img/loud-speaker.png" alt="">
-                            <p>Rock</p>
-                        </div>
-                        <div class="type">
-                            <img src="./assets/img/radio.png" alt="">
-                            <p>Hip Hop</p>
-                        </div>
-                        <div class="type">
-                            <img src="./assets/img/organ.png" alt="">
-                            <p>Blues</p>
-                        </div>
-                        <div class="type">
-                            <img src="./assets/img/violin.png" alt="">
-                            <p>Classic</p>
-                        </div>
-                        <div class="type">
-                            <img src="./assets/img/camera.png" alt="">
-                            <p>R&B/Soul</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-        
-        
         
         <!-- Design from: https://static.collectui.com/shots/3671744/musicloud-revolutionary-app-for-music-streaming-large -->
         
@@ -339,8 +358,10 @@
             const gearBtns = $$('.btn-gear');
             const more = $('#more');
             const mainWindow = $('#main-window');
-            const backBtns = $('.btn-back');
-            const homeBtn = $('#home');
+            const backBtns = $$('.btn-back');
+            const homeBtn = $('.btn-home');
+            const home = $('#home');
+            const homePlaylists = $('.content-playlists.home');
 
             const app = {
                 currentIndex: 0,
@@ -432,7 +453,7 @@
                     playlist.innerHTML = htmls.join('');
                 },
 
-                renderPlaylists: function() {
+                renderProfilePlaylists: function() {
                     let htmls = this.songs.map(song => {
                         return `
                             <div class="song fix-margin-error" >
@@ -449,7 +470,27 @@
                                     </div>
                                     `          
                                 })
-                                $('.person-playlists').innerHTML = htmls.join('');
+                                $('.content-playlists').innerHTML = htmls.join('');
+                            },
+                
+                renderHomePlaylists: function() {
+                    let htmls = this.songs.map(song => {
+                        return `
+                            <div class="song fix-margin-error" >
+                                <div class="thumb"
+                                style="background-image: url('${song.image}');">
+                                </div>
+                                <div class="body">
+                                    <h3 class="title">${song.name}</h3>
+                                    <p class="author">${song.singer}</p>
+                                    </div>
+                                <div class="option">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                    </div>
+                                    </div>
+                                    `          
+                                })
+                                $('.content-playlists.home').innerHTML = htmls.join('');
                             },
 
                 defineProperties: function() {
@@ -505,16 +546,34 @@
                         }
                     }
 
+                    for (var backBtn of backBtns) {
+                        backBtn.onclick = function() {
+                            _this.renderHomePlaylists();
+                            for (var i of footerBtn) {
+                                i.classList.remove('active');
+                            }
+                            homeBtn.classList.add('active');
+                            AudioInProgress.style.display = "block";
+                            mainWindow.style.display = "none";
+                            home.style.display = "block";
+                            $('#browse').style.display = "none";
+                            more.style.display = "none";
+                            $('#profile').style.display = "none";
+                        }
+                    }
+
                     homeBtn.onclick = function() {
+                        _this.renderHomePlaylists();
                         for (var i of footerBtn) {
                             i.classList.remove('active');
                         }
                         this.classList.add('active');
                         AudioInProgress.style.display = "block";
                         mainWindow.style.display = "none";
-                        homeBtn.style.display = "block";
+                        home.style.display = "block";
                         $('#browse').style.display = "none";
                         more.style.display = "none";
+                        $('#profile').style.display = "none";
                     }
                     
                     profileBtn.onclick = function() {
@@ -527,6 +586,7 @@
                         $('#profile').style.display = "block";
                         $('#browse').style.display = "none";
                         more.style.display = "none";  
+                        home.style.display = "none";
                     }
                     
                     dashboardBtn.onclick = function() {
@@ -539,7 +599,7 @@
                         $('#browse').style.display = "none";
                         $('#profile').style.display = "none";
                         more.style.display = "none";  
-
+                        home.style.display = "none";
                     }
 
                     genresBtn.onclick = function() {
@@ -552,7 +612,7 @@
                         mainWindow.style.display = "none";
                         $('#profile').style.display = "none";
                         more.style.display = "none";  
-
+                        home.style.display = "none";
                     }
 
                     // Xu li khi click play
@@ -567,11 +627,11 @@
                     }
 
                     playlistsBtn.onclick = function() {
-                        _this.renderPlaylists();
+                        _this.renderProfilePlaylists();
                         socialBtn.classList.remove("active-option");
                         playlistsBtn.classList.add("active-option");
                         $('.person-social').style.display = "none";
-                        $('.person-playlists').style.display = "block";
+                        $('.content-playlists').style.display = "block";
                     }
 
                     socialBtn.onclick = function() {
