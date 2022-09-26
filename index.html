@@ -12,47 +12,49 @@
     <body>
         <div class="player">
             <!-- Dashboard -->
-            <div class="dashboard">
-                <!-- Header -->
-                <header>
-                    <h4>Now playing:</h4>
-                    <h2>String 57th & 9th</h2>
-                </header>
-        
-                <!-- CD -->
-                <div class="cd">
-                    <div class="cd-thumb">
-                    </div>
-                </div>
-        
-                <!-- Control -->
-                <div class="control">
-                    <div class="btn btn-repeat">
-                        <i class="fas fa-redo"></i>
-                    </div>
-                    <div class="btn btn-prev">
-                        <i class="fas fa-step-backward"></i>
-                    </div>
-                    <div class="btn btn-toggle-play">
-                        <i class="fas fa-pause icon-pause"></i>
-                        <i class="fas fa-play icon-play"></i>
-                    </div>
-                    <div class="btn btn-next">
-                        <i class="fas fa-step-forward"></i>
-                    </div>
-                    <div class="btn btn-random">
-                        <i class="fas fa-random"></i>
-                    </div>
-                </div>
-        
-                <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
-        
-                <audio id="audio" src=""></audio>
-            </div>
+            <div id="main-window">
+                <div class="dashboard">
+                    <!-- Header -->
+                    <header>
+                        <h4>Now playing:</h4>
+                        <h2>String 57th & 9th</h2>
+                    </header>
             
-            <!-- Playlist -->
-            <div class="playlist">
+                    <!-- CD -->
+                    <div class="cd">
+                        <div class="cd-thumb">
+                        </div>
+                    </div>
+            
+                    <!-- Control -->
+                    <div class="control">
+                        <div class="btn btn-repeat">
+                            <i class="fas fa-redo"></i>
+                        </div>
+                        <div class="btn btn-prev">
+                            <i class="fas fa-step-backward"></i>
+                        </div>
+                        <div class="btn btn-toggle-play">
+                            <i class="fas fa-pause icon-pause"></i>
+                            <i class="fas fa-play icon-play"></i>
+                        </div>
+                        <div class="btn btn-next">
+                            <i class="fas fa-step-forward"></i>
+                        </div>
+                        <div class="btn btn-random">
+                            <i class="fas fa-random"></i>
+                        </div>
+                    </div>
+            
+                    <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+            
+                    <audio id="audio" src=""></audio>
+                </div>
                 
+                <!-- Playlist -->
+                <div class="playlist">
+                    
+                </div>
             </div>
             <div class="footer">
                 <div class="footer-btn btn btn-house">
@@ -261,6 +263,44 @@
                     Logout
                 </div>
             </div>
+
+            <div id="home">
+                <div class="header">
+                    <i></i>
+                    <p>Home</p>
+                    <i class="fas fa-light fa-bell"></i>
+                </div>
+                <div class="browse-content">
+                    <p>New albums</p>
+                    <p>See more</p>
+                    <div class="genres row">
+                        <div class="type">
+                            <img src="./assets/img/micro.png" alt="">
+                            <p>Pop</p>
+                        </div>
+                        <div class="type">
+                            <img src="./assets/img/loud-speaker.png" alt="">
+                            <p>Rock</p>
+                        </div>
+                        <div class="type">
+                            <img src="./assets/img/radio.png" alt="">
+                            <p>Hip Hop</p>
+                        </div>
+                        <div class="type">
+                            <img src="./assets/img/organ.png" alt="">
+                            <p>Blues</p>
+                        </div>
+                        <div class="type">
+                            <img src="./assets/img/violin.png" alt="">
+                            <p>Classic</p>
+                        </div>
+                        <div class="type">
+                            <img src="./assets/img/camera.png" alt="">
+                            <p>R&B/Soul</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
         
@@ -298,6 +338,9 @@
             const socialBtn = $('.option-social');
             const gearBtns = $$('.btn-gear');
             const more = $('#more');
+            const mainWindow = $('#main-window');
+            const backBtns = $('.btn-back');
+            const homeBtn = $('#home');
 
             const app = {
                 currentIndex: 0,
@@ -454,26 +497,36 @@
                         )
                         gearBtn.onclick = function() {
                             gearAnimate.play();
+                            more.style.display = "block";  
+                            mainWindow.style.display = "none";
+                            AudioInProgress.style.display = "none";
+                            $('#profile').style.display = "none";
+                            $('#browse').style.display = "none";   
                         }
-                        more.style.display = "block";  
-                        playlist.style.display = "none";
-                        AudioInProgress.style.display = "none";
-                        $('.dashboard').style.display = "none";
-                        $('#profile').style.display = "none";
-                        $('#browse').style.display = "none";   
                     }
-                    
+
+                    homeBtn.onclick = function() {
+                        for (var i of footerBtn) {
+                            i.classList.remove('active');
+                        }
+                        this.classList.add('active');
+                        AudioInProgress.style.display = "block";
+                        mainWindow.style.display = "none";
+                        homeBtn.style.display = "block";
+                        $('#browse').style.display = "none";
+                        more.style.display = "none";
+                    }
                     
                     profileBtn.onclick = function() {
                         for (var i of footerBtn) {
                             i.classList.remove('active');
                         }
                         this.classList.add('active');
-                        playlist.style.display = "none";
                         AudioInProgress.style.display = "block";
-                        $('.dashboard').style.display = "none";
+                        mainWindow.style.display = "none";
                         $('#profile').style.display = "block";
                         $('#browse').style.display = "none";
+                        more.style.display = "none";  
                     }
                     
                     dashboardBtn.onclick = function() {
@@ -481,11 +534,12 @@
                             i.classList.remove('active');
                         }
                         this.classList.add('active');
-                        playlist.style.display = "block";
+                        mainWindow.style.display = "block";
                         AudioInProgress.style.display = "none";
-                        $('.dashboard').style.display = "block";
                         $('#browse').style.display = "none";
                         $('#profile').style.display = "none";
+                        more.style.display = "none";  
+
                     }
 
                     genresBtn.onclick = function() {
@@ -493,11 +547,12 @@
                             i.classList.remove('active');
                         }
                         this.classList.add('active');
-                        playlist.style.display = "none";
                         AudioInProgress.style.display = "block";
                         $('#browse').style.display = "block";
-                        $('.dashboard').style.display = "none";
+                        mainWindow.style.display = "none";
                         $('#profile').style.display = "none";
+                        more.style.display = "none";  
+
                     }
 
                     // Xu li khi click play

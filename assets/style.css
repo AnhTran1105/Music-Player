@@ -438,6 +438,7 @@
 
   #more {
     margin-bottom: 300px;
+    display: none;
   }
 
   #more .person-info {
@@ -466,10 +467,6 @@
     font-size: 22px;
   }
 
-  .more-options {
-    
-  }
-
   .more-options li {
     list-style: none;
     display: block;
@@ -490,8 +487,8 @@
   .more-options .overlay-row {
     position: absolute;
     bottom: 0;
-    height: 1.5px;
-    width: 464px;
+    height: 1.3px;
+    width: calc(100% - 16px);    
     background-color: rgb(0 0 0 / 9%);
   }
 
@@ -503,6 +500,11 @@
     box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 16%);
     color: var(--primary-color);
     font-weight: 510;
+  }
+
+  #home {
+    margin-bottom: 300px;
+    display: none;
   }
 
 
