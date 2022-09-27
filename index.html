@@ -24,6 +24,7 @@
                         <!-- CD -->
                         <div class="cd">
                             <div class="cd-thumb">
+                                    
                             </div>
                         </div>
                 
@@ -46,9 +47,11 @@
                                 <i class="fas fa-random"></i>
                             </div>
                         </div>
-                
-                        <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
-                
+                        
+                        <div class="dashboard-progress-bar">
+                            <div class="dashboard-progress"></div>
+                            <div class="dashboard-progressed"></div>
+                        </div>
                         <audio id="audio" src=""></audio>
                     </div>
                     
@@ -341,7 +344,8 @@
             const footerBtn = $$('.footer-btn');
             const cd = $('.cd');
             const cdWidth = cd.offsetWidth;
-            const progress = $('#progress');
+            const dashboardProgress = $('.dashboard-progress');
+            const dashboardProgressed = $('.dashboard-progressed');
             const progressed = $('.progressed');
             const audioProgress = $('.audio-progress');
             const title = $('.title');
@@ -662,14 +666,15 @@
                     audio.ontimeupdate = function() {
                         if (audio.duration) {
                             const progressPercent = Math.floor(audio.currentTime / audio.duration * 100);
-                            progress.value = progressPercent;
+                            dashboardProgress.value = progressPercent;
                             audioProgress.value = progressPercent;
                             progressed.style.width = progressPercent + '%';
+                            dashboardProgressed.style.width = progressPercent + '%';
                         }
                     }
 
                     // Xu li khi tua bai hat
-                    progress.onchange = function(e) {
+                    dashboardProgress.onchange = function(e) {
                         const seekTime = audio.duration / 100 * e.target.value;
                         audio.currentTime = seekTime;
                     }
