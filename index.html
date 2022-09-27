@@ -11,6 +11,77 @@
     </head>
     <body>
         <div id="main-site">
+            <div class="welcome-screens">
+                <div class="intro-screen">
+                    <div class="intro-content">
+                        <div class="branding">
+                            <img src="./assets/img/brand.png" alt="">
+                            <p class="brand-name">
+                                Musicloud
+                            </p>
+                            <div class="branding-underline"></div>
+                        </div>
+                        <div class="intro-des">
+                            Revolutionary app for music streaming
+                        </div>
+                    </div>
+                    <form action="">
+                        <button class="create-account">
+                            Create an account
+                        </button>
+                         <button class="log-in">
+                            Already have an account? 
+                           <b>Log in</b> 
+                         </button>
+                    </form>
+                </div>
+                <div class="login-screen">
+                    <div class="header">
+                        <i class="btn-back fas fa-thin fa-chevron-left"></i>
+                        <p>Log in</p>
+                        <i></i>
+                    </div>
+                    <div class="register-content">
+                        <form action="">
+                            <input type="email" name="" id="login-email" placeholder="E-mail address">
+                            <input type="password" name="" id="login-password" placeholder="Password">
+                        </form>
+                        <a href="#" class="forgot-password">
+                            Forgot password?
+                        </a>
+                        <form action="">
+                            <button class="create-account">Log in</button>
+                            <button class="connect-fb-btn">
+                                <i class="fas fa-brands fa-facebook"></i>
+                                &nbsp;
+                                Log in with Facebook
+                            </button>
+                        </form>
+                    </div>      
+                </div>
+                <div class="register-screen">
+                    <div class="header">
+                        <i class="btn-back fas fa-thin fa-chevron-left"></i>
+                        <p>Register</p>
+                        <i></i>
+                    </div>
+                    <div class="register-content">
+                        <form action="">
+                            <input type="email" name="" id="register-email" placeholder="E-mail address">
+                            <input type="password" name="" id="register-password" placeholder="Password">
+                            <input type="repeat-password" name="" id="repeat-password" placeholder="Repeat password">
+                        </form>
+                        <form action="">
+                            <button class="create-account">Create an account</button>
+                            <button class="connect-fb-btn">
+                                <i class="fas fa-brands fa-facebook"></i>
+                                &nbsp;
+                                Connect with Facebook
+                            </button>
+                        </form>
+                    </div>      
+                </div>
+            </div>
             <div class="player">
                 <!-- Dashboard -->
                 <div id="main-window">
@@ -342,6 +413,7 @@
             const audio = $('#audio');
             const playBtns = $$('.btn-toggle-play');
             const footerBtn = $$('.footer-btn');
+            const footer = $('.footer');
             const cd = $('.cd');
             const cdWidth = cd.offsetWidth;
             const dashboardProgress = $('.dashboard-progress');
@@ -366,6 +438,8 @@
             const homeBtn = $('.btn-home');
             const home = $('#home');
             const homePlaylists = $('.content-playlists.home');
+            const createAcountBtn = $('.create-account');
+            const welcomeScreens = $('.welcome-screens');
 
             const app = {
                 currentIndex: 0,
@@ -507,6 +581,14 @@
 
                 handleEvents: function() {
                     const _this = this;
+
+                    
+                    // them va go class tranh loi hien thi 
+                    setTimeout(function() {
+                        player.style.display = 'block';
+                        footer.style.display = 'flex';
+                        welcomeScreens.style.display = 'none';
+                    }, 3000)
                     
                     // Xu li dia quay / dung
                     
@@ -564,6 +646,10 @@
                             more.style.display = "none";
                             $('#profile').style.display = "none";
                         }
+                    }
+
+                    createAcountBtn.onclick = function() {
+                        $('.register-screen').style.display = "block";
                     }
 
                     homeBtn.onclick = function() {

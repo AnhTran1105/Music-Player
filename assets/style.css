@@ -30,10 +30,154 @@
     position: relative;
     max-width: 480px;
     margin: 0 auto;
+    
   }
 
   #main-window .song:last-child{
     margin-bottom: 44px;
+  }
+
+  .welcome-screens {
+    text-align: center;
+  }
+  
+  .intro-screen {
+    max-width: 480px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    background-color: #14103b;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+  }
+
+  .intro-screen form {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 0 16px;
+  }
+
+  .intro-screen form button {
+    margin-bottom: 16px;
+    font-size: 16px;
+    padding: 16px 0;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+  }
+  
+  .create-account {
+    font-size: 18px;
+    background-color: #ee2565;
+    color:#ebebeb;
+  }
+
+  .intro-screen .branding > img {
+    width: 50px;
+    margin-bottom: 24px;
+  }
+
+  .intro-content {
+    color: #fff;
+    width: 100%;
+    font-weight: 600;
+    margin-bottom: 150px;
+    padding: 0 60px;
+  }
+
+  .intro-screen .log-in {
+    background-color: #14103b;
+    color: #b7b3c0;
+    border: solid 1px #b7b3c0;
+  }
+
+  .register-screen, .login-screen {
+    display: none;
+  }
+  
+  .brand-name {
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+
+  .branding {
+    text-align: center;
+  }
+
+  .branding-underline {
+    background-color: var(--primary-color);
+    min-width: 64px;
+    display: inline-block;
+    height: 2px;
+    margin-bottom: 32px;
+  }
+
+  .intro-des {
+    font-size: 24px;
+    line-height: 40px;
+  }
+
+  .register-screen {
+    background-color: #14103b;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    max-width: 480px;
+    width: 100%;
+  }
+
+  .register-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    margin-top: 24px;
+  }
+
+  .register-screen .header {
+    background-color: #14103b;
+    color: #fff;
+  }
+
+  .register-content form  {
+    width: 100%;
+    margin: 16px 16px;
+  }
+  
+  .register-content form input {
+    width: 100%;
+    border: none;
+    padding: 16px 16px;
+    border-radius: none;
+  }
+
+  .register-content form input {
+    border-bottom: solid 1px #b7b3c0;
+  }
+  
+  .register-content form button {
+    width: 100%;
+    margin-bottom: 16px;
+    font-size: 16px;
+    padding: 16px 0;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+  }
+
+  .register-content .connect-fb-btn {
+    background-color: #354692;
+    color:#ebebeb;
+  }
+
+  .forgot-password {
+    text-decoration: none;
+    color: var(--primary-color);
+    margin-bottom: 24px;
+    font-size: 14px;
   }
 
   .row {
@@ -43,6 +187,10 @@
   .fix-margin-error {
     float: left;
     width: 100%;
+  }
+
+  .player {
+    display: none;
   }
 
   .header {
@@ -241,6 +389,7 @@
     align-items: center;
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%);
     z-index: 1000;
+    display: none;
   }
   
   .footer .footer-btn {
