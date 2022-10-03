@@ -23,14 +23,31 @@
   
   html {
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+  }
+
+  a:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  .not-active-screen {
+    display: none!important;
+  }
+
+  .header {
+    padding: 0 16px;
+    height: 50px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
   }
   
   #main-site {
     position: relative;
     max-width: 480px;
     margin: 0 auto;
-    
   }
 
   #main-window .song:last-child{
@@ -40,36 +57,46 @@
   .welcome-screens {
     text-align: center;
   }
-  
-  .intro-screen {
-    max-width: 480px;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    background-color: #14103b;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-  }
 
-  .intro-screen form {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    padding: 0 16px;
-  }
-
-  .intro-screen form button {
+  .welcome-btn {
+    display: inline-block;
     margin-bottom: 16px;
-    font-size: 16px;
-    padding: 16px 0;
+    padding: 16px 12px;
     width: 100%;
     border: none;
     border-radius: 3px;
   }
   
-  .create-account {
+  .intro-screen {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+  }
+
+  .intro-screen, .register-screen, .login-screen {
+    background-color: #14103b;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    max-width: 480px;
+    width: 100%;
+  }
+
+  .welcome-screens .form {
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .welcome-screens .form a:first-child {
+    margin-top: 24px;
+  }
+  
+  .intro-screen .form {
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .first-btn {
     font-size: 18px;
     background-color: #ee2565;
     color:#ebebeb;
@@ -92,10 +119,6 @@
     background-color: #14103b;
     color: #b7b3c0;
     border: solid 1px #b7b3c0;
-  }
-
-  .register-screen, .login-screen {
-    display: none;
   }
   
   .brand-name {
@@ -120,14 +143,6 @@
     line-height: 40px;
   }
 
-  .register-screen {
-    background-color: #14103b;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    max-width: 480px;
-    width: 100%;
-  }
 
   .register-content {
     display: flex;
@@ -137,7 +152,7 @@
     margin-top: 24px;
   }
 
-  .register-screen .header {
+  .welcome-screens .header {
     background-color: #14103b;
     color: #fff;
   }
@@ -152,20 +167,8 @@
     border: none;
     padding: 16px 16px;
     border-radius: none;
-  }
-
-  .register-content form input {
     border-bottom: solid 1px #b7b3c0;
-  }
-  
-  .register-content form button {
-    width: 100%;
-    margin-bottom: 16px;
-    font-size: 16px;
-    padding: 16px 0;
-    width: 100%;
-    border: none;
-    border-radius: 3px;
+    font-family: Raleway;
   }
 
   .register-content .connect-fb-btn {
@@ -176,7 +179,6 @@
   .forgot-password {
     text-decoration: none;
     color: var(--primary-color);
-    margin-bottom: 24px;
     font-size: 14px;
   }
 
@@ -188,22 +190,13 @@
     float: left;
     width: 100%;
   }
-
-  .player {
-    display: none;
-  }
-
-  .header {
-    padding: 0 16px;
-    height: 50px;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
   
   .player .icon-pause {
     display: none;
+  }
+
+  .player .header {
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%);
   }
   
   .player.playing .icon-pause {
@@ -241,10 +234,6 @@
     font-size: 20px;
   }
 
-  .header {
-    font-weight: 600;
-  }
-  
   /* CD */
   .cd {
     display: flex;
@@ -389,7 +378,6 @@
     align-items: center;
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%);
     z-index: 1000;
-    display: none;
   }
   
   .footer .footer-btn {
@@ -403,14 +391,15 @@
     margin-bottom: 116px;
     display: none;
   }
-
-  .header {
-    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%);
-  }
   
   .header > i {
     color: var(--primary-color);
     font-size: 20px;
+  }
+
+  .header > i:hover {
+    cursor: pointer;
+    opacity: 0.7;
   }
 
   .browse-content p {
