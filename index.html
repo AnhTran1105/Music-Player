@@ -95,7 +95,7 @@
                         <!-- CD -->
                         <div class="cd">
                             <div class="cd-thumb">
-                                    
+                             
                             </div>
                         </div>
                 
@@ -415,7 +415,6 @@
             const footerBtn = $$('.footer-btn');
             const footer = $('.footer');
             const cd = $('.cd');
-            const cdWidth = cd.offsetWidth;
             const dashboardProgress = $('.dashboard-progress');
             const dashboardProgressed = $('.dashboard-progressed');
             const progressed = $('.progressed');
@@ -590,7 +589,7 @@
 
                 handleEvents: function() {
                     const _this = this;
-
+                    const cdWidth = cd.offsetWidth;
                     
                     // Xu li dia quay / dung
                     
@@ -602,8 +601,8 @@
                             duration: 10000,
                             iterations: Infinity
                         }
-                        )
-                        
+                        );
+                    cdThumbAnimate.pause();    
                     const cdThumbIPAnimate = thumbIP.animate([
                         {
                             transform: 'rotate(360deg)'
@@ -613,7 +612,8 @@
                             iterations: Infinity
                         }
                     )
-                
+                    cdThumbIPAnimate.pause();
+
                     for (var gearBtn of gearBtns) {
                         const gearAnimate = gearBtn.animate([
                             {
@@ -835,7 +835,6 @@
                         const scrollTop = window.scrollY || document.documentElement.scrollTop;
                         const newCdWidth = cdWidth - scrollTop;
                         cd.style.width = newCdWidth > 0 ? newCdWidth + 'px' : 0;
-                        console.log(newCdWidth);
                         cd.style.opacity = newCdWidth / cdWidth;
                     }
 
