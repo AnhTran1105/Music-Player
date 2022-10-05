@@ -84,7 +84,7 @@
             </div>
             <div class="player not-active-screen">
                 <!-- Dashboard -->
-                <div id="main-window">
+                <div class="main not-active-screen">
                     <div class="dashboard">
                         <!-- Header -->
                         <header>
@@ -133,7 +133,7 @@
                 </div>
                 
                 <!-- Navigation -->
-                <div id="browse">
+                <div class="browse not-active-screen">
                     <div class="header">
                         <i class="btn-back fas fa-thin fa-chevron-left"></i>
                         <p>Browse</p>
@@ -170,7 +170,7 @@
                     </div>
                 </div>
     
-                <div id="AudioInProgress">
+                <div class="AudioInProgress not-active-screen">
                     <div class="progress-bar">
                         <div class="audio-progress"></div>
                         <div class="progressed"></div>
@@ -192,7 +192,7 @@
                     </div>
                 </div>
     
-                <div id="profile">
+                <div class="profile not-active-screen">
                     <div class="header">
                         <i class="btn-back fas fa-thin fa-chevron-left"></i>
                         <p>Your profile</p>
@@ -227,7 +227,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="content-playlists person-playlists">
+                    <div class="content-playlists not-active-screen person-playlists">
                         
                     </div>
                     <div class="person-social content-image row">
@@ -276,7 +276,7 @@
                     </div>
                 </div>
     
-                <div id="more">
+                <div class="more not-active-screen">
                     <div class="header">
                         <i class="btn-back fas fa-thin fa-chevron-left"></i>
                         <p>More</p>
@@ -323,7 +323,7 @@
                     </div>
                 </div>
     
-                <div id="home">
+                <div class="home not-active-screen">
                     <div class="header">
                         <i>&nbsp; &nbsp;</i>
                         <p>Home</p>
@@ -403,16 +403,13 @@
         <script>
             const $ = document.querySelector.bind(document);
             const $$ = document.querySelectorAll.bind(document);
+
             const player = $('.player');
             const playlist = $('.playlist');
-            const profileBtn = $('.btn-profile');
-            const dashboardBtn = $('.btn-dashboard');
             const heading = $('header h2');
             const cdThumb = $('.cd-thumb');
             const thumbIP = $('.thumb-IP');
             const audio = $('#audio');
-            const playBtns = $$('.btn-toggle-play');
-            const footerBtn = $$('.footer-btn');
             const footer = $('.footer');
             const cd = $('.cd');
             const dashboardProgress = $('.dashboard-progress');
@@ -421,32 +418,44 @@
             const audioProgress = $('.audio-progress');
             const title = $('.title');
             const author = $('.author');
+            const logOutOfMore = $('.more .log-out');
+            const AudioInProgress = $('.AudioInProgress');
+            const PLAYER_STORAGE_KEY = 'F8-player';
+            const homePlaylists = $('.content-playlists.home');
+            const personSocial = $('.person-social');
+            const contentPlaylists = $('.content-playlists')
+            
+
+            // list of buttons
+            const profileBtn = $('.btn-profile');
+            const dashboardBtn = $('.btn-dashboard');
             const nextBtn = $('.btn-next');
             const prevBtn = $('.btn-prev');
             const randomBtn = $('.btn-random');
             const repeatBtn = $('.btn-repeat');
             const genresBtn = $('.btn-genres');
-            const logOutOfMore = $('#more .log-out');
-            const AudioInProgress = $('#AudioInProgress');
-            const PLAYER_STORAGE_KEY = 'F8-player';
+            const playBtns = $$('.btn-toggle-play');
+            const footerBtn = $$('.footer-btn');
             const playlistsBtn = $('.option-playlists');
             const socialBtn = $('.option-social');
             const gearBtns = $$('.btn-gear');
-            const more = $('#more');
-            const mainWindow = $('#main-window');
             const backBtns = $$('.btn-back');
             const homeBtn = $('.btn-home');
-            const home = $('#home');
-            const homePlaylists = $('.content-playlists.home');
             const createAccountOfIntroBtn = $('.intro-screen .first-btn');
             const welcomeBackBtns = $$('.welcome-back-btn');
             const logInOfIntroBtn = $('.intro-screen .log-in');
             const logInOfLogInBtn = $('.login-screen .first-btn');
+
+            // list of screen variables
             const welcomeScreens = $('.welcome-screens');
             const introScreen = $('.intro-screen');
             const registerScreen = $('.register-screen');
             const loginScreen = $('.login-screen');
-
+            const profileScreen = $('.profile');
+            const browseScreen = $('.browse');
+            const moreScreen = $('.more');
+            const homeScreen = $('.home');
+            const mainScreen = $('.main');
 
 
             const app = {
@@ -626,11 +635,11 @@
                         )
                         gearBtn.onclick = function() {
                             gearAnimate.play();
-                            more.style.display = "block";  
-                            mainWindow.style.display = "none";
-                            AudioInProgress.style.display = "none";
-                            $('#profile').style.display = "none";
-                            $('#browse').style.display = "none";   
+                            moreScreen.classList.remove('not-active-screen'); 
+                            mainScreen.classList.add('not-active-screen');
+                            AudioInProgress.classList.add('not-active-screen');
+                            profileScreen.classList.add('not-active-screen');
+                            browseScreen.classList.add('not-active-screen');  
                         }
                     }
 
@@ -641,12 +650,12 @@
                                 i.classList.remove('active');
                             }
                             homeBtn.classList.add('active');
-                            AudioInProgress.style.display = "block";
-                            mainWindow.style.display = "none";
-                            home.style.display = "block";
-                            $('#browse').style.display = "none";
-                            more.style.display = "none";
-                            $('#profile').style.display = "none";
+                            AudioInProgress.classList.remove('not-active-screen');
+                            mainScreen.classList.add('not-active-screen');
+                            homeScreen.classList.remove('not-active-screen');
+                            browseScreen.classList.add('not-active-screen');
+                            moreScreen.classList.add('not-active-screen');
+                            profileScreen.classList.add('not-active-screen');
                         }
                     }
 
@@ -665,6 +674,7 @@
                     
                     logInOfLogInBtn.onclick = function() {
                         welcomeScreens.classList.toggle('not-active-screen');
+                        mainScreen.classList.toggle('not-active-screen');
                         player.classList.toggle('not-active-screen');
                         footer.classList.toggle('not-active-screen');
                     }
@@ -675,9 +685,7 @@
                     }
 
                     logOutOfMore.onclick = function() {
-                        welcomeScreens.classList.toggle('not-active-screen');
-                        player.classList.toggle('not-active-screen');
-                        footer.classList.toggle('not-active-screen');
+                        location.reload();
                     }
 
                     homeBtn.onclick = function() {
@@ -686,12 +694,13 @@
                             i.classList.remove('active');
                         }
                         this.classList.add('active');
-                        AudioInProgress.style.display = "block";
-                        mainWindow.style.display = "none";
-                        home.style.display = "block";
-                        $('#browse').style.display = "none";
-                        more.style.display = "none";
-                        $('#profile').style.display = "none";
+
+                        AudioInProgress.classList.remove('not-active-screen');
+                        mainScreen.classList.add('not-active-screen');
+                        homeScreen.classList.remove('not-active-screen');
+                        browseScreen.classList.add('not-active-screen');
+                        moreScreen.classList.add('not-active-screen');
+                        profileScreen.classList.add('not-active-screen');
                     }
                     
                     profileBtn.onclick = function() {
@@ -699,12 +708,12 @@
                             i.classList.remove('active');
                         }
                         this.classList.add('active');
-                        AudioInProgress.style.display = "block";
-                        mainWindow.style.display = "none";
-                        $('#profile').style.display = "block";
-                        $('#browse').style.display = "none";
-                        more.style.display = "none";  
-                        home.style.display = "none";
+                        AudioInProgress.classList.remove('not-active-screen');
+                        mainScreen.classList.add('not-active-screen');
+                        profileScreen.classList.remove('not-active-screen');
+                        browseScreen.classList.add('not-active-screen');
+                        moreScreen.classList.add('not-active-screen');
+                        homeScreen.classList.add('not-active-screen');
                     }
                     
                     dashboardBtn.onclick = function() {
@@ -712,12 +721,12 @@
                             i.classList.remove('active');
                         }
                         this.classList.add('active');
-                        mainWindow.style.display = "block";
-                        AudioInProgress.style.display = "none";
-                        $('#browse').style.display = "none";
-                        $('#profile').style.display = "none";
-                        more.style.display = "none";  
-                        home.style.display = "none";
+                        mainScreen.classList.remove('not-active-screen');
+                        AudioInProgress.classList.add('not-active-screen');
+                        browseScreen.classList.add('not-active-screen');
+                        profileScreen.classList.add('not-active-screen');
+                        moreScreen.classList.add('not-active-screen');
+                        homeScreen.classList.add('not-active-screen');
                     }
 
                     genresBtn.onclick = function() {
@@ -725,12 +734,12 @@
                             i.classList.remove('active');
                         }
                         this.classList.add('active');
-                        AudioInProgress.style.display = "block";
-                        $('#browse').style.display = "block";
-                        mainWindow.style.display = "none";
-                        $('#profile').style.display = "none";
-                        more.style.display = "none";  
-                        home.style.display = "none";
+                        AudioInProgress.classList.remove('not-active-screen');
+                        browseScreen.classList.remove('not-active-screen');
+                        mainScreen.classList.add('not-active-screen');
+                        profileScreen.classList.add('not-active-screen');
+                        moreScreen.classList.add('not-active-screen');
+                        homeScreen.classList.add('not-active-screen');
                     }
 
                     // Xu li khi click play
@@ -748,15 +757,15 @@
                         _this.renderProfilePlaylists();
                         socialBtn.classList.remove("active-option");
                         playlistsBtn.classList.add("active-option");
-                        $('.person-social').style.display = "none";
-                        $('.content-playlists').style.display = "block";
+                        personSocial.classList.add("not-active-screen");
+                        contentPlaylists.classList.remove("not-active-screen"); 
                     }
 
                     socialBtn.onclick = function() {
                         playlistsBtn.classList.remove("active-option");
                         socialBtn.classList.add("active-option");
-                        $('.person-social').style.display = "flex";
-                        $('.person-playlists').style.display = "none";
+                        personSocial.classList.remove('not-active-screen');
+                        contentPlaylists.classList.add('not-active-screen');
                     }
 
                     // Khi bai hat duoc play
@@ -832,6 +841,7 @@
                     }
 
                     document.onscroll = function() {
+                        console.log(cdWidth);
                         const scrollTop = window.scrollY || document.documentElement.scrollTop;
                         const newCdWidth = cdWidth - scrollTop;
                         cd.style.width = newCdWidth > 0 ? newCdWidth + 'px' : 0;

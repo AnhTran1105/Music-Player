@@ -30,9 +30,9 @@
     cursor: pointer;
   }
 
-  .not-active-screen {
+  /* .not-active-screen {
     display: none!important;
-  }
+  }  */
 
   .header {
     padding: 0 16px;
@@ -42,15 +42,15 @@
     align-items: center;
     justify-content: space-between;
     font-weight: 600;
-  }
-  
+  } 
+
   #main-site {
     position: relative;
     max-width: 480px;
     margin: 0 auto;
   }
 
-  #main-window .song:last-child{
+  .main .song:last-child{
     margin-bottom: 44px;
   }
 
@@ -317,8 +317,12 @@
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
   }
 
-  .song:last-child {
+  .content-playlists .song:last-child {
     margin-bottom: 116px;
+  }
+
+  .main .song:last-child {
+    margin-bottom: 44px;
   }
 
   .song.active {
@@ -384,11 +388,10 @@
     color: #534e80;
   }
   
-  #browse {
+  .browse {
     max-width: 480px;
     width: 100%;
     margin-bottom: 116px;
-    display: none;
   }
   
   .header > i {
@@ -433,14 +436,13 @@
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%);
   }
 
-  #AudioInProgress {
+  .AudioInProgress {
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%);
     background-color: #f3f2f7;
     position: fixed;
     bottom: 44px;
     max-width: 480px;
     width: 100%;
-    display: none;
     z-index: 9999;
   }
 
@@ -497,9 +499,8 @@
     transition: all 2s;
   }
 
-  #profile {
+  .profile {
     background-color: #fff;
-    display: none;
   }
 
   .person-content {
@@ -599,32 +600,28 @@
     border-radius: 4px;
   }
 
-  #more {
-    display: none;
-  }
-
-  #more .person-info {
+  .more .person-info {
     padding: 8px 0;
     display: flex;
     align-items: center;
   }
 
-  #more .person-name {
+  .more .person-name {
     padding-left: 16px;
   }
 
-  #more .person-info img {
+  .more .person-info img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
   }
 
-  #more .person-content {
+  .more .person-content {
     align-items: center;
     justify-content: space-between;
   }
 
-  #more .person-content i {
+  .more .person-content i {
     color: var(--primary-color);
     font-size: 22px;
   }
@@ -664,8 +661,9 @@
     font-weight: 510;
   }
 
-  #home {
-    display: none;
+  .log-out:hover {
+    opacity: 0.7;
+    cursor: pointer;
   }
 
   .content-image-heading  {
