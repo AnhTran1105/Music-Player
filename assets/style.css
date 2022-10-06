@@ -30,9 +30,9 @@
     cursor: pointer;
   }
 
-  /* .not-active-screen {
+  .not-active-screen {
     display: none!important;
-  }  */
+  } 
 
   .header {
     padding: 0 16px;
@@ -49,12 +49,14 @@
     max-width: 480px;
     margin: 0 auto;
   }
-
+  
   .main .song:last-child{
     margin-bottom: 44px;
   }
 
   .welcome-screens {
+    position: absolute;
+    z-index: 10;
     text-align: center;
   }
 
@@ -189,7 +191,14 @@
     float: left;
     width: 100%;
   }
-  
+
+  .player {
+    position: absolute;
+    z-index: 0;
+    max-width: 480px;
+    width: 100%;
+  }
+
   .player .icon-pause {
     display: none;
   }
@@ -215,6 +224,8 @@
     max-width: 480px;
     border-bottom: 1px solid #ebebeb;
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%);
+    background: rgb(224,227,225);
+    background: linear-gradient(90deg, rgba(224,227,225,1) 0%, rgba(252,240,247,1) 84%);
   }
   
   /* HEADER */
@@ -283,6 +294,26 @@
     position: relative;
   }
 
+  .audio-time {
+    font-size: 14px;
+    padding-top: 8px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .dashboard-icon {
+    font-size: 20px;
+    position: fixed;
+    color: var(--primary-color);
+    display: inline-block;
+    width: 100%;
+    max-width: 448px;
+  }
+  
+  .dashboard-icon i:last-child {
+    float: right;
+  }
+
   .dashboard-progress {
     max-width: 100%;
     width: 100%;
@@ -302,7 +333,7 @@
   
   /* PLAYLIST */
   .playlist {
-    margin-top: 400px;
+    margin-top: 416px;
     padding: 12px;
     background-color: #f3f2f7;
   }
@@ -406,6 +437,13 @@
 
   .browse-content p {
     padding: 16px 8px 8px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .browse-content p:hover {
+    opacity: 0.7;
+    cursor: pointer;
   }
   
   .browse-content .genres {
@@ -528,7 +566,6 @@
     
   }
 
-
   .person-data > div {
     color: var(--primary-color);
     font-size: 12px;
@@ -547,11 +584,24 @@
     margin-bottom: 12px;
   }
 
+  .option-social:hover {
+    cursor: pointer;
+  }
+
+  .option-playlists:hover {
+    cursor: pointer;
+  }
+
+  .active-option {
+    background-color: #fff;
+    color: var(--primary-color);
+    border: none!important;
+    padding-top: 1px;
+  }
+
   .person-options > div {
     display: flex;
     border: #fff solid 1px;
-
-    border-radius: 4px;
   }
   
   .person-options div > div {
@@ -569,6 +619,11 @@
     width: calc(50% - 8px);
     margin: 0 4px;
     position: relative;
+  }
+
+  .album:hover {
+    opacity: 0.7;
+    cursor: pointer;
   }
   
   .album > img {
@@ -593,12 +648,6 @@
     font-size: 13px;
   }
 
-  .active-option {
-    background-color: #fff;
-    color: var(--primary-color);
-    border: none!important;
-    border-radius: 4px;
-  }
 
   .more .person-info {
     padding: 8px 0;
@@ -658,7 +707,7 @@
     background-color: #fff;
     box-shadow: 2px 2px 5px 0 rgb(0 0 0 / 16%);
     color: var(--primary-color);
-    font-weight: 510;
+    font-weight: 600;
   }
 
   .log-out:hover {
@@ -670,6 +719,16 @@
     display: flex;
     justify-content: space-between;
     padding: 16px 4px 8px 4px;
+  }
+
+  .content-image-heading p:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  .content-image-heading p:first-child {
+    font-size: 17px;
+    font-weight: 600;
   }
 
   .content-image-heading p:last-child {

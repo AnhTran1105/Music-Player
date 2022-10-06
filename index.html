@@ -82,10 +82,14 @@
                     </div>      
                 </div>
             </div>
-            <div class="player not-active-screen">
+            <div class="player">
                 <!-- Dashboard -->
-                <div class="main not-active-screen">
+                <div class="main">
                     <div class="dashboard">
+                        <div class="dashboard-icon">
+                            <i class="fas fa-solid fa-chevron-down"></i>
+                            <i class="fas fa-solid fa-plus"></i>
+                        </div>
                         <!-- Header -->
                         <header>
                             <h4>Now playing:</h4>
@@ -118,7 +122,13 @@
                                 <i class="fas fa-random"></i>
                             </div>
                         </div>
-                        
+                        <div class="audio-time">
+                            <div class="current-time">0:00</div>
+                            <span>/</span>
+                            <div class="total-time">
+                                0:00
+                            </div>
+                        </div>
                         <div class="dashboard-progress-bar">
                             <div class="dashboard-progress"></div>
                             <div class="dashboard-progressed"></div>
@@ -218,7 +228,7 @@
                         </div>
                     </div>
                     <div class="person-options">
-                        <div>
+                        <div class="text-box">
                             <div class="option-social active-option">
                                 Social
                             </div>
@@ -412,7 +422,7 @@
             const audio = $('#audio');
             const footer = $('.footer');
             const cd = $('.cd');
-            const dashboardProgress = $('.dashboard-progress');
+            const dashboardProgress = $('.dashboard-progress-bar');
             const dashboardProgressed = $('.dashboard-progressed');
             const progressed = $('.progressed');
             const audioProgress = $('.audio-progress');
@@ -596,6 +606,7 @@
                     })
                 },
 
+
                 handleEvents: function() {
                     const _this = this;
                     const cdWidth = cd.offsetWidth;
@@ -674,9 +685,8 @@
                     
                     logInOfLogInBtn.onclick = function() {
                         welcomeScreens.classList.toggle('not-active-screen');
-                        mainScreen.classList.toggle('not-active-screen');
-                        player.classList.toggle('not-active-screen');
                         footer.classList.toggle('not-active-screen');
+                        $('.total-time').innerHTML = "0:00";
                     }
 
                     createAccountOfIntroBtn.onclick = function() {
@@ -794,12 +804,25 @@
                             progressed.style.width = progressPercent + '%';
                             dashboardProgressed.style.width = progressPercent + '%';
                         }
+                        let ct = audio.currentTime;
+                        $('.current-time').innerHTML = timeFormat(ct);
+                        $('.total-time').innerHTML = timeFormat(audio.duration);
+                    }
+
+
+                    function timeFormat(ct) {
+                        minutes = Math.floor(ct / 60);
+                        seconds = Math.floor(ct % 60);
+
+                        if (seconds < 10) {
+                            seconds = "0" + seconds;
+                        }
+                        return minutes + ":" + seconds;
                     }
 
                     // Xu li khi tua bai hat
-                    dashboardProgress.onchange = function(e) {
-                        const seekTime = audio.duration / 100 * e.target.value;
-                        audio.currentTime = seekTime;
+                    dashboardProgress.onclick = function(e) {
+                        audio.currentTime = ((e.offsetX/dashboardProgress.offsetWidth) * audio.duration);
                     }
 
                     randomBtn.onclick = function(e) {
@@ -841,7 +864,6 @@
                     }
 
                     document.onscroll = function() {
-                        console.log(cdWidth);
                         const scrollTop = window.scrollY || document.documentElement.scrollTop;
                         const newCdWidth = cdWidth - scrollTop;
                         cd.style.width = newCdWidth > 0 ? newCdWidth + 'px' : 0;
@@ -890,7 +912,6 @@
                     title.textContent = this.currentSong.name;
                     author.textContent = this.currentSong.singer;
                     thumbIP.style.backgroundImage = `url('${this.currentSong.image}')`;
-
                 },
 
                 loadConfig: function() {
@@ -924,14 +945,14 @@
                 },
 
                 start: function() {
-                    this.loadConfig();
+                    // this.loadConfig();
                     this.defineProperties();
                     this.handleEvents();
                     this.loadCurrentSong();
                     this.render();
                     // Hien thi trang thai ban dau cua button repeat va random
-                    repeatBtn.classList.toggle('active', this.isRepeat);
-                    randomBtn.classList.toggle('active', this.isRandom);
+                    // repeatBtn.classList.toggle('active', this.isRepeat);
+                    // randomBtn.classList.toggle('active', this.isRandom);
                 }
             }
             app.start();
