@@ -146,35 +146,77 @@
                 <div class="browse not-active-screen">
                     <div class="header">
                         <i class="btn-back fas fa-thin fa-chevron-left"></i>
-                        <p>Browse</p>
+                        <p>Library</p>
                         <i class="btn-gear fas fa-regular fa-gear"></i>
                     </div>
-                    <div class="browse-content">
-                        <p>Genres</p>
-                        <div class="genres row">
-                            <div class="type">
-                                <img src="./assets/img/micro.png" alt="">
-                                <p>Pop</p>
+                    <ul class="more-options">
+                        <li>
+                            Liked tracks
+                            <i class="fas fa-thin fa-chevron-right"></i>
+                            <div class="overlay-row"></div>
+                        </li>
+                        <li>
+                            Playlists
+                            <i class="fas fa-thin fa-chevron-right"></i>
+                            <div class="overlay-row"></div>
+    
+                        </li>
+                        <li>
+                            Albums
+                            <i class="fas fa-thin fa-chevron-right"></i>
+                            <div class="overlay-row"></div>
+    
+                        </li>
+                        <li class="following-option">
+                            Following
+                            <i class="fas fa-thin fa-chevron-right"></i>
+                            <div class="overlay-row"></div>
+    
+                        </li>
+                        <li>
+                            Your insights
+                            <i class="fas fa-thin fa-chevron-right"></i>
+                        </li>
+                    </ul>
+                    <div class="recently-played">
+                        <div class="library-heading">
+                            <h3>Recently played</h3>
+                            <h5>See all</h5>
+                        </div>
+                    </div>
+                    <div class="listening-history">
+                        <div class="library-heading">
+                            <h3>Listening history</h3>
+                            <h5>See all</h5>
+                        </div>
+                        <div class="song-history">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="following not-active-screen">
+                    <div class="header">
+                        <i class="btn-back fas fa-thin fa-chevron-left"></i>
+                        <p>Following</p>
+                        <i class="btn-gear fas fa-regular fa-gear"></i>
+                    </div>
+                    <div class="artists-list">
+                        <div class="artist">
+                            <div class="artist-image">
+                                <img src="./assets/img/Helia.jpg" alt="">
                             </div>
-                            <div class="type">
-                                <img src="./assets/img/loud-speaker.png" alt="">
-                                <p>Rock</p>
+                            <div class="artist-info">
+                                <div class="artist-name">
+                                   <b>HELIA Bảo Hân</b> 
+                                </div>
+                                <div class="artist-followers">
+                                    <i class="fas fa-solid fa-user"></i>
+                                    13K Followers
+                                </div>
                             </div>
-                            <div class="type">
-                                <img src="./assets/img/radio.png" alt="">
-                                <p>Hip Hop</p>
-                            </div>
-                            <div class="type">
-                                <img src="./assets/img/organ.png" alt="">
-                                <p>Blues</p>
-                            </div>
-                            <div class="type">
-                                <img src="./assets/img/violin.png" alt="">
-                                <p>Classic</p>
-                            </div>
-                            <div class="type">
-                                <img src="./assets/img/camera.png" alt="">
-                                <p>R&B/Soul</p>
+                            <div class="following-btn not-follow">
+                                Following
                             </div>
                         </div>
                     </div>
@@ -388,6 +430,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="search not-active-screen">
+                    <div class="header">
+                        <i class="btn-back fas fa-thin fa-chevron-left"></i>
+                        <p>Search</p>
+                        <i></i>
+                    </div>
+                    <div class="search-bar">
+                        <label for="search"></label>
+                        <i class="fas fa-thin fa-magnifying-glass"></i>
+                        <input type="search" name="" id="search" placeholder="Search">
+                    </div>
+                </div>
             </div>
             <div class="footer not-active-screen">
                 <div class="footer-btn btn btn-house btn-home">
@@ -455,6 +509,8 @@
             const welcomeBackBtns = $$('.welcome-back-btn');
             const logInOfIntroBtn = $('.intro-screen .log-in');
             const logInOfLogInBtn = $('.login-screen .first-btn');
+            const searchBtn = $('.btn-search');
+            const followingOptionBtn = $('.following-option');
 
             // list of screen variables
             const welcomeScreens = $('.welcome-screens');
@@ -466,6 +522,8 @@
             const moreScreen = $('.more');
             const homeScreen = $('.home');
             const mainScreen = $('.main');
+            const searchScreen = $('.search');
+            const followingScreen = $('.following');
 
 
             const app = {
@@ -710,6 +768,7 @@
                         homeScreen.classList.remove('not-active-screen');
                         browseScreen.classList.add('not-active-screen');
                         moreScreen.classList.add('not-active-screen');
+                        searchScreen.classList.add('not-active-screen');
                         profileScreen.classList.add('not-active-screen');
                     }
                     
@@ -723,6 +782,7 @@
                         profileScreen.classList.remove('not-active-screen');
                         browseScreen.classList.add('not-active-screen');
                         moreScreen.classList.add('not-active-screen');
+                        searchScreen.classList.add('not-active-screen');
                         homeScreen.classList.add('not-active-screen');
                     }
                     
@@ -736,6 +796,7 @@
                         browseScreen.classList.add('not-active-screen');
                         profileScreen.classList.add('not-active-screen');
                         moreScreen.classList.add('not-active-screen');
+                        searchScreen.classList.add('not-active-screen');
                         homeScreen.classList.add('not-active-screen');
                     }
 
@@ -750,6 +811,26 @@
                         profileScreen.classList.add('not-active-screen');
                         moreScreen.classList.add('not-active-screen');
                         homeScreen.classList.add('not-active-screen');
+                        searchScreen.classList.add('not-active-screen');
+                    }
+
+                    searchBtn.onclick = function() {
+                        for (var i of footerBtn) {
+                            i.classList.remove('active');
+                        }
+                        this.classList.add('active');
+                        AudioInProgress.classList.remove('not-active-screen');
+                        browseScreen.classList.add('not-active-screen');
+                        mainScreen.classList.add('not-active-screen');
+                        profileScreen.classList.add('not-active-screen');
+                        moreScreen.classList.add('not-active-screen');
+                        homeScreen.classList.add('not-active-screen');
+                        searchScreen.classList.remove('not-active-screen');
+                    }
+
+                    followingOptionBtn.onclick = function() {
+                        browseScreen.classList.add('not-active-screen');
+                        followingScreen.classList.remove('not-active-screen');
                     }
 
                     // Xu li khi click play
@@ -808,7 +889,6 @@
                         $('.current-time').innerHTML = timeFormat(ct);
                         $('.total-time').innerHTML = timeFormat(audio.duration);
                     }
-
 
                     function timeFormat(ct) {
                         minutes = Math.floor(ct / 60);
@@ -912,6 +992,20 @@
                     title.textContent = this.currentSong.name;
                     author.textContent = this.currentSong.singer;
                     thumbIP.style.backgroundImage = `url('${this.currentSong.image}')`;
+                    var html =
+                            `<div class="song fix-margin-error" >
+                                <div class="thumb"
+                                style="background-image: url('${this.currentSong.image}');">
+                                </div>
+                                <div class="body">
+                                    <h3 class="title">${this.currentSong.name}</h3>
+                                    <p class="author">${this.currentSong.singer}</p>
+                                </div>
+                                <div class="option">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </div>
+                            </div>`
+                    $('.song-history').insertAdjacentHTML('beforeend', html); 
                 },
 
                 loadConfig: function() {
