@@ -143,80 +143,215 @@
                 </div>
                 
                 <!-- Navigation -->
-                <div class="browse not-active-screen">
-                    <div class="header">
-                        <i class="btn-back fas fa-thin fa-chevron-left"></i>
-                        <p>Library</p>
-                        <i class="btn-gear fas fa-regular fa-gear"></i>
-                    </div>
-                    <ul class="more-options">
-                        <li>
-                            Liked tracks
-                            <i class="fas fa-thin fa-chevron-right"></i>
-                            <div class="overlay-row"></div>
-                        </li>
-                        <li>
-                            Playlists
-                            <i class="fas fa-thin fa-chevron-right"></i>
-                            <div class="overlay-row"></div>
-    
-                        </li>
-                        <li>
-                            Albums
-                            <i class="fas fa-thin fa-chevron-right"></i>
-                            <div class="overlay-row"></div>
-    
-                        </li>
-                        <li class="following-option">
-                            Following
-                            <i class="fas fa-thin fa-chevron-right"></i>
-                            <div class="overlay-row"></div>
-    
-                        </li>
-                        <li>
-                            Your insights
-                            <i class="fas fa-thin fa-chevron-right"></i>
-                        </li>
-                    </ul>
-                    <div class="recently-played">
-                        <div class="library-heading">
-                            <h3>Recently played</h3>
-                            <h5>See all</h5>
+                <div class="browse">
+                    <div class="browse-main-screen not-active-screen">
+                        <div class="header">
+                            <i class="btn-back fas fa-thin fa-chevron-left"></i>
+                            <p>Library</p>
+                            <i class="btn-gear fas fa-regular fa-gear"></i>
                         </div>
-                    </div>
-                    <div class="listening-history">
-                        <div class="library-heading">
-                            <h3>Listening history</h3>
-                            <h5>See all</h5>
-                        </div>
-                        <div class="song-history">
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="following not-active-screen">
-                    <div class="header">
-                        <i class="btn-back fas fa-thin fa-chevron-left"></i>
-                        <p>Following</p>
-                        <i class="btn-gear fas fa-regular fa-gear"></i>
-                    </div>
-                    <div class="artists-list">
-                        <div class="artist">
-                            <div class="artist-image">
-                                <img src="./assets/img/Helia.jpg" alt="">
-                            </div>
-                            <div class="artist-info">
-                                <div class="artist-name">
-                                   <b>HELIA Bảo Hân</b> 
-                                </div>
-                                <div class="artist-followers">
-                                    <i class="fas fa-solid fa-user"></i>
-                                    13K Followers
-                                </div>
-                            </div>
-                            <div class="following-btn not-follow">
+                            
+                        <ul class="more-options">
+                            <li class="liked-tracks-option">
+                                Liked tracks
+                                <i class="fas fa-thin fa-chevron-right"></i>
+                                <div class="overlay-row"></div>
+                            </li>
+                            <li class="">
+                                Playlists
+                                <i class="fas fa-thin fa-chevron-right"></i>
+                                <div class="overlay-row"></div>
+        
+                            </li>
+                            <li class="albums-option">
+                                Albums
+                                <i class="fas fa-thin fa-chevron-right"></i>
+                                <div class="overlay-row"></div>
+        
+                            </li>
+                            <li class="following-option">
                                 Following
+                                <i class="fas fa-thin fa-chevron-right"></i>
+                                <div class="overlay-row"></div>
+        
+                            </li>
+                            <li class="your-insights-option">
+                                Your insights
+                                <i class="fas fa-thin fa-chevron-right"></i>
+                            </li>
+                        </ul>
+                        <div class="recently-played">
+                            <div class="library-heading">
+                                <h3>Recently played</h3>
+                                <h5>See all</h5>
+                            </div>
+                        </div>
+                        <div class="listening-history">
+                            <div class="library-heading">
+                                <h3>Listening history</h3>
+                                <h5>See all</h5>
+                            </div>
+                            <div class="song-history">
+
+                            </div>
+                        </div>    
+                    </div>
+                    
+                    <div class="following not-active-screen">
+                        <div class="header">
+                            <i class="btn-back fas fa-thin fa-chevron-left"></i>
+                            <p>Following</p>
+                            <i class="btn-gear fas fa-regular fa-gear"></i>
+                        </div>
+                        <div class="artists-list">
+                            <div class="artist">
+                                <div class="artist-image">
+                                    <img src="./assets/img/Helia.jpg" alt="">
+                                </div>
+                                <div class="artist-info">
+                                    <div class="artist-name">
+                                       <b>HELIA Bảo Hân</b> 
+                                    </div>
+                                    <div class="artist-followers">
+                                        <i class="fas fa-solid fa-user"></i>
+                                        13K Followers
+                                    </div>
+                                </div>
+                                <div class="following-btn not-follow">
+                                    Following
+                                </div>
+                            </div>
+                            <div class="artist">
+                                <div class="artist-image">
+                                    <img src="./assets/img/HoaiLam.jpg" alt="">
+                                </div>
+                                <div class="artist-info">
+                                    <div class="artist-name">
+                                       <b>Hoài Lâm</b> 
+                                    </div>
+                                    <div class="artist-followers">
+                                        <i class="fas fa-solid fa-user"></i>
+                                        132K Followers
+                                    </div>
+                                </div>
+                                <div class="following-btn not-follow">
+                                    Following
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="albums not-active-screen">
+                        <div class="header">
+                            <i class="btn-back fas fa-thin fa-chevron-left"></i>
+                            <p>Albums</p>
+                            <i class="btn-gear fas fa-regular fa-gear"></i>
+                        </div>
+                        <div class="albums-list">
+                            <p class="albums-status">No albums yet</p>
+                            <p class="albums-notification">Albums you have liked or created will show up here.</p>
+                            <div class="albums-btn">
+                                Search for albums
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="liked-tracks not-active-screen">
+                        <div class="header">
+                            <i class="btn-back fas fa-thin fa-chevron-left"></i>
+                            <p>Like tracks</p>
+                            <i class="fas fa-solid fa-shuffle"></i>
+                        </div>
+                        <div class="search-bar">
+                            <label for="search"></label>
+                            <i class="fas fa-thin fa-magnifying-glass"></i>
+                            <input type="search" class="search-tool" name="" id="liked-tracks-search" placeholder="Search">
+                        </div>
+                    </div>
+
+                    <div class="your-insights not-active-screen">
+                        <div class="header">
+                            <i class="btn-back fas fa-thin fa-chevron-left"></i>
+                            <p>Your insights</p>
+                            <i class="fas fa-solid fa-arrow-up-from-bracket"></i>
+                        </div>
+                        <div class="overview">
+                            <div class="overview-heading">
+                                Overview
+                            </div>
+                            <div class="overview-status">
+                                <ul class="overview-selections">
+                                    <div class="filter-time">
+                                        Showing last 7 days
+                                        <i class="fas fa-solid fa-chevron-down"></i>
+                                    </div>
+                                    <div class="selections-list not-active-screen">
+                                        <li>Today</li>
+                                        <li>Last 7 days</li>
+                                        <li>Last 30 days</li>
+                                        <li>Last 12 months</li>
+                                        <li>All time</li>
+                                        <li>Custom range</li>
+                                    </div>
+                                </ul>
+                            </div>
+                            <div class="overview-buttons">
+                                <div class="overview-btn overview-played-song ">
+                                    <i class="fas fa-solid fa-play"></i>
+                                    0 plays
+                                </div>
+                                <div class="overview-btn overview-likes">
+                                    <i class="fas fa-solid fa-heart"></i>
+                                    0 likes
+                                </div>
+                                <div class="overview-btn overview-played-song">
+                                    <i class="fas fa-solid fa-comment"></i>
+                                    0 comments
+                                </div>
+                            </div>
+                            <div class="overview-notification">
+                                <div class="nfc-heading">
+                                    Looks like there is no activity for the selected timeframe
+                                </div>
+                                <div class="nfc-sub-heading">
+                                    Try selecting another timeframe
+                                </div>
+                                <div class="overview-nfc-btn">
+                                    Switch to last 30 days
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="top-tracks">
+                            <div class="your-insights-heading">
+                                Top tracks
+                            </div>
+                            <div class="your-insights-status">
+                                Last 7 days
+                            </div>
+                            <div class="your-insights-notification">
+                                <div class="pro-tip">
+                                    <b>Pro Tip:</b> Edit your Spotlight tracks, which can help get some of your other tracks more listening time.
+                                </div>
+                                <div class="overview-ntf-btn">
+                                    Edit your Spotlight
+                                </div>
+                            </div>
+                        </div>
+                        <div class="top-listeners">
+                            <div class="your-insights-heading">
+                                Top listeners
+                            </div>
+                            <div class="your-insights-status">
+                                Last 7 days
+                            </div>
+                            <div class="your-insights-notification">
+                                <div class="pro-tip">
+                                    <b>Pro Tip:</b> Engage with your followers by messaging them or following them back.
+                                </div>
+                                <div class="overview-ntf-btn">
+                                    See your followers
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -430,16 +565,17 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="search not-active-screen">
                     <div class="header">
                         <i class="btn-back fas fa-thin fa-chevron-left"></i>
                         <p>Search</p>
-                        <i></i>
+                        <i class="btn-gear fas fa-regular fa-gear"></i>
                     </div>
                     <div class="search-bar">
                         <label for="search"></label>
                         <i class="fas fa-thin fa-magnifying-glass"></i>
-                        <input type="search" name="" id="search" placeholder="Search">
+                        <input type="search" name="" class="search-tool" id="search" placeholder="Search">
                     </div>
                 </div>
             </div>
@@ -511,6 +647,11 @@
             const logInOfLogInBtn = $('.login-screen .first-btn');
             const searchBtn = $('.btn-search');
             const followingOptionBtn = $('.following-option');
+            const albumsOptionBtn = $('.albums-option');
+            const albumsBtn = $('.albums-btn');
+            const likedTracksOptionBtn = $('.liked-tracks-option');
+            const yourInsightsOptionBtn = $('.your-insights-option');
+            const filterTimeOverViewBtn = $('.filter-time');
 
             // list of screen variables
             const welcomeScreens = $('.welcome-screens');
@@ -518,13 +659,15 @@
             const registerScreen = $('.register-screen');
             const loginScreen = $('.login-screen');
             const profileScreen = $('.profile');
-            const browseScreen = $('.browse');
+            const browseMainScreen = $('.browse-main-screen');
             const moreScreen = $('.more');
             const homeScreen = $('.home');
             const mainScreen = $('.main');
             const searchScreen = $('.search');
             const followingScreen = $('.following');
-
+            const albumsScreen = $('.albums');
+            const likedTracksScreen = $('.liked-tracks');
+            const yourInsightsScreen = $('.your-insights');
 
             const app = {
                 currentIndex: 0,
@@ -708,7 +851,7 @@
                             mainScreen.classList.add('not-active-screen');
                             AudioInProgress.classList.add('not-active-screen');
                             profileScreen.classList.add('not-active-screen');
-                            browseScreen.classList.add('not-active-screen');  
+                            browseMainScreen.classList.add('not-active-screen');  
                         }
                     }
 
@@ -722,9 +865,14 @@
                             AudioInProgress.classList.remove('not-active-screen');
                             mainScreen.classList.add('not-active-screen');
                             homeScreen.classList.remove('not-active-screen');
-                            browseScreen.classList.add('not-active-screen');
+                            browseMainScreen.classList.add('not-active-screen');
                             moreScreen.classList.add('not-active-screen');
                             profileScreen.classList.add('not-active-screen');
+                            followingScreen.classList.add('not-active-screen');
+                            albumsScreen.classList.add('not-active-screen');
+                            searchScreen.classList.add('not-active-screen');
+                            likedTracksScreen.classList.add('not-active-screen');
+                            yourInsightsScreen.classList.add('not-active-screen');
                         }
                     }
 
@@ -766,7 +914,7 @@
                         AudioInProgress.classList.remove('not-active-screen');
                         mainScreen.classList.add('not-active-screen');
                         homeScreen.classList.remove('not-active-screen');
-                        browseScreen.classList.add('not-active-screen');
+                        browseMainScreen.classList.add('not-active-screen');
                         moreScreen.classList.add('not-active-screen');
                         searchScreen.classList.add('not-active-screen');
                         profileScreen.classList.add('not-active-screen');
@@ -780,7 +928,7 @@
                         AudioInProgress.classList.remove('not-active-screen');
                         mainScreen.classList.add('not-active-screen');
                         profileScreen.classList.remove('not-active-screen');
-                        browseScreen.classList.add('not-active-screen');
+                        browseMainScreen.classList.add('not-active-screen');
                         moreScreen.classList.add('not-active-screen');
                         searchScreen.classList.add('not-active-screen');
                         homeScreen.classList.add('not-active-screen');
@@ -793,7 +941,7 @@
                         this.classList.add('active');
                         mainScreen.classList.remove('not-active-screen');
                         AudioInProgress.classList.add('not-active-screen');
-                        browseScreen.classList.add('not-active-screen');
+                        browseMainScreen.classList.add('not-active-screen');
                         profileScreen.classList.add('not-active-screen');
                         moreScreen.classList.add('not-active-screen');
                         searchScreen.classList.add('not-active-screen');
@@ -806,7 +954,7 @@
                         }
                         this.classList.add('active');
                         AudioInProgress.classList.remove('not-active-screen');
-                        browseScreen.classList.remove('not-active-screen');
+                        browseMainScreen.classList.remove('not-active-screen');
                         mainScreen.classList.add('not-active-screen');
                         profileScreen.classList.add('not-active-screen');
                         moreScreen.classList.add('not-active-screen');
@@ -820,7 +968,7 @@
                         }
                         this.classList.add('active');
                         AudioInProgress.classList.remove('not-active-screen');
-                        browseScreen.classList.add('not-active-screen');
+                        browseMainScreen.classList.add('not-active-screen');
                         mainScreen.classList.add('not-active-screen');
                         profileScreen.classList.add('not-active-screen');
                         moreScreen.classList.add('not-active-screen');
@@ -829,8 +977,33 @@
                     }
 
                     followingOptionBtn.onclick = function() {
-                        browseScreen.classList.add('not-active-screen');
+                        browseMainScreen.classList.add('not-active-screen');
                         followingScreen.classList.remove('not-active-screen');
+                    }
+
+                    albumsOptionBtn.onclick = function() {
+                        browseMainScreen.classList.add('not-active-screen');
+                        albumsScreen.classList.remove('not-active-screen');
+                    }
+
+                    albumsBtn.onclick = function() {
+                        albumsScreen.classList.add('not-active-screen');
+                        searchScreen.classList.remove('not-active-screen');
+                    }
+
+                    likedTracksOptionBtn.onclick = function() {
+                        browseMainScreen.classList.add('not-active-screen');
+                        likedTracksScreen.classList.remove('not-active-screen');
+                    }
+
+                    yourInsightsOptionBtn.onclick = function() {
+                        browseMainScreen.classList.add('not-active-screen');
+                        yourInsightsScreen.classList.remove('not-active-screen');
+                    }
+
+                    filterTimeOverViewBtn.onclick = function() {
+                        $('.selections-list').classList.toggle('not-active-screen');
+
                     }
 
                     // Xu li khi click play

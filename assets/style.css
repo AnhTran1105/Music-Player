@@ -29,7 +29,7 @@
     opacity: 0.7;
     cursor: pointer;
   }
-
+  
   .not-active-screen {
     display: none!important;
   } 
@@ -755,18 +755,23 @@
     display: flex;
   }
 
+  .search {
+    background: rgb(243,242,247);
+    background: radial-gradient(circle, rgba(243,242,247,1) 0%, rgba(232,228,241,1) 84%);
+  }
+
   .search-bar > i {
     padding: 8px;
   }
 
-  #search {
+  .search-tool {
     border: none;
     width: 100%;
     padding: 8px 0;
     font-family: Raleway;
   }
 
-  #search:focus {
+  .search-tool:focus {
     outline: none;
   }
 
@@ -802,7 +807,6 @@
 
   .artists-list {
     padding: 16px 0;
-    margin-bottom: 200px;
   }
 
   .artist {
@@ -812,7 +816,11 @@
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     padding: 8px 16px;
+    margin-bottom: 16px;
+  }
 
+  .artists-list .artist:last-child {
+    margin-bottom: 108px;
   }
 
   .artist-info {
@@ -842,7 +850,8 @@
     padding: 8px;
     align-self: center;
     border-radius: 4px;
-    background-color: var(--primary-color);
+    background-color: #ee2565;
+    
   }
 
   .following-btn:hover {
@@ -854,6 +863,187 @@
     opacity: 0.7;
     cursor: pointer;
   }
+
+  .albums-list {
+    margin: 16px;
+    border-radius: 4px;
+  }
+
+  .albums-status {
+    margin-bottom: 8px;
+  }
+
+  .albums-notification {
+    font-size: 14px;
+    opacity: 0.7;
+  }
+
+  .albums-btn {
+    padding: 8px;
+    margin: 16px 0;
+    background-color: #ee2565;
+    color: #fff;
+    display: inline-block;
+    border-radius: 4px;
+  }
+
+  .albums-btn:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  .overview {
+    padding: 16px;
+  }
+
+  .overview-heading {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .overview-status {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 24px;
+  }
+
+  .overview-buttons {
+    display: flex;
+    font-size: 14px;
+  }
+  
+  .overview-btn {
+    padding: 8px;
+    color: #fff;
+    background-color: #ee2565;
+    border-radius: 4px;
+    text-align: center;
+    align-self: center;
+    flex: 1;
+  }
+
+  .overview-btn > i {
+    margin-right: 8px;
+    font-size: 12px;
+  }
+
+  .overview-btn:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  .overview-btn + .overview-btn {
+    margin-left: 16px;
+  }
+
+  .overview-notification {
+    border-radius: 4px;
+    text-align: center;
+    margin: 32px 16px;
+    border: solid 1px #ee2565;
+    padding: 8px;
+  }
+
+  .nfc-heading {
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  
+  .nfc-sub-heading {
+    font-size: 14px;
+    margin-bottom: 16px;
+    opacity: 0.7;
+  }
+  .overview-nfc-btn {
+    width: 100%;
+    background-color: #ee2565;
+    border-radius: 4px;
+    padding: 8px;
+    color: #fff;
+    font-size: 14px;
+  }
+
+  .overview-nfc-btn:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  .top-tracks {
+    padding: 16px;
+  }
+
+  .your-insights-heading {
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+
+  .your-insights-status {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 24px;
+  }
+
+  .your-insights-notification {
+    border-radius: 4px;
+    margin: 32px;
+    border: solid 1px #ee2565;
+    padding: 8px;
+  }
+
+  .pro-tip {
+    font-size: 14px;
+  }
+
+  .overview-ntf-btn {
+    width: 100%;
+    background-color: #ee2565;
+    border-radius: 4px;
+    color: #fff;
+    padding: 8px;
+    text-align: center;
+    margin-top: 16px;
+    font-size: 14px;
+  }
+  
+  .overview-ntf-btn:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  .top-listeners {
+    padding: 16px;
+    margin-bottom: 116px;
+  }
+
+  .overview-selections {
+    list-style: none;
+    max-width: 190px;
+  }
+
+  .overview-selections li {
+    padding: 12px 0;
+    font-size: 14px;
+    border-bottom: 1px ridge #ee2565;
+  }
+
+  .overview-selections li:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  .filter-time {
+    padding: 8px 0;
+    display: inline-block;
+  }
+
+  .filter-time:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+  
+
+
 
 
 
