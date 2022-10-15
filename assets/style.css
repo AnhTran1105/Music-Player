@@ -19,19 +19,15 @@
     scroll-behavior: smooth;
     font-family: Raleway;
     letter-spacing: 1.0px;
+    position: relative;
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
   }
   
   html {
     box-sizing: border-box;
   }
-
-  #main-site {
-    position: relative;
-    max-width: 480px;
-    margin: 0 auto;
-  }
-
-
 
   /* ----------------Important classes--------------  */
 
@@ -85,9 +81,11 @@
   /* --------------------Welcome Screens-------------------- */
 
   .welcome-screens {
-    position: absolute;
     z-index: 10;
     text-align: center;
+    position: relative;
+    max-width: 480px;
+    margin: 0 auto;
   }
 
   .welcome-btn {
@@ -221,10 +219,11 @@
   /* -------------------Player Screen---------------------- */
 
   .player {
-    position: absolute;
+    position: relative;
     z-index: 0;
     max-width: 480px;
     width: 100%;
+    margin: 0 auto;
   }
 
   .player .icon-pause {
@@ -244,6 +243,12 @@
   }
   
   /* -------------------Main Screen---------------------- */
+
+  #main {
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+  }
 
   .cd {
     display: flex;
@@ -380,7 +385,7 @@
     margin-bottom: 116px;
   }
 
-  .main .song:last-child {
+  #main .song:last-child {
     margin-bottom: 44px;
   }
 
@@ -432,11 +437,6 @@
     opacity: 0.7;
     cursor: pointer;
   }
-
-  .main .song:last-child{
-    margin-bottom: 44px;
-  }
-
 
   /* -------------------Footer---------------------- */
 

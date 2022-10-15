@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Music player</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" crossorigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <script src="https://kit.fontawesome.com/600b270ef7.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/style.css">
+    </head>
+    <body>
+        <div class="welcome-screens" id="welcome-screens">
+            <div class="intro-screen screen">
+                <div class="intro-content">
+                    <div class="branding">
+                        <img src="/assets/img/brand.png" alt="">
+                        <p class="brand-name">
+                            Musicloud
+                        </p>
+                        <div class="branding-underline"></div>
+                    </div>
+                    <div class="intro-des">
+                        Revolutionary app for music streaming
+                    </div>
+                </div>
+                <div class="form">
+                    <a href="#register" class="first-btn welcome-btn">
+                        Create an account
+                    </a>
+                        <a href="#login" class="log-in welcome-btn">
+                        Already have an account? 
+                        <b>Log in</b> 
+                        </a>
+                </div>
+            </div>
+            <div class="login-screen not-active-screen" id ="login">
+                <div class="header">  
+                    <i class="btn-back welcome-back-btn fas fa-thin fa-chevron-left"></i>
+                    <p>Log in</p>
+                    <i></i>
+                </div>
+                <div class="register-content">
+                    <form action="">
+                        <input type="email" name="" id="login-email" placeholder="E-mail address">
+                        <input type="password" name="" id="login-password" placeholder="Password">
+                    </form>
+                    <a href="#" class="forgot-password">
+                        Forgot password?
+                    </a>
+                    <div class="form">
+                        <a href="/player/player.html" class="first-btn welcome-btn">Log in</a>
+                        <a href="https://www.facebook.com/" target="_blank" class="connect-fb-btn welcome-btn">
+                            <i class="fas fa-brands fa-facebook"></i>
+                            &nbsp;
+                            Log in with Facebook
+                        </a>
+                    </div>
+                </div>      
+            </div>
+            <div class="register-screen not-active-screen" id="register">
+                <div class="header">
+                    <i class="btn-back welcome-back-btn fas fa-thin fa-chevron-left"></i>
+                    <p>Register</p>
+                    <i></i>
+                </div>
+                <div class="register-content">
+                    <form action="">
+                        <input type="email" name="" id="register-email" placeholder="E-mail address">
+                        <input type="password" name="" id="register-password" placeholder="Password">
+                        <input type="repeat-password" name="" id="repeat-password" placeholder="Repeat password">
+                    </form>
+                    <div class="form">
+                        <a class="first-btn welcome-btn">Create an account</a>
+                        <a href="https://www.facebook.com/" target="_blank" class="connect-fb-btn welcome-btn">
+                            <i class="fas fa-brands fa-facebook"></i>
+                            &nbsp;
+                            Connect with Facebook
+                        </a>
+                    </div>
+                </div>      
+            </div>
+        </div>
+
+        <!-- Link file js here not in <head> tag -->
+        <script src="./welcome.js"></script>
+
+        <script src="/assets/music/song1.mp3"></script>
+        
+        <!-- Design from: https://static.collectui.com/shots/3671744/musicloud-revolutionary-app-for-music-streaming-large -->
+    </body>
+</html>
+
+
+
