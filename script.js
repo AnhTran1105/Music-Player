@@ -1,6 +1,9 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
+const aSelectors = $$('a');
+const screens = $$('.screen');
+
 const player = $('.player');
 const playlist = $('.playlist');
 const heading = $('header h2');
@@ -57,7 +60,7 @@ const introScreen = $('.intro-screen');
 const registerScreen = $('.register-screen');
 const loginScreen = $('.login-screen');
 const profileScreen = $('.profile');
-const browseMainScreen = $('.browse-main-screen');
+const libraryMainScreen = $('.library-main-screen');
 const moreScreen = $('.more');
 const homeScreen = $('.home');
 const mainScreen = $('.main');
@@ -234,175 +237,215 @@ const app = {
         )
         cdThumbIPAnimate.pause();
 
-        for (var gearBtn of gearBtns) {
-            const gearAnimate = gearBtn.animate([
-                {
-                    transform: 'rotate(360deg)'
-                }],
-                {
-                    duration: 300,
-                    iterations: 1
+
+        aSelectors.forEach(function(aSelector) {
+            aSelector.onclick = function() {
+                for (var screen of screens) {
+                    // console.log(screen);
+                    if (!screen.matches('.not-active-screen')) {
+                        screen.classList.add('not-active-screen');
+                    }
                 }
-            )
-            gearBtn.onclick = function() {
-                gearAnimate.play();
-                moreScreen.classList.remove('not-active-screen'); 
-                mainScreen.classList.add('not-active-screen');
-                AudioInProgress.classList.add('not-active-screen');
-                profileScreen.classList.add('not-active-screen');
-                browseMainScreen.classList.add('not-active-screen');  
-            }
-        }
-
-        for (var backBtn of backBtns) {
-            backBtn.onclick = function() {
-                _this.renderHomePlaylists();
-                for (var i of footerBtn) {
-                    i.classList.remove('active');
+                var aAttribute = aSelector.getAttribute('href');
+                if (aAttribute !== null && aAttribute.charAt(0) == '#' && aAttribute.length > 1) {
+                    var getSelector = $(aAttribute);
+                    // console.log(getSelector);
                 }
-                homeBtn.classList.add('active');
-                AudioInProgress.classList.remove('not-active-screen');
-                mainScreen.classList.add('not-active-screen');
-                homeScreen.classList.remove('not-active-screen');
-                browseMainScreen.classList.add('not-active-screen');
-                moreScreen.classList.add('not-active-screen');
-                profileScreen.classList.add('not-active-screen');
-                followingScreen.classList.add('not-active-screen');
-                albumsScreen.classList.add('not-active-screen');
-                searchScreen.classList.add('not-active-screen');
-                likedTracksScreen.classList.add('not-active-screen');
-                yourInsightsScreen.classList.add('not-active-screen');
+                if (getSelector.matches('.not-active-screen')) {
+                    getSelector.classList.remove('not-active-screen');
+                    // console.log(getSelector);
+                }
             }
-        }
+        })
 
-        for (var welcomeBackBtn of welcomeBackBtns) {
-            welcomeBackBtn.onclick = function() {
-                introScreen.classList.remove('not-active-screen');
-                loginScreen.classList.add('not-active-screen');
-                registerScreen.classList.add('not-active-screen');
-            }
-        }
+        // for (var gearBtn of gearBtns) {
+        //     const gearAnimate = gearBtn.animate([
+        //         {
+        //             transform: 'rotate(360deg)'
+        //         }],
+        //         {
+        //             duration: 300,
+        //             iterations: 1
+        //         }
+        //     )
+        //     gearBtn.onclick = function() {
+        //         gearAnimate.play();
+        //         moreScreen.classList.remove('not-active-screen'); 
+        //         mainScreen.classList.add('not-active-screen');
+        //         AudioInProgress.classList.add('not-active-screen');
+        //         profileScreen.classList.add('not-active-screen');
+        //         libraryMainScreen.classList.add('not-active-screen');  
+        //     }
+        // }
 
-        logInOfIntroBtn.onclick = function() {
-            introScreen.classList.toggle('not-active-screen');
-            loginScreen.classList.toggle('not-active-screen');
-        }
+        // for (var backBtn of backBtns) {
+        //     backBtn.onclick = function() {
+        //         _this.renderHomePlaylists();
+        //         for (var i of footerBtn) {
+        //             i.classList.remove('active');
+        //         }
+        //         homeBtn.classList.add('active');
+        //         history.back();
+        //         AudioInProgress.classList.remove('not-active-screen');
+        //         mainScreen.classList.add('not-active-screen');
+        //         homeScreen.classList.remove('not-active-screen');
+        //         libraryMainScreen.classList.add('not-active-screen');
+        //         moreScreen.classList.add('not-active-screen');
+        //         profileScreen.classList.add('not-active-screen');
+        //         followingScreen.classList.add('not-active-screen');
+        //         albumsScreen.classList.add('not-active-screen');
+        //         searchScreen.classList.add('not-active-screen');
+        //         likedTracksScreen.classList.add('not-active-screen');
+        //         yourInsightsScreen.classList.add('not-active-screen');
+        //     }
+        // }
+
+        // for (var welcomeBackBtn of welcomeBackBtns) {
+        //     welcomeBackBtn.onclick = function() {
+        //         introScreen.classList.remove('not-active-screen');
+        //         loginScreen.classList.add('not-active-screen');
+        //         registerScreen.classList.add('not-active-screen');
+        //     }
+        // }
+
+        // logInOfIntroBtn.onclick = function() {
+        //     introScreen.classList.toggle('not-active-screen');
+        //     loginScreen.classList.toggle('not-active-screen');
+        // }
         
-        logInOfLogInBtn.onclick = function() {
-            welcomeScreens.classList.toggle('not-active-screen');
-            footer.classList.toggle('not-active-screen');
-            $('.total-time').innerHTML = "0:00";
-        }
+        // logInOfLogInBtn.onclick = function() {
+        //     welcomeScreens.classList.toggle('not-active-screen');
+        //     footer.classList.toggle('not-active-screen');
+        //     $('.total-time').innerHTML = "0:00";
+        // }
 
-        createAccountOfIntroBtn.onclick = function() {
-            introScreen.classList.toggle('not-active-screen');
-            registerScreen.classList.toggle('not-active-screen');           
-        }
+        // createAccountOfIntroBtn.onclick = function() {
+        //     introScreen.classList.toggle('not-active-screen');
+        //     registerScreen.classList.toggle('not-active-screen');           
+        // }
 
-        logOutOfMore.onclick = function() {
-            location.reload();
-        }
+        // logOutOfMore.onclick = function() {
+        //     location.reload();
+        // }
 
-        homeBtn.onclick = function() {
-            _this.renderHomePlaylists();
-            for (var i of footerBtn) {
-                i.classList.remove('active');
-            }
-            this.classList.add('active');
+        // homeBtn.onclick = function() {
+        //     _this.renderHomePlaylists();
+        //     for (var i of footerBtn) {
+        //         i.classList.remove('active');
+        //     }
+        //     this.classList.add('active');
 
-            AudioInProgress.classList.remove('not-active-screen');
-            mainScreen.classList.add('not-active-screen');
-            homeScreen.classList.remove('not-active-screen');
-            browseMainScreen.classList.add('not-active-screen');
-            moreScreen.classList.add('not-active-screen');
-            searchScreen.classList.add('not-active-screen');
-            profileScreen.classList.add('not-active-screen');
-        }
+        //     AudioInProgress.classList.remove('not-active-screen');
+        //     mainScreen.classList.add('not-active-screen');
+        //     homeScreen.classList.remove('not-active-screen');
+        //     libraryMainScreen.classList.add('not-active-screen');
+        //     moreScreen.classList.add('not-active-screen');
+        //     searchScreen.classList.add('not-active-screen');
+        //     profileScreen.classList.add('not-active-screen');
+        // }
         
-        profileBtn.onclick = function() {
-            for (var i of footerBtn) {
-                i.classList.remove('active');
-            }
-            this.classList.add('active');
-            AudioInProgress.classList.remove('not-active-screen');
-            mainScreen.classList.add('not-active-screen');
-            profileScreen.classList.remove('not-active-screen');
-            browseMainScreen.classList.add('not-active-screen');
-            moreScreen.classList.add('not-active-screen');
-            searchScreen.classList.add('not-active-screen');
-            homeScreen.classList.add('not-active-screen');
-        }
+        // profileBtn.onclick = function() {
+        //     for (var i of footerBtn) {
+        //         i.classList.remove('active');
+        //     }
+        //     this.classList.add('active');
+        //     AudioInProgress.classList.remove('not-active-screen');
+        //     mainScreen.classList.add('not-active-screen');
+        //     profileScreen.classList.remove('not-active-screen');
+        //     libraryMainScreen.classList.add('not-active-screen');
+        //     moreScreen.classList.add('not-active-screen');
+        //     searchScreen.classList.add('not-active-screen');
+        //     homeScreen.classList.add('not-active-screen');
+        // }
         
-        dashboardBtn.onclick = function() {
-            for (var i of footerBtn) {
-                i.classList.remove('active');
-            }
-            this.classList.add('active');
-            mainScreen.classList.remove('not-active-screen');
-            AudioInProgress.classList.add('not-active-screen');
-            browseMainScreen.classList.add('not-active-screen');
-            profileScreen.classList.add('not-active-screen');
-            moreScreen.classList.add('not-active-screen');
-            searchScreen.classList.add('not-active-screen');
-            homeScreen.classList.add('not-active-screen');
-        }
+        // dashboardBtn.onclick = function() {
+        //     for (var i of footerBtn) {
+        //         i.classList.remove('active');
+        //     }
+        //     this.classList.add('active');
+        //     mainScreen.classList.remove('not-active-screen');
+        //     AudioInProgress.classList.add('not-active-screen');
+        //     libraryMainScreen.classList.add('not-active-screen');
+        //     profileScreen.classList.add('not-active-screen');
+        //     moreScreen.classList.add('not-active-screen');
+        //     searchScreen.classList.add('not-active-screen');
+        //     homeScreen.classList.add('not-active-screen');
+        // }
 
-        genresBtn.onclick = function() {
-            for (var i of footerBtn) {
-                i.classList.remove('active');
-            }
-            this.classList.add('active');
-            AudioInProgress.classList.remove('not-active-screen');
-            browseMainScreen.classList.remove('not-active-screen');
-            mainScreen.classList.add('not-active-screen');
-            profileScreen.classList.add('not-active-screen');
-            moreScreen.classList.add('not-active-screen');
-            homeScreen.classList.add('not-active-screen');
-            searchScreen.classList.add('not-active-screen');
-        }
+        // genresBtn.onclick = function() {
+        //     for (var i of footerBtn) {
+        //         i.classList.remove('active');
+        //     }
+        //     this.classList.add('active');
+        //     AudioInProgress.classList.remove('not-active-screen');
+        //     libraryMainScreen.classList.remove('not-active-screen');
+        //     mainScreen.classList.add('not-active-screen');
+        //     profileScreen.classList.add('not-active-screen');
+        //     moreScreen.classList.add('not-active-screen');
+        //     homeScreen.classList.add('not-active-screen');
+        //     searchScreen.classList.add('not-active-screen');
+        // }
 
-        searchBtn.onclick = function() {
-            for (var i of footerBtn) {
-                i.classList.remove('active');
-            }
-            this.classList.add('active');
-            AudioInProgress.classList.remove('not-active-screen');
-            browseMainScreen.classList.add('not-active-screen');
-            mainScreen.classList.add('not-active-screen');
-            profileScreen.classList.add('not-active-screen');
-            moreScreen.classList.add('not-active-screen');
-            homeScreen.classList.add('not-active-screen');
-            searchScreen.classList.remove('not-active-screen');
-        }
+        // searchBtn.onclick = function() {
+        //     for (var i of footerBtn) {
+        //         i.classList.remove('active');
+        //     }
+        //     this.classList.add('active');
+        //     AudioInProgress.classList.remove('not-active-screen');
+        //     libraryMainScreen.classList.add('not-active-screen');
+        //     mainScreen.classList.add('not-active-screen');
+        //     profileScreen.classList.add('not-active-screen');
+        //     moreScreen.classList.add('not-active-screen');
+        //     homeScreen.classList.add('not-active-screen');
+        //     searchScreen.classList.remove('not-active-screen');
+        // }
 
-        followingOptionBtn.onclick = function() {
-            browseMainScreen.classList.add('not-active-screen');
-            followingScreen.classList.remove('not-active-screen');
-        }
+        // followingOptionBtn.onclick = function() {
+        //     libraryMainScreen.classList.add('not-active-screen');
+        //     followingScreen.classList.remove('not-active-screen');
+        // }
 
-        albumsOptionBtn.onclick = function() {
-            browseMainScreen.classList.add('not-active-screen');
-            albumsScreen.classList.remove('not-active-screen');
-        }
+        // albumsOptionBtn.onclick = function() {
+        //     libraryMainScreen.classList.add('not-active-screen');
+        //     albumsScreen.classList.remove('not-active-screen');
+        // }
 
-        albumsBtn.onclick = function() {
-            albumsScreen.classList.add('not-active-screen');
-            searchScreen.classList.remove('not-active-screen');
-        }
+        // albumsBtn.onclick = function() {
+        //     albumsScreen.classList.add('not-active-screen');
+        //     searchScreen.classList.remove('not-active-screen');
+        // }
 
-        likedTracksOptionBtn.onclick = function() {
-            browseMainScreen.classList.add('not-active-screen');
-            likedTracksScreen.classList.remove('not-active-screen');
-        }
+        // likedTracksOptionBtn.onclick = function() {
+        //     libraryMainScreen.classList.add('not-active-screen');
+        //     likedTracksScreen.classList.remove('not-active-screen');
+        // }
 
-        yourInsightsOptionBtn.onclick = function() {
-            browseMainScreen.classList.add('not-active-screen');
-            yourInsightsScreen.classList.remove('not-active-screen');
-        }
+        // yourInsightsOptionBtn.onclick = function() {
+        //     libraryMainScreen.classList.add('not-active-screen');
+        //     yourInsightsScreen.classList.remove('not-active-screen');
+        // }
 
-        filterTimeOverViewBtn.onclick = function() {
-            $('.selections-list').classList.toggle('not-active-screen');
-        }
+        // filterTimeOverViewBtn.onclick = function() {
+        //     $('.selections-list').classList.toggle('not-active-screen');
+        // }
+
+        
+        // playlistsBtn.onclick = function() {
+            //     _this.renderProfilePlaylists();
+            //     socialBtn.classList.remove("active-option");
+            //     playlistsBtn.classList.add("active-option");
+            //     personSocial.classList.add("not-active-screen");
+            //     contentPlaylists.classList.remove("not-active-screen"); 
+            // }
+            
+            
+
+        // socialBtn.onclick = function() {
+        //     playlistsBtn.classList.remove("active-option");
+        //     socialBtn.classList.add("active-option");
+        //     personSocial.classList.remove('not-active-screen');
+        //     contentPlaylists.classList.add('not-active-screen');
+        // }
 
         // Xu li khi click play
         for (var playBtn of playBtns) {
@@ -413,21 +456,6 @@ const app = {
                     audio.play();
                 }
             }
-        }
-
-        playlistsBtn.onclick = function() {
-            _this.renderProfilePlaylists();
-            socialBtn.classList.remove("active-option");
-            playlistsBtn.classList.add("active-option");
-            personSocial.classList.add("not-active-screen");
-            contentPlaylists.classList.remove("not-active-screen"); 
-        }
-
-        socialBtn.onclick = function() {
-            playlistsBtn.classList.remove("active-option");
-            socialBtn.classList.add("active-option");
-            personSocial.classList.remove('not-active-screen');
-            contentPlaylists.classList.add('not-active-screen');
         }
 
         // Khi bai hat duoc play

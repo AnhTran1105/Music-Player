@@ -12,7 +12,7 @@
     <body>
         <div id="main-site">
             <div class="welcome-screens">
-                <div class="intro-screen">
+                <div class="intro-screen screen">
                     <div class="intro-content">
                         <div class="branding">
                             <img src="./assets/img/brand.png" alt="">
@@ -26,17 +26,17 @@
                         </div>
                     </div>
                     <div class="form">
-                        <a class="first-btn welcome-btn">
+                        <a href="#register" class="first-btn welcome-btn">
                             Create an account
                         </a>
-                         <a class="log-in welcome-btn">
+                         <a href="#login" class="log-in welcome-btn">
                             Already have an account? 
                            <b>Log in</b> 
                          </a>
                     </div>
                 </div>
-                <div class="login-screen not-active-screen">
-                    <div class="header">
+                <div class="login-screen not-active-screen screen" id ="login">
+                    <div class="header">  
                         <i class="btn-back welcome-back-btn fas fa-thin fa-chevron-left"></i>
                         <p>Log in</p>
                         <i></i>
@@ -50,8 +50,8 @@
                             Forgot password?
                         </a>
                         <div class="form">
-                            <a class="first-btn welcome-btn">Log in</a>
-                            <a class="connect-fb-btn welcome-btn">
+                            <a href="#player" class="first-btn welcome-btn">Log in</a>
+                            <a href="https://www.facebook.com/" target="_blank" class="connect-fb-btn welcome-btn">
                                 <i class="fas fa-brands fa-facebook"></i>
                                 &nbsp;
                                 Log in with Facebook
@@ -59,7 +59,7 @@
                         </div>
                     </div>      
                 </div>
-                <div class="register-screen not-active-screen">
+                <div class="register-screen not-active-screen screen" id="register">
                     <div class="header">
                         <i class="btn-back welcome-back-btn fas fa-thin fa-chevron-left"></i>
                         <p>Register</p>
@@ -73,7 +73,7 @@
                         </form>
                         <div class="form">
                             <a class="first-btn welcome-btn">Create an account</a>
-                            <a class="connect-fb-btn welcome-btn">
+                            <a href="https://www.facebook.com/" target="_blank" class="connect-fb-btn welcome-btn">
                                 <i class="fas fa-brands fa-facebook"></i>
                                 &nbsp;
                                 Connect with Facebook
@@ -82,9 +82,9 @@
                     </div>      
                 </div>
             </div>
-            <div class="player">
+            <div class="player not-active-screen screen" id="player">
                 <!-- Dashboard -->
-                <div class="main">
+                <div class="main" id="main">
                     <div class="dashboard">
                         <div class="dashboard-icon">
                             <i class="fas fa-solid fa-chevron-down"></i>
@@ -215,8 +215,8 @@
                 </div>
                 
                 <!-- Navigation -->
-                <div class="browse">
-                    <div class="browse-main-screen not-active-screen">
+                <div class="library" id="library">
+                    <div class="library-main-screen not-active-screen">
                         <div class="header">
                             <i class="btn-back fas fa-thin fa-chevron-left"></i>
                             <p>Library</p>
@@ -225,31 +225,39 @@
                             
                         <ul class="more-options">
                             <li class="liked-tracks-option">
-                                Liked tracks
-                                <i class="fas fa-thin fa-chevron-right"></i>
-                                <div class="overlay-row"></div>
+                                <a href="#liked-tracks">
+                                    Liked tracks
+                                    <i class="fas fa-thin fa-chevron-right"></i>
+                                    <div class="overlay-row"></div>
+                                </a>
                             </li>
                             <li class="">
-                                Playlists
-                                <i class="fas fa-thin fa-chevron-right"></i>
-                                <div class="overlay-row"></div>
-        
+                                <a>
+                                    Playlists
+                                    <i class="fas fa-thin fa-chevron-right"></i>
+                                    <div class="overlay-row"></div>
+                                </a>
                             </li>
                             <li class="albums-option">
-                                Albums
-                                <i class="fas fa-thin fa-chevron-right"></i>
-                                <div class="overlay-row"></div>
-        
+                                <a href="#albums">
+                                    Albums
+                                    <i class="fas fa-thin fa-chevron-right"></i>
+                                    <div class="overlay-row"></div>
+                                </a>
                             </li>
                             <li class="following-option">
-                                Following
-                                <i class="fas fa-thin fa-chevron-right"></i>
-                                <div class="overlay-row"></div>
+                                <a href="#following">
+                                    Following
+                                    <i class="fas fa-thin fa-chevron-right"></i>
+                                    <div class="overlay-row"></div>
+                                </a>
         
                             </li>
                             <li class="your-insights-option">
-                                Your insights
-                                <i class="fas fa-thin fa-chevron-right"></i>
+                                <a href="#your-insights">
+                                    Your insights
+                                    <i class="fas fa-thin fa-chevron-right"></i>
+                                </a>
                             </li>
                         </ul>
                         <div class="recently-played">
@@ -269,7 +277,7 @@
                         </div>    
                     </div>
                     
-                    <div class="following not-active-screen">
+                    <div class="following not-active-screen" id="following">
                         <div class="header">
                             <i class="btn-back fas fa-thin fa-chevron-left"></i>
                             <p>Following</p>
@@ -313,7 +321,7 @@
                         </div>
                     </div>
 
-                    <div class="albums not-active-screen">
+                    <div class="albums not-active-screen" id="albums">
                         <div class="header">
                             <i class="btn-back fas fa-thin fa-chevron-left"></i>
                             <p>Albums</p>
@@ -328,7 +336,7 @@
                         </div>
                     </div>
 
-                    <div class="liked-tracks not-active-screen">
+                    <div class="liked-tracks not-active-screen" id="liked-tracks">
                         <div class="header">
                             <i class="btn-back fas fa-thin fa-chevron-left"></i>
                             <p>Like tracks</p>
@@ -341,7 +349,7 @@
                         </div>
                     </div>
 
-                    <div class="your-insights not-active-screen">
+                    <div class="your-insights not-active-screen" id="your-insights">
                         <div class="header">
                             <i class="btn-back fas fa-thin fa-chevron-left"></i>
                             <p>Your insights</p>
@@ -451,7 +459,7 @@
                     </div>
                 </div>
     
-                <div class="profile not-active-screen">
+                <div class="profile not-active-screen" id="profile">
                     <div class="header">
                         <i class="btn-back fas fa-thin fa-chevron-left"></i>
                         <p>Your profile</p>
@@ -489,7 +497,7 @@
                     <div class="content-playlists not-active-screen person-playlists">
                         
                     </div>
-                    <div class="person-social content-image row">
+                    <div class="person-social content-image">
                         <div class="album">
                             <img src="./assets/img/img1.jfif" alt="">
                             <div class="album-text">
@@ -590,11 +598,11 @@
                     </div>
                     <div class="content">
                         <div class="content-new-albums">
-                            <div class="content-image-heading row">
+                            <div class="content-image-heading">
                                 <p>New albums</p>
                                 <p>See more</p>
                             </div>
-                            <div class="content-image row m-lr-8 ">
+                            <div class="content-image">
                                 <div class="album">
                                     <img src="./assets/img/img1.jfif" alt="">
                                     <div class="album-text">
@@ -627,7 +635,7 @@
                         </div>
                         
                         <div class="hot-songs">
-                            <div class="content-image-heading row">
+                            <div class="content-image-heading">
                                 <p>Hot songs</p>
                                 <p>See more</p>
                             </div>
@@ -638,7 +646,7 @@
                     </div>
                 </div>
                 
-                <div class="search not-active-screen">
+                <div class="search not-active-screen" id="search">
                     <div class="header">
                         <i class="btn-back fas fa-thin fa-chevron-left"></i>
                         <p>Search</p>
@@ -651,22 +659,27 @@
                     </div>
                 </div>
             </div>
-            <div class="footer not-active-screen">
-                <div class="footer-btn btn btn-house btn-home">
+            <div class="footer">
+                <a href="#main" class="footer-btn btn btn-house btn-home"> 
                     <i class="fas fa-thin fa-house"></i>
-                </div>
-                <div class="footer-btn btn btn-genres">
+                    Home
+                </a>
+                <a href="#library" class="footer-btn btn btn-genres"> 
                     <i class="fas fa-light fa-music"></i>
-                </div>
-                <div class="footer-btn btn active btn-dashboard">
+                    Library
+                </a>
+                <a href="#dashboard" class="footer-btn btn active btn-dashboard">
                     <i class="fas fa-thin fa-circle-play"></i>
-                </div>
-                <div class="footer-btn btn btn-search">
+                    Dashboard
+                </a>
+                <a href="#search" class="footer-btn btn btn-search">
                     <i class="fas fa-thin fa-magnifying-glass"></i>
-                </div>
-                <div class="footer-btn btn btn-bars btn-profile">
+                    Search
+                </a>
+                <a href="#profile" class="footer-btn btn btn-bars btn-profile">
                     <i class="fas fa-thin fa-bars-staggered"></i>
-                </div>
+                    Profile
+                </a>
             </div>
         </div>
 

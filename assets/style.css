@@ -35,6 +35,10 @@
 
   /* ----------------Important classes--------------  */
 
+  a {
+    text-decoration: none;
+  }
+
   a:hover {
     opacity: 0.7;
     cursor: pointer;
@@ -268,6 +272,11 @@
     padding: 18px;
     font-size: 22px;
   }
+
+  .control .btn:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
   
   .control .btn-toggle-play {
     width: 56px;
@@ -279,6 +288,17 @@
     align-items: center;
     justify-content: center;
     background-color: var(--primary-color);
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  header > h2 {
+    margin-top: 8px;
+    font-size: 16px;
+    color: var(--primary-color);
   }
 
   .dashboard {
@@ -312,7 +332,7 @@
     padding: 0 16px;
     width: 100%;
     max-width: 480px;
-  }
+  } 
   
   .dashboard-icon i:last-child {
     float: right;
@@ -432,33 +452,42 @@
     align-items: center;
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%);
     z-index: 1000;
-    max-height: 44px;
+    max-height: 54px;
+  }
+
+  .footer > a {
+    padding: 0 8px;
   }
   
   .footer .footer-btn {
-    font-size: 24px;
+    font-size: 12px;
     color: #534e80;
+    text-align: center;
   }
 
-  /* -------------------Browse Screen---------------------- */
+  .footer .footer-btn > i {
+    font-size: 24px;
+  }
 
-  .browse {
+  /* -------------------Library Screen---------------------- */
+
+  .library {
     max-width: 480px;
     width: 100%;
   }
   
-  .browse-content p {
+  .library-content p {
     padding: 16px 8px 8px;
     font-size: 18px;
     font-weight: 600;
   }
 
-  .browse-content p:hover {
+  .library-content p:hover {
     opacity: 0.7;
     cursor: pointer;
   }
   
-  .browse-content .genres {
+  .library-content .genres {
     display: flex;
     flex-wrap: wrap;
   }
@@ -816,8 +845,12 @@
     cursor: pointer;
   }
 
+  .library .more-options a {
+    color: #000;
+  }
+
   .song-history {
-    padding: 0 16px;
+    padding: 0 4px;
   }
 
   .song-history .song:last-child {
@@ -878,7 +911,7 @@
     cursor: pointer;
   }
 
-  .browse .more-options > li:hover {
+  .library .more-options > li:hover {
     opacity: 0.7;
     cursor: pointer;
   }
