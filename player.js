@@ -1,6 +1,9 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
+
+
+
 const player = $('.player');
 const playlist = $('.playlist');
 const heading = $('header h2');
@@ -21,6 +24,7 @@ const PLAYER_STORAGE_KEY = 'F8-player';
 const homePlaylists = $('.content-playlists.home');
 const personSocial = $('.person-social');
 const contentPlaylists = $('.content-playlists')
+const songHistory = $('.song-history');
 
 
 // list of buttons
@@ -154,7 +158,10 @@ const app = {
                 </div>
                 ` 
         })
-        playlist.insertAdjacentHTML('beforeend', htmls.join(''));
+        if (playlist.querySelector('.song') === null) 
+            playlist.insertAdjacentHTML('beforeend', htmls.join(''));
+        else 
+            playlist.innerHTML = htmls.join('');
     },
 
     renderProfilePlaylists: function() {
@@ -239,14 +246,19 @@ const app = {
                 const mainWindowSelectors = $$('.main-window');
                 const subWindowSelectors = $$('.sub-window');
                 for (var e of mainWindowSelectors) {
-                    if(!e.matches('.not-active-screen')) 
+                    if(!e.matches('.not-active-screen')) {
                         e.classList.add('not-active-screen');
+                        AudioInProgress.classList.remove('not-active-screen');
+                    }
                 }
                 var aSelector = this.getAttribute('href');
                 if (aSelector !== null && aSelector.charAt(0) == '#' && aSelector.length > 1) 
                     var getSelector = $(aSelector);
                 if (getSelector.matches('.not-active-screen')) {
                     getSelector.classList.remove('not-active-screen');
+                    if (getSelector.classList.contains('main') && !AudioInProgress.classList.contains('not-active-screen')) {
+                        AudioInProgress.classList.add('not-active-screen');
+                    }
                     //Activate footer btn
                     for (var e of aTags) 
                         e.classList.remove('active');
@@ -259,8 +271,6 @@ const app = {
             }
         })
 
-
-
         // Xu li khi click play
         for (var playBtn of playBtns) {
             playBtn.onclick = function() {
@@ -269,9 +279,11 @@ const app = {
                 } else {
                     audio.play();
                 }
+                songHistory.classList.add('played');
+                _this.loadSongHistory();
             }
         }
-
+        
         // Khi bai hat duoc play
         audio.onplay = function() {
             _this.isPlaying = true;
@@ -315,9 +327,14 @@ const app = {
         }
 
         // Xu li khi tua bai hat
+        dashboardProgress.ondrag = function(e) {
+            audio.currentTime = ((e.offsetX/dashboardProgress.offsetWidth) * audio.duration);
+        }
+
         dashboardProgress.onclick = function(e) {
             audio.currentTime = ((e.offsetX/dashboardProgress.offsetWidth) * audio.duration);
         }
+
 
         randomBtn.onclick = function(e) {
             _this.isRandom = !_this.isRandom;
@@ -332,6 +349,7 @@ const app = {
             _this.setConfig('isRepeat', _this.isRepeat);
             repeatBtn.classList.toggle('active', _this.isRepeat);
         }
+
         // Khi bam next
         nextBtn.onclick = function() {
             if (_this.isRandom) {
@@ -340,8 +358,9 @@ const app = {
                 _this.nextSong();
             }
             audio.play();
-            // _this.render();
+            _this.render();
             _this.scrollToActiveSong();
+            _this.loadSongHistory();
         }
 
 
@@ -353,8 +372,9 @@ const app = {
                 _this.prevSong();
             }
             audio.play();
-            // _this.render();
+            _this.render();
             _this.scrollToActiveSong();
+            _this.loadSongHistory();
         }
 
         document.onscroll = function() {
@@ -368,9 +388,12 @@ const app = {
         audio.onended = function() {
             if (_this.isRepeat) {
                 audio.play();
-            } else
+            } else {
                 nextBtn.click();
+            }
+            _this.loadSongHistory();
         }
+
         // Lang nghe hanh vi click vao playlist 
         playlist.onclick = function(e) {
             const songNode = e.target.closest('.song:not(.active)');
@@ -379,7 +402,7 @@ const app = {
                 if (songNode) {
                     _this.currentIndex = Number(songNode.dataset.index);
                     _this.loadCurrentSong();
-                    // _this.render();
+                    _this.render();
                     audio.play();
                 }
 
@@ -398,29 +421,47 @@ const app = {
             });
         }, 200)
     },
-
+  
     loadCurrentSong: function() {
         heading.textContent = this.currentSong.name;
         cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`;
         audio.src = this.currentSong.path;
         title.textContent = this.currentSong.name;
         author.textContent = this.currentSong.singer;
-
+    
         thumbIP.style.backgroundImage = `url('${this.currentSong.image}')`;
+    },
+
+    loadSongHistory: function() {
         var html =
-                `<div class="song fix-margin-error" >
-                    <div class="thumb"
-                    style="background-image: url('${this.currentSong.image}');">
-                    </div>
-                    <div class="body">
-                        <h3 class="title">${this.currentSong.name}</h3>
-                        <p class="author">${this.currentSong.singer}</p>
-                    </div>
-                    <div class="option">
-                        <i class="fas fa-ellipsis-h"></i>
-                    </div>
-                </div>`
-        $('.song-history').insertAdjacentHTML('beforeend', html); 
+        `<div class="song fix-margin-error" >
+            <div class="thumb"
+            style="background-image: url('${this.currentSong.image}');">
+            </div>
+            <div class="body">
+                <h3 class="title">${this.currentSong.name}</h3>
+                <p class="author">${this.currentSong.singer}</p>
+            </div>
+            <div class="option">
+                <i class="fas fa-ellipsis-h"></i>
+            </div>
+        </div>`
+
+        //Handle song history
+        if (!songHistory.matches('.avalible') && !songHistory.matches('.unclick') && songHistory.matches('.played')) {
+            songHistory.classList.add('avalible');
+            songHistory.innerHTML = '';
+            console.log(1);
+        } 
+        else if (songHistory.matches('.played')) {
+            songHistory.insertAdjacentHTML('beforeend', ''); 
+            console.log(2);
+        }
+        else if (!songHistory.matches('.played')) {
+            songHistory.classList.remove('played');
+            songHistory.insertAdjacentHTML('beforeend', html); 
+            console.log(3);
+        }
     },
 
     loadConfig: function() {
