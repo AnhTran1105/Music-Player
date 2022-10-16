@@ -233,6 +233,34 @@ const app = {
         )
         cdThumbIPAnimate.pause();
 
+        const aTags = $$('a');
+        aTags.forEach(function(aTag) {
+            aTag.onclick = function() {
+                const mainWindowSelectors = $$('.main-window');
+                const subWindowSelectors = $$('.sub-window');
+                for (var e of mainWindowSelectors) {
+                    if(!e.matches('.not-active-screen')) 
+                        e.classList.add('not-active-screen');
+                }
+                var aSelector = this.getAttribute('href');
+                if (aSelector !== null && aSelector.charAt(0) == '#' && aSelector.length > 1) 
+                    var getSelector = $(aSelector);
+                if (getSelector.matches('.not-active-screen')) {
+                    getSelector.classList.remove('not-active-screen');
+                    //Activate footer btn
+                    for (var e of aTags) 
+                        e.classList.remove('active');
+                    for (var e of aTags) {
+                        if (e.getAttribute('href') == ("#" + getSelector.getAttribute('id'))) {
+                            e.classList.add('active');
+                        }
+                    } 
+                }
+            }
+        })
+
+
+
         // Xu li khi click play
         for (var playBtn of playBtns) {
             playBtn.onclick = function() {
@@ -431,6 +459,7 @@ const app = {
         this.handleEvents();
         this.loadCurrentSong();
         this.render();
+        this.renderHomePlaylists();
         // Hien thi trang thai ban dau cua button repeat va random
         // repeatBtn.classList.toggle('active', this.isRepeat);
         // randomBtn.classList.toggle('active', this.isRandom);

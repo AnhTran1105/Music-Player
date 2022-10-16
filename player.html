@@ -7,12 +7,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="https://kit.fontawesome.com/600b270ef7.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
     <div class="player" id="player">
         <!-- Dashboard -->
-        <div class="main" id="main">
+        <div class="main main-window" id="main">
             <div class="dashboard">
                 <div class="dashboard-icon">
                     <i class="fas fa-solid fa-chevron-down"></i>
@@ -143,8 +143,8 @@
         </div>
         
         <!-- Navigation -->
-        <div class="library" id="library">
-            <div class="library-main-screen">
+        <div class="library main-window not-active-screen" id="library">
+            <div class="library-main-window">
                 <div class="header">
                     <i class="btn-back fas fa-thin fa-chevron-left"></i>
                     <p>Library</p>
@@ -205,7 +205,7 @@
                 </div>    
             </div>
             
-            <div class="following" id="following">
+            <div class="following not-active-screen sub-window" id="following">
                 <div class="header">
                     <i class="btn-back fas fa-thin fa-chevron-left"></i>
                     <p>Following</p>
@@ -214,7 +214,7 @@
                 <div class="artists-list">
                     <div class="artist">
                         <div class="artist-image">
-                            <img src="/assets/img/Helia.jpg" alt="">
+                            <img src="./assets/img/Helia.jpg" alt="">
                         </div>
                         <div class="artist-info">
                             <div class="artist-name">
@@ -231,7 +231,7 @@
                     </div>
                     <div class="artist">
                         <div class="artist-image">
-                            <img src="/assets/img/HoaiLam.jpg" alt="">
+                            <img src="./assets/img/HoaiLam.jpg" alt="">
                         </div>
                         <div class="artist-info">
                             <div class="artist-name">
@@ -249,7 +249,7 @@
                 </div>
             </div>
 
-            <div class="albums" id="albums">
+            <div class="albums not-active-screen sub-window" id="albums">
                 <div class="header">
                     <i class="btn-back fas fa-thin fa-chevron-left"></i>
                     <p>Albums</p>
@@ -264,7 +264,7 @@
                 </div>
             </div>
 
-            <div class="liked-tracks" id="liked-tracks">
+            <div class="liked-tracks not-active-screen sub-window" id="liked-tracks">
                 <div class="header">
                     <i class="btn-back fas fa-thin fa-chevron-left"></i>
                     <p>Like tracks</p>
@@ -277,7 +277,7 @@
                 </div>
             </div>
 
-            <div class="your-insights" id="your-insights">
+            <div class="your-insights not-active-screen sub-window" id="your-insights">
                 <div class="header">
                     <i class="btn-back fas fa-thin fa-chevron-left"></i>
                     <p>Your insights</p>
@@ -387,14 +387,14 @@
             </div>
         </div>
 
-        <div class="profile" id="profile">
+        <div class="profile main-window not-active-screen" id="profile">
             <div class="header">
                 <i class="btn-back fas fa-thin fa-chevron-left"></i>
                 <p>Your profile</p>
                 <i class="btn-gear fas fa-regular fa-gear"></i>
             </div>
             <div class="person-content">
-                <img src="/assets/img/img6.jfif" alt="">
+                <img src="./assets/img/img6.jfif" alt="">
                 <div class="person-info">
                     <p class="person-name">Anh Tran</p>
                     <div class="person-data">
@@ -427,42 +427,54 @@
             </div>
             <div class="person-social content-image">
                 <div class="album">
-                    <img src="/assets/img/img1.jfif" alt="">
+                    <div class="album-image">
+                        <img src="./assets/img/img1.jfif" alt="">
+                    </div>
                     <div class="album-text">
                         <p class="album-title">Nàng thơ</p>
                         <p class="album-sub-title">Hoàng Dũng</p>
                     </div>
                 </div>
                 <div class="album">
-                    <img src="/assets/img/img2.jfif" alt="">
+                    <div class="album-image">
+                        <img src="./assets/img/img2.jfif" alt="">
+                    </div>
                     <div class="album-text">
                         <p class="album-title">Có khi</p>
                         <p class="album-sub-title">Hoài Lâm</p>
                     </div>
                 </div>
                 <div class="album">
-                    <img src="/assets/img/img3.jfif" alt="">
+                    <div class="album-image">
+                        <img src="./assets/img/img3.jfif" alt="">
+                    </div>
                     <div class="album-text">
                         <p class="album-title">Như những phút ban đầu</p>
                         <p class="album-sub-title">Hoài Lâm</p>
                     </div>
                 </div>
                 <div class="album">
-                    <img src="/assets/img/img8.jfif" alt="">
+                    <div class="album-image">
+                        <img src="./assets/img/img8.jfif" alt="">
+                    </div>
                     <div class="album-text">
                         <p class="album-title">Lời tạm biệt chưa nói</p>
                         <p class="album-sub-title">GreyD</p>
                     </div>
                 </div>
                 <div class="album">
-                    <img src="/assets/img/download 1.jfif" alt="">
+                    <div class="album-image">
+                        <img src="./assets/img/download 1.jfif" alt="">
+                    </div>
                     <div class="album-text">
                         <p class="album-title">Có ai thương em như anh</p>
                         <p class="album-sub-title">Tóc Tiên</p>
                     </div>
                 </div>
                 <div class="album">
-                    <img src="/assets/img/download.jfif" alt="">
+                    <div class="album-image">
+                        <img src="./assets/img/download.jfif" alt="">
+                    </div>
                     <div class="album-text">
                         <p class="album-title">Từng là của nhau</p>
                         <p class="album-sub-title">Bảo Anh ft Táo</p>
@@ -471,7 +483,7 @@
             </div>
         </div>
 
-        <div class="more">
+        <div class="more main-window not-active-screen" id="more">
             <div class="header">
                 <i class="btn-back fas fa-thin fa-chevron-left"></i>
                 <p>More</p>
@@ -518,7 +530,7 @@
             </div>
         </div>
 
-        <div class="home">
+        <div class="home main-window not-active-screen" id="home">
             <div class="header">
                 <i>&nbsp; &nbsp;</i>
                 <p>Home</p>
@@ -532,28 +544,36 @@
                     </div>
                     <div class="content-image">
                         <div class="album">
-                            <img src="/assets/img/img1.jfif" alt="">
+                            <div class="album-image">
+                                <img src="/assets/img/img1.jfif" alt="">
+                            </div>
                             <div class="album-text">
                                 <p class="album-title">Nàng thơ</p>
                                 <p class="album-sub-title">Hoàng Dũng</p>
                             </div>
                         </div>
                         <div class="album">
-                            <img src="/assets/img/img2.jfif" alt="">
+                            <div class="album-image">
+                                <img src="/assets/img/img2.jfif" alt="">
+                            </div>
                             <div class="album-text">
                                 <p class="album-title">Có khi</p>
                                 <p class="album-sub-title">Hoài Lâm</p>
                             </div>
                         </div>
                         <div class="album">
-                            <img src="/assets/img/img3.jfif" alt="">
+                            <div class="album-image">
+                                <img src="/assets/img/img3.jfif" alt="">
+                            </div>
                             <div class="album-text">
                                 <p class="album-title">Như những phút ban đầu</p>
                                 <p class="album-sub-title">Hoài Lâm</p>
                             </div>
                         </div>
                         <div class="album">
-                            <img src="/assets/img/img8.jfif" alt="">
+                            <div class="album-image">
+                                <img src="/assets/img/img8.jfif" alt="">
+                            </div>
                             <div class="album-text">
                                 <p class="album-title">Lời tạm biệt chưa nói</p>
                                 <p class="album-sub-title">GreyD</p>
@@ -574,7 +594,7 @@
             </div>
         </div>
         
-        <div class="search" id="search">
+        <div class="search main-window not-active-screen" id="search">
             <div class="header">
                 <i class="btn-back fas fa-thin fa-chevron-left"></i>
                 <p>Search</p>
@@ -588,29 +608,39 @@
         </div>
     </div>
     <div class="footer">
-        <a href="#main" class="footer-btn btn btn-house btn-home"> 
+        <a href="#home" class="footer-btn btn btn-house btn-home"> 
             <i class="fas fa-thin fa-house"></i>
-            Home
+            <p>
+                Home
+            </p>
         </a>
         <a href="#library" class="footer-btn btn btn-genres"> 
             <i class="fas fa-light fa-music"></i>
-            Library
+            <p>
+                Library
+            </p>
         </a>
-        <a href="#dashboard" class="footer-btn btn active btn-dashboard">
+        <a href="#main" class="footer-btn btn active btn-dashboard">
             <i class="fas fa-thin fa-circle-play"></i>
-            Dashboard
+            <p>
+                Dashboard
+            </p>
         </a>
         <a href="#search" class="footer-btn btn btn-search">
             <i class="fas fa-thin fa-magnifying-glass"></i>
-            Search
+            <p>
+                Search
+            </p>
         </a>
         <a href="#profile" class="footer-btn btn btn-bars btn-profile">
             <i class="fas fa-thin fa-bars-staggered"></i>
-            Profile
+            <p>
+                Profile
+            </p>
         </a>
     </div>
 
-    <script src="/player/player.js"></script>
+    <script src="./player.js"></script>
 
 </body>
 </html>
