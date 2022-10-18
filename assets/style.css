@@ -44,6 +44,10 @@
     display: none!important;
   } 
 
+  .hidden-song {
+    display: none!important;
+  }
+
   .row {
     margin: 0 4px;
   }
@@ -892,7 +896,7 @@
     color: #000;
   }
 
-  .song-history .song:last-child {
+  .song-history.margin-bottom {
     margin-bottom: 116px;
   }
 

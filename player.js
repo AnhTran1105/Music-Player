@@ -1,9 +1,6 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
-
-
-
 const player = $('.player');
 const playlist = $('.playlist');
 const heading = $('header h2');
@@ -244,7 +241,6 @@ const app = {
         aTags.forEach(function(aTag) {
             aTag.onclick = function() {
                 const mainWindowSelectors = $$('.main-window');
-                const subWindowSelectors = $$('.sub-window');
                 for (var e of mainWindowSelectors) {
                     if(!e.matches('.not-active-screen')) {
                         e.classList.add('not-active-screen');
@@ -279,8 +275,11 @@ const app = {
                 } else {
                     audio.play();
                 }
-                songHistory.classList.add('played');
-                _this.loadSongHistory();
+                if (songHistory.childElementCount === 0) {
+                    const node = document.createElement('div')
+                    songHistory.appendChild(node);
+                    _this.loadSongHistory();
+                }
             }
         }
         
@@ -409,6 +408,12 @@ const app = {
                 if (e.target.closest('.option')) {
 
                 }
+
+                if (songHistory.childElementCount === 0) {
+                    const node = document.createElement('div')
+                    songHistory.appendChild(node);
+                    _this.loadSongHistory();
+                }
             }
         }
     },
@@ -430,6 +435,9 @@ const app = {
         author.textContent = this.currentSong.singer;
     
         thumbIP.style.backgroundImage = `url('${this.currentSong.image}')`;
+
+        this.loadSongHistory();
+
     },
 
     loadSongHistory: function() {
@@ -446,22 +454,31 @@ const app = {
                 <i class="fas fa-ellipsis-h"></i>
             </div>
         </div>`
-
+        
         //Handle song history
-        if (!songHistory.matches('.avalible') && !songHistory.matches('.unclick') && songHistory.matches('.played')) {
-            songHistory.classList.add('avalible');
-            songHistory.innerHTML = '';
-            console.log(1);
-        } 
-        else if (songHistory.matches('.played')) {
-            songHistory.insertAdjacentHTML('beforeend', ''); 
-            console.log(2);
+        if (songHistory.childElementCount === 0) 
+            songHistory.innerHTML = "";
+        else 
+            songHistory.insertAdjacentHTML('afterbegin', html);
+        if (songHistory.childElementCount > 6) {
+            var songNodes = $$('.song-history .song');
+            songNodes[5].classList.add('hidden-song');
         }
-        else if (!songHistory.matches('.played')) {
-            songHistory.classList.remove('played');
-            songHistory.insertAdjacentHTML('beforeend', html); 
-            console.log(3);
-        }
+
+        // if (!songHistory.matches('.avalible') && !songHistory.matches('.unclick') && songHistory.matches('.played')) {
+        //     songHistory.classList.add('avalible');
+        //     songHistory.innerHTML = '';
+        //     console.log(1);
+        // } 
+        // else if (songHistory.matches('.played')) {
+        //     songHistory.insertAdjacentHTML('beforeend', ''); 
+        //     console.log(2);
+        // }
+        // else if (!songHistory.matches('.played')) {
+        //     songHistory.classList.remove('played');
+        //     songHistory.insertAdjacentHTML('beforeend', html); 
+        //     console.log(3);
+        // }
     },
 
     loadConfig: function() {
