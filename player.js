@@ -1,6 +1,7 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
+const aTags = $$('a');
 const player = $('.player');
 const playlist = $('.playlist');
 const heading = $('header h2');
@@ -33,7 +34,7 @@ const randomBtn = $('.btn-random');
 const repeatBtn = $('.btn-repeat');
 const genresBtn = $('.btn-genres');
 const playBtns = $$('.btn-toggle-play');
-const footerBtn = $$('.footer-btn');
+const footerBtns = $$('.footer-btn');
 const playlistsBtn = $('.option-playlists');
 const socialBtn = $('.option-social');
 const gearBtns = $$('.btn-gear');
@@ -52,6 +53,8 @@ const yourInsightsOptionBtn = $('.your-insights-option');
 const filterTimeOverViewBtn = $('.filter-time');
 const songOptionBtn = $('.song .option');
 const songHistoryBtn = $('.listening-history h5');
+const mainWindowSelectors = $$('.main-window');
+const subWindowSelectors = $$('.sub-window');
 
 // list of screen variables
 const introScreen = $('.intro-screen');
@@ -238,48 +241,70 @@ const app = {
         )
         cdThumbIPAnimate.pause();
 
-        const aTags = $$('a');
+
+        getParent = function(element, selector) {
+            while (element.parentElement) {
+                if (element.parentElement.getAttribute('id'))
+                    return element.parentElement;
+                element = element.parentElement;
+            }
+        }
+
+        var screenStorage = [];
 
         aTags.forEach(tag => {
-            var tagAtt = tag.getAttribute('href');
-            tagAtt = tag.getAttribute('class');
-            if (tagAtt && tagAtt.includes('footer-btn')) {
-                var footerSelection = tagAtt;
-            }
-            if (tagAtt && tagAtt.charAt(0) === '#' && tagAtt.length > 1) {
-                var selector = $(tagAtt);
-                if (selector.classList.contains('sub-window')) {
-                    selector.onclick = function () {
-                        const subWindowSelectors = $$('.sub-window');
-                        subWindowSelectors.forEach(subWindowSelector => {
-                            if (!subWindowSelector.classList.contains('not-active-screen')) {
-                                subWindowSelector.classList.add('not-active-screen');
+            tag.onclick = function () {
+                var hrefAtt = tag.getAttribute('href');
+                var classAtt = tag.getAttribute('class');
+
+                if (hrefAtt && hrefAtt.charAt(0) === '#' && hrefAtt.length > 1) {
+                    screenStorage.push(hrefAtt);
+
+                    if (classAtt && classAtt.includes('footer-btn')) {
+
+                        mainWindowSelectors.forEach(selector => {
+                            selector.classList.add('not-active-screen');
+                        })
+                        
+                        mainWindowSelectors.forEach(selector => {
+                            if ("#" + selector.getAttribute('id') === hrefAtt) {
+                                selector.classList.remove('not-active-screen');
+                                if (selector.getAttribute('id') === 'main') 
+                                    AudioInProgress.classList.add('not-active-screen');
+                                else 
+                                    AudioInProgress.classList.remove('not-active-screen');
                             }
                         })
-                        this.classList.remove('not-active-screen');
-                    }
-                } else if (selector.classList.contains('main-window')) {
-                    footerSelection.onclick = function () {
-                        const mainWindowSelectors = $$('.main-window');
-                        mainWindowSelectors.forEach(mainWindowSelector => {
-                            if (!mainWindowSelector.classList.contains('not-active-screen')) {
-                                mainWindowSelector.classList.add('not-active-screen');
+                        // Activate footer btn
+                        footerBtns.forEach(btn => {
+                            btn.classList.remove('active');
+                        })
+                        tag.classList.add('active');
+                    } else {
+
+                        subWindowSelectors.forEach(selector => {
+                            selector.classList.add('not-active-screen');
+                        })
+
+                        subWindowSelectors.forEach(selector => {
+                            if ("#" + selector.getAttribute('id') === hrefAtt) {
+                                var getHomeScreen = getParent(selector, hrefAtt).querySelector('.home-screen');
+                                getHomeScreen.classList.add('not-active-screen');
+                                selector.classList.remove('not-active-screen');
                             }
                         })
-                        if (selector.classList.contains('main')) {
-                            AudioInProgress.classList.add('not-active-screen');
-                        }
-                        this.classList.remove('not-active-screen');
-                        // //Activate footer btn
-                        // for (var e of aTags) 
-                        //     e.classList.remove('active');
-                        // for (var e of aTags) {
-                        //     if (e.getAttribute('href') == ("#" + getSelector.getAttribute('id'))) {
-                        //         e.classList.add('active');
-                        //     }
-                        // } 
                     }
                 }
+            }
+        })
+
+        // function getCurrentLink() {
+        //     return window.location.href;
+        // }
+
+        backBtns.forEach(btn => {
+            btn.onclick = function () {
+                window.location.replace(location.origin + location.pathname + screenStorage[screenStorage.length - 2]);
             }
         })
 
