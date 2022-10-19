@@ -412,6 +412,10 @@
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
   }
 
+  .content-playlists {
+    margin: 0 12px;
+  }
+
   .content-playlists .song:last-child {
     margin-bottom: 122px;
   }
@@ -448,7 +452,7 @@
   
   .song .body {
     flex: 1;
-    padding: 0 16px;
+    padding: 0 8px;
   }
   
   .song .title {
@@ -571,7 +575,7 @@
 
   .song-IP .body {
     flex: 1;
-    padding: 0 16px;
+    padding: 0 20px;
   }
 
   .song-IP .body .title {
@@ -596,7 +600,7 @@
     height: 44px;
     border-radius: 50%;
     background-size: cover;
-    margin: 0 8px;
+    margin: 0 8px 0 16px;
   }
   
   .audio-progress {
@@ -896,8 +900,12 @@
     color: #000;
   }
 
-  .song-history.margin-bottom {
-    margin-bottom: 116px;
+  .song-history .margin-bottom {
+    margin-bottom: 122px;
+  }
+
+  .song-history {
+    margin: 0 12px;
   }
 
   .artists-list {

@@ -51,6 +51,7 @@ const likedTracksOptionBtn = $('.liked-tracks-option');
 const yourInsightsOptionBtn = $('.your-insights-option');
 const filterTimeOverViewBtn = $('.filter-time');
 const songOptionBtn = $('.song .option');
+const songHistoryBtn = $('.listening-history h5');
 
 // list of screen variables
 const introScreen = $('.intro-screen');
@@ -238,34 +239,52 @@ const app = {
         cdThumbIPAnimate.pause();
 
         const aTags = $$('a');
-        aTags.forEach(function(aTag) {
-            aTag.onclick = function() {
-                const mainWindowSelectors = $$('.main-window');
-                for (var e of mainWindowSelectors) {
-                    if(!e.matches('.not-active-screen')) {
-                        e.classList.add('not-active-screen');
-                        AudioInProgress.classList.remove('not-active-screen');
+
+        aTags.forEach(tag => {
+            var tagAtt = tag.getAttribute('href');
+            tagAtt = tag.getAttribute('class');
+            if (tagAtt && tagAtt.includes('footer-btn')) {
+                var footerSelection = tagAtt;
+            }
+            if (tagAtt && tagAtt.charAt(0) === '#' && tagAtt.length > 1) {
+                var selector = $(tagAtt);
+                if (selector.classList.contains('sub-window')) {
+                    selector.onclick = function () {
+                        const subWindowSelectors = $$('.sub-window');
+                        subWindowSelectors.forEach(subWindowSelector => {
+                            if (!subWindowSelector.classList.contains('not-active-screen')) {
+                                subWindowSelector.classList.add('not-active-screen');
+                            }
+                        })
+                        this.classList.remove('not-active-screen');
                     }
-                }
-                var aSelector = this.getAttribute('href');
-                if (aSelector !== null && aSelector.charAt(0) == '#' && aSelector.length > 1) 
-                    var getSelector = $(aSelector);
-                if (getSelector.matches('.not-active-screen')) {
-                    getSelector.classList.remove('not-active-screen');
-                    if (getSelector.classList.contains('main') && !AudioInProgress.classList.contains('not-active-screen')) {
-                        AudioInProgress.classList.add('not-active-screen');
-                    }
-                    //Activate footer btn
-                    for (var e of aTags) 
-                        e.classList.remove('active');
-                    for (var e of aTags) {
-                        if (e.getAttribute('href') == ("#" + getSelector.getAttribute('id'))) {
-                            e.classList.add('active');
+                } else if (selector.classList.contains('main-window')) {
+                    footerSelection.onclick = function () {
+                        const mainWindowSelectors = $$('.main-window');
+                        mainWindowSelectors.forEach(mainWindowSelector => {
+                            if (!mainWindowSelector.classList.contains('not-active-screen')) {
+                                mainWindowSelector.classList.add('not-active-screen');
+                            }
+                        })
+                        if (selector.classList.contains('main')) {
+                            AudioInProgress.classList.add('not-active-screen');
                         }
-                    } 
+                        this.classList.remove('not-active-screen');
+                        // //Activate footer btn
+                        // for (var e of aTags) 
+                        //     e.classList.remove('active');
+                        // for (var e of aTags) {
+                        //     if (e.getAttribute('href') == ("#" + getSelector.getAttribute('id'))) {
+                        //         e.classList.add('active');
+                        //     }
+                        // } 
+                    }
                 }
             }
         })
+
+
+        
 
         // Xu li khi click play
         for (var playBtn of playBtns) {
@@ -442,7 +461,7 @@ const app = {
 
     loadSongHistory: function() {
         var html =
-        `<div class="song fix-margin-error" >
+        `<div class="song fix-margin-error active" >
             <div class="thumb"
             style="background-image: url('${this.currentSong.image}');">
             </div>
@@ -454,31 +473,33 @@ const app = {
                 <i class="fas fa-ellipsis-h"></i>
             </div>
         </div>`
-        
+        var songNodes = $$('.song-history .song');
         //Handle song history
         if (songHistory.childElementCount === 0) 
             songHistory.innerHTML = "";
-        else 
+        else {
             songHistory.insertAdjacentHTML('afterbegin', html);
-        if (songHistory.childElementCount > 6) {
-            var songNodes = $$('.song-history .song');
-            songNodes[5].classList.add('hidden-song');
+            if (songNodes.length > 0) {
+                songNodes[0].classList.remove('active');
+                songNodes[songNodes.length-1].classList.add('margin-bottom');
+            }
+            if (songNodes.length > 4) {
+                songNodes[3].classList.add('margin-bottom');
+                songNodes[4].classList.add('hidden-song');
+                songNodes[4].classList.remove('margin-bottom');
+            }
         }
 
-        // if (!songHistory.matches('.avalible') && !songHistory.matches('.unclick') && songHistory.matches('.played')) {
-        //     songHistory.classList.add('avalible');
-        //     songHistory.innerHTML = '';
-        //     console.log(1);
-        // } 
-        // else if (songHistory.matches('.played')) {
-        //     songHistory.insertAdjacentHTML('beforeend', ''); 
-        //     console.log(2);
-        // }
-        // else if (!songHistory.matches('.played')) {
-        //     songHistory.classList.remove('played');
-        //     songHistory.insertAdjacentHTML('beforeend', html); 
-        //     console.log(3);
-        // }
+        songHistoryBtn.onclick = function () {
+            console.log(songHistoryBtn);
+            songNodes.forEach(function (node) {
+                if (node.classList.contains('hidden-song') || node.classList.contains('margin-bottom')) {
+                    node.classList.remove('hidden-song');
+                    node.classList.remove('margin-bottom');
+                }
+            })
+            songNodes[songNodes.length-1].classList.add('margin-bottom');
+        }
     },
 
     loadConfig: function() {
