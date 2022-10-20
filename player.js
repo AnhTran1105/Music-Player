@@ -250,8 +250,87 @@ const app = {
             }
         }
 
+        // goToPage = function(link) {
+        //     console.log(link);
+        //     mainWindowSelectors.forEach(function(selector) {
+        //         if (link && link === '#' + selector.getAttribute('id')) {
+        //             selector.classList.remove('not-active-screen');
+        //         }
+        //     })
+        // }
+
+        // window.location.href.onchange = function() {
+        //     console.log('success');
+        // }
+
         var screenStorage = [];
 
+        // aTags.forEach(function(tag) {
+        //     tag.onclick = function() {
+        //         var href = null;
+        //         // var href = tag.getAttribute('href');
+        //         // if (href) {
+        //         //     window.location.replace(location.origin + location.pathname + href);
+        //         //     var currentLink = location.origin + location.pathname + href;
+        //         // }
+        //         // if (currentLink) {
+        //         //     var hrefAtt = currentLink.substring(currentLink.indexOf('#'));
+        //         //     console.log(hrefAtt);
+        //         // }
+
+        //         console.log(window.location.href.substring(window.location.href.indexOf('#')));
+        //         goToPage(href || window.location.href.substring(window.location.href.indexOf('#')));
+    
+        //         // mainWindowSelectors.forEach(function(selector) {
+        //         //     if (hrefAtt && hrefAtt === '#' + selector.getAttribute('id')) {
+        //         //         selector.classList.remove('not-active-screen');
+        //         //         console.log('success');
+        //         //     }
+        //         // })
+        //         // var classAtt = tag.getAttribute('class');
+        //         // console.log(hrefAtt);
+
+        //         // if (hrefAtt && hrefAtt.charAt(0) === '#' && hrefAtt.length > 1) {
+        //         //     screenStorage.push(hrefAtt);
+
+        //         //     if (classAtt && classAtt.includes('footer-btn')) {
+
+        //         //         mainWindowSelectors.forEach(selector => {
+        //         //             selector.classList.add('not-active-screen');
+        //         //         })
+                        
+        //         //         mainWindowSelectors.forEach(selector => {
+        //         //             if ("#" + selector.getAttribute('id') === hrefAtt) {
+        //         //                 selector.classList.remove('not-active-screen');
+        //         //                 if (selector.getAttribute('id') === 'main') 
+        //         //                     AudioInProgress.classList.add('not-active-screen');
+        //         //                 else 
+        //         //                     AudioInProgress.classList.remove('not-active-screen');
+        //         //             }
+        //         //         })
+        //         //         // Activate footer btn
+        //         //         footerBtns.forEach(btn => {
+        //         //             btn.classList.remove('active');
+        //         //         })
+        //         //         tag.classList.add('active');
+        //         //     } else {
+
+        //         //         subWindowSelectors.forEach(selector => {
+        //         //             selector.classList.add('not-active-screen');
+        //         //         })
+
+        //         //         subWindowSelectors.forEach(selector => {
+        //         //             if ("#" + selector.getAttribute('id') === hrefAtt) {
+        //         //                 var getHomeScreen = getParent(selector, hrefAtt).querySelector('.home-screen');
+        //         //                 getHomeScreen.classList.add('not-active-screen');
+        //         //                 selector.classList.remove('not-active-screen');
+        //         //             }
+        //         //         })
+        //         //     }
+        //         // }
+        //     }
+        // })
+        
         aTags.forEach(tag => {
             tag.onclick = function () {
                 var hrefAtt = tag.getAttribute('href');
@@ -298,18 +377,15 @@ const app = {
             }
         })
 
-        // function getCurrentLink() {
-        //     return window.location.href;
-        // }
+        // // function getCurrentLink() {
+        // //     return window.location.href;
+        // // }
 
-        backBtns.forEach(btn => {
-            btn.onclick = function () {
-                window.location.replace(location.origin + location.pathname + screenStorage[screenStorage.length - 2]);
-            }
-        })
-
-
-        
+        // backBtns.forEach(btn => {
+        //     btn.onclick = function () {
+        //         window.location.replace(location.origin + location.pathname + screenStorage[screenStorage.length - 2]);
+        //     }
+        // })      
 
         // Xu li khi click play
         for (var playBtn of playBtns) {
@@ -472,6 +548,7 @@ const app = {
     },
   
     loadCurrentSong: function() {
+        played = true;
         heading.textContent = this.currentSong.name;
         cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`;
         audio.src = this.currentSong.path;
