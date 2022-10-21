@@ -250,132 +250,242 @@ const app = {
             }
         }
 
-        // goToPage = function(link) {
-        //     console.log(link);
-        //     mainWindowSelectors.forEach(function(selector) {
-        //         if (link && link === '#' + selector.getAttribute('id')) {
-        //             selector.classList.remove('not-active-screen');
-        //         }
-        //     })
-        // }
+        goToPage = function(link, classAtt) {
+            var hrefAtt = link;
+            if (hrefAtt && hrefAtt.charAt(0) === '#' && hrefAtt.length > 1) {
+                screenStorage.push(hrefAtt);
 
-        // window.location.href.onchange = function() {
-        //     console.log('success');
-        // }
+                if (classAtt && classAtt.includes('footer-btn')) {
 
-        var screenStorage = [];
+                    mainWindowSelectors.forEach(selector => {
+                        selector.classList.add('not-active-screen');
+                    })
+                    
+                    mainWindowSelectors.forEach(selector => {
+                        if ("#" + selector.getAttribute('id') === hrefAtt) {
+                            selector.classList.remove('not-active-screen');
+                            if (selector.getAttribute('id') === 'main') 
+                                AudioInProgress.classList.add('not-active-screen');
+                            else 
+                                AudioInProgress.classList.remove('not-active-screen');
+                        }
+                    })
+                    // Activate footer btn
+                    // footerBtns.forEach(btn => {
+                    //     btn.classList.remove('active');
+                    // })
+                    // tag.classList.add('active');
+                } else {
 
-        // aTags.forEach(function(tag) {
-        //     tag.onclick = function() {
-        //         var href = null;
-        //         // var href = tag.getAttribute('href');
-        //         // if (href) {
-        //         //     window.location.replace(location.origin + location.pathname + href);
-        //         //     var currentLink = location.origin + location.pathname + href;
-        //         // }
-        //         // if (currentLink) {
-        //         //     var hrefAtt = currentLink.substring(currentLink.indexOf('#'));
-        //         //     console.log(hrefAtt);
-        //         // }
+                    subWindowSelectors.forEach(selector => {
+                        selector.classList.add('not-active-screen');
+                    })
 
-        //         console.log(window.location.href.substring(window.location.href.indexOf('#')));
-        //         goToPage(href || window.location.href.substring(window.location.href.indexOf('#')));
-    
-        //         // mainWindowSelectors.forEach(function(selector) {
-        //         //     if (hrefAtt && hrefAtt === '#' + selector.getAttribute('id')) {
-        //         //         selector.classList.remove('not-active-screen');
-        //         //         console.log('success');
-        //         //     }
-        //         // })
-        //         // var classAtt = tag.getAttribute('class');
-        //         // console.log(hrefAtt);
-
-        //         // if (hrefAtt && hrefAtt.charAt(0) === '#' && hrefAtt.length > 1) {
-        //         //     screenStorage.push(hrefAtt);
-
-        //         //     if (classAtt && classAtt.includes('footer-btn')) {
-
-        //         //         mainWindowSelectors.forEach(selector => {
-        //         //             selector.classList.add('not-active-screen');
-        //         //         })
-                        
-        //         //         mainWindowSelectors.forEach(selector => {
-        //         //             if ("#" + selector.getAttribute('id') === hrefAtt) {
-        //         //                 selector.classList.remove('not-active-screen');
-        //         //                 if (selector.getAttribute('id') === 'main') 
-        //         //                     AudioInProgress.classList.add('not-active-screen');
-        //         //                 else 
-        //         //                     AudioInProgress.classList.remove('not-active-screen');
-        //         //             }
-        //         //         })
-        //         //         // Activate footer btn
-        //         //         footerBtns.forEach(btn => {
-        //         //             btn.classList.remove('active');
-        //         //         })
-        //         //         tag.classList.add('active');
-        //         //     } else {
-
-        //         //         subWindowSelectors.forEach(selector => {
-        //         //             selector.classList.add('not-active-screen');
-        //         //         })
-
-        //         //         subWindowSelectors.forEach(selector => {
-        //         //             if ("#" + selector.getAttribute('id') === hrefAtt) {
-        //         //                 var getHomeScreen = getParent(selector, hrefAtt).querySelector('.home-screen');
-        //         //                 getHomeScreen.classList.add('not-active-screen');
-        //         //                 selector.classList.remove('not-active-screen');
-        //         //             }
-        //         //         })
-        //         //     }
-        //         // }
-        //     }
-        // })
-        
-        aTags.forEach(tag => {
-            tag.onclick = function () {
-                var hrefAtt = tag.getAttribute('href');
-                var classAtt = tag.getAttribute('class');
-
-                if (hrefAtt && hrefAtt.charAt(0) === '#' && hrefAtt.length > 1) {
-                    screenStorage.push(hrefAtt);
-
-                    if (classAtt && classAtt.includes('footer-btn')) {
-
-                        mainWindowSelectors.forEach(selector => {
-                            selector.classList.add('not-active-screen');
-                        })
-                        
-                        mainWindowSelectors.forEach(selector => {
-                            if ("#" + selector.getAttribute('id') === hrefAtt) {
-                                selector.classList.remove('not-active-screen');
-                                if (selector.getAttribute('id') === 'main') 
-                                    AudioInProgress.classList.add('not-active-screen');
-                                else 
-                                    AudioInProgress.classList.remove('not-active-screen');
-                            }
-                        })
-                        // Activate footer btn
-                        footerBtns.forEach(btn => {
-                            btn.classList.remove('active');
-                        })
-                        tag.classList.add('active');
-                    } else {
-
-                        subWindowSelectors.forEach(selector => {
-                            selector.classList.add('not-active-screen');
-                        })
-
-                        subWindowSelectors.forEach(selector => {
-                            if ("#" + selector.getAttribute('id') === hrefAtt) {
-                                var getHomeScreen = getParent(selector, hrefAtt).querySelector('.home-screen');
-                                getHomeScreen.classList.add('not-active-screen');
-                                selector.classList.remove('not-active-screen');
-                            }
-                        })
-                    }
+                    subWindowSelectors.forEach(selector => {
+                        if ("#" + selector.getAttribute('id') === hrefAtt) {
+                            var getHomeScreen = getParent(selector, hrefAtt).querySelector('.home-screen');
+                            getHomeScreen.classList.add('not-active-screen');
+                            selector.classList.remove('not-active-screen');
+                        }
+                    })
                 }
             }
+
+            // mainWindowSelectors.forEach(function(selector) {
+            //     if (link && link === '#' + selector.getAttribute('id')) {
+            //         selector.classList.remove('not-active-screen');
+            //     }
+            // })
+        }
+
+
+        goBackPage = function(link, classAtt) {
+            var hrefAtt = link;
+            if (hrefAtt && hrefAtt.charAt(0) === '#' && hrefAtt.length > 1) {
+                // screenStorage.push(hrefAtt);
+                
+                if (classAtt && classAtt.includes('footer-btn')) {
+                    
+                    mainWindowSelectors.forEach(selector => {
+                        selector.classList.add('not-active-screen');
+                    })
+                    
+                    mainWindowSelectors.forEach(selector => {
+                        if ("#" + selector.getAttribute('id') === hrefAtt) {
+                            selector.classList.remove('not-active-screen');
+                            if (selector.getAttribute('id') === 'main')  {
+                                AudioInProgress.classList.add('not-active-screen');
+                            }
+                            else {
+                            console.log('success');
+                                AudioInProgress.classList.remove('not-active-screen');
+                            }
+                        }
+                    })
+                    // Activate footer btn
+                    // footerBtns.forEach(btn => {
+                    //     btn.classList.remove('active');
+                    // })
+                    // tag.classList.add('active');
+                } else {
+
+                    subWindowSelectors.forEach(selector => {
+                        selector.classList.add('not-active-screen');
+                    })
+
+                    subWindowSelectors.forEach(selector => {
+                        if ("#" + selector.getAttribute('id') === hrefAtt) {
+                            var getHomeScreen = getParent(selector, hrefAtt).querySelector('.home-screen');
+                            getHomeScreen.classList.add('not-active-screen');
+                            selector.classList.remove('not-active-screen');
+                        }
+                    })
+                }
+            }
+
+            // mainWindowSelectors.forEach(function(selector) {
+            //     if (link && link === '#' + selector.getAttribute('id')) {
+            //         selector.classList.remove('not-active-screen');
+            //     }
+            // })
+        }
+
+        var screenStorage = [];
+        var allScreens = Array.from(mainWindowSelectors).concat(Array.from(subWindowSelectors));
+
+        aTags.forEach(function(tag) {
+            tag.onclick = function() {
+                var href = tag.getAttribute('href');
+                var classAtt = tag.getAttribute('class');
+                if (href) {
+                    window.location.href = location.origin + location.pathname + href;
+                    var currentLink = location.origin + location.pathname + href;
+                }
+                if (currentLink) {
+                    var hrefAtt = currentLink.substring(currentLink.indexOf('#'));
+                    console.log(hrefAtt);
+                }
+                goToPage(href || window.location.href.substring(window.location.href.indexOf('#')), classAtt);
+    
+                // mainWindowSelectors.forEach(function(selector) {
+                //     if (hrefAtt && hrefAtt === '#' + selector.getAttribute('id')) {
+                //         selector.classList.remove('not-active-screen');
+                //         console.log('success');
+                //     }
+                // })
+                // var classAtt = tag.getAttribute('class');
+                // console.log(hrefAtt);
+
+                // if (hrefAtt && hrefAtt.charAt(0) === '#' && hrefAtt.length > 1) {
+                //     screenStorage.push(hrefAtt);
+
+                //     if (classAtt && classAtt.includes('footer-btn')) {
+
+                //         mainWindowSelectors.forEach(selector => {
+                //             selector.classList.add('not-active-screen');
+                //         })
+                        
+                //         mainWindowSelectors.forEach(selector => {
+                //             if ("#" + selector.getAttribute('id') === hrefAtt) {
+                //                 selector.classList.remove('not-active-screen');
+                //                 if (selector.getAttribute('id') === 'main') 
+                //                     AudioInProgress.classList.add('not-active-screen');
+                //                 else 
+                //                     AudioInProgress.classList.remove('not-active-screen');
+                //             }
+                //         })
+                //         // Activate footer btn
+                //         footerBtns.forEach(btn => {
+                //             btn.classList.remove('active');
+                //         })
+                //         tag.classList.add('active');
+                //     } else {
+
+                //         subWindowSelectors.forEach(selector => {
+                //             selector.classList.add('not-active-screen');
+                //         })
+
+                //         subWindowSelectors.forEach(selector => {
+                //             if ("#" + selector.getAttribute('id') === hrefAtt) {
+                //                 var getHomeScreen = getParent(selector, hrefAtt).querySelector('.home-screen');
+                //                 getHomeScreen.classList.add('not-active-screen');
+                //                 selector.classList.remove('not-active-screen');
+                //             }
+                //         })
+                //     }
+                // }
+            }
         })
+
+        backBtns.forEach(backBtn => {
+            backBtn.onclick = function() {
+                // console.log(screenStorage);
+                var href = screenStorage[screenStorage.length - 2];
+                screenStorage.pop();
+                var classAtt;
+                aTags.forEach(screen => {
+                    if (screen.getAttribute('href') === href) {
+                        classAtt = screen.getAttribute('class');
+                    }
+                })
+                // console.log(classAtt);
+                if (href) {
+                    window.location.href = location.origin + location.pathname + href;
+                    var currentLink = location.origin + location.pathname + href;
+                }
+                if (currentLink) {
+                    var hrefAtt = currentLink.substring(currentLink.indexOf('#'));
+                    // console.log(hrefAtt);
+                }
+                goBackPage(href || window.location.href.substring(window.location.href.indexOf('#')), classAtt);
+            }
+        })
+        
+        // aTags.forEach(tag => {
+        //     tag.onclick = function () {
+        //         var hrefAtt = tag.getAttribute('href');
+        //         var classAtt = tag.getAttribute('class');
+
+        //         if (hrefAtt && hrefAtt.charAt(0) === '#' && hrefAtt.length > 1) {
+        //             screenStorage.push(hrefAtt);
+
+        //             if (classAtt && classAtt.includes('footer-btn')) {
+
+        //                 mainWindowSelectors.forEach(selector => {
+        //                     selector.classList.add('not-active-screen');
+        //                 })
+                        
+        //                 mainWindowSelectors.forEach(selector => {
+        //                     if ("#" + selector.getAttribute('id') === hrefAtt) {
+        //                         selector.classList.remove('not-active-screen');
+        //                         if (selector.getAttribute('id') === 'main') 
+        //                             AudioInProgress.classList.add('not-active-screen');
+        //                         else 
+        //                             AudioInProgress.classList.remove('not-active-screen');
+        //                     }
+        //                 })
+        //                 // Activate footer btn
+        //                 footerBtns.forEach(btn => {
+        //                     btn.classList.remove('active');
+        //                 })
+        //                 tag.classList.add('active');
+        //             } else {
+
+        //                 subWindowSelectors.forEach(selector => {
+        //                     selector.classList.add('not-active-screen');
+        //                 })
+
+        //                 subWindowSelectors.forEach(selector => {
+        //                     if ("#" + selector.getAttribute('id') === hrefAtt) {
+        //                         var getHomeScreen = getParent(selector, hrefAtt).querySelector('.home-screen');
+        //                         getHomeScreen.classList.add('not-active-screen');
+        //                         selector.classList.remove('not-active-screen');
+        //                     }
+        //                 })
+        //             }
+        //         }
+        //     }
+        // })
 
         // // function getCurrentLink() {
         // //     return window.location.href;
