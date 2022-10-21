@@ -67,88 +67,95 @@
             <!-- Playlist -->
             <div class="playlist">
 
-
-                <div class="song-selections not-active-screen">
-                    <div class="sharing-ways">
-                        <div class="sharing-btn">
-                            <div class="sharing-icon">
-                                <i class="fas fa-solid fa-copy"></i>
-                            </div>
-                            Copy link
-                        </div>
-                        <div class="sharing-btn">
-                            <div class="sharing-icon">
-                                <i class="fas fa-brands fa-instagram"></i>
-                            </div>
-                            Stories
-                        </div>
-                        <div class="sharing-btn">
-                            <div class="sharing-icon">
-                                <i class="fas fa-brands fa-facebook"></i>
-                            </div>
-                            Stories
-                        </div>
-                        <div class="sharing-btn">
-                            <div class="sharing-icon">
-                                <i class="fas fa-brands fa-facebook"></i>
-                            </div>
-                            News Feed
-                        </div>
-                        <div class="sharing-btn">
-                            <div class="sharing-icon">
-                                <i class="fas fa-brands fa-facebook-messenger"></i>
-                            </div>
-                            Messenger
-                        </div>
-                    </div>
-                    <ul class="feature-selections">
-                        <li>
-                            <i class="fas fa-solid fa-heart"></i>
-                            Like
-                        </li>
-                        <li>
-                            <i class="fas fa-solid fa-list-music"></i>
-                            Add to playlist
-                        </li>
-                        <li>
-                            <i class="fas fa-solid fa-forward"></i>
-                            Add to Next up
-                        </li>
-                        <li>
-                            <i class="fas fa-solid fa-reply"></i>
-                            Repost on Musicloud
-                        </li>
-                        <li>
-                            <i class="fas fa-solid fa-waveform-lines"></i>
-                            Behind this track
-                        </li>
-                        <li>
-                            <i class="fas fa-solid fa-user"></i>
-                            Go to artist profile
-                        </li>
-                        <li>
-                            <i class="fas fa-regular fa-comment"></i>
-                            View comments
-                        </li>
-                        <li>
-                            <i class="fas fa-solid fa-flag"></i>
-                            Report
-                        </li>
-                    </ul>
-                    <div class="cancel-btn">
-                        Cancel
-                    </div>
-                </div>
             </div>
         </div>
         
+        <div class="song-selections not-active-screen">
+            <div class="current-song">
+
+            </div>
+            <div class="sharing-ways">
+                <div class="sharing-btn">
+                    <div class="sharing-icon">
+                        <i class="fas fa-solid fa-copy"></i>
+                    </div>
+                    Copy link
+                </div>
+                <div class="sharing-btn">
+                    <div class="sharing-icon">
+                        <i class="fas fa-brands fa-instagram"></i>
+                    </div>
+                    Stories
+                </div>
+                <div class="sharing-btn">
+                    <div class="sharing-icon">
+                        <i class="fas fa-brands fa-facebook"></i>
+                    </div>
+                    Stories
+                </div>
+                <div class="sharing-btn">
+                    <div class="sharing-icon">
+                        <i class="fas fa-brands fa-facebook"></i>
+                    </div>
+                    News Feed
+                </div>
+                <div class="sharing-btn">
+                    <div class="sharing-icon">
+                        <i class="fas fa-brands fa-facebook-messenger"></i>
+                    </div>
+                    Messenger
+                </div>
+            </div>
+            <ul class="feature-selections">
+                <li>
+                    <i class="fas fa-solid fa-heart"></i>
+                    Like
+                </li>
+                <li>
+                    <i class="fas fa-solid fa-tower-broadcast"></i>
+                    Start station
+                </li>
+                <li>
+                    <i class="fas fa-solid fa-list-music"></i>
+                    Add to playlist
+                </li>
+                <li>
+                    <i class="fas fa-solid fa-forward"></i>
+                    Add to Next up
+                </li>
+                <li>
+                    <i class="fas fa-solid fa-repeat"></i>
+                    Repost on Musicloud
+                </li>
+                <li>
+                    <i class="fas fa-solid fa-waveform-lines"></i>
+                    Behind this track
+                </li>
+                <li>
+                    <i class="fas fa-solid fa-user"></i>
+                    Go to artist profile
+                </li>
+                <li>
+                    <i class="fas fa-regular fa-comments"></i>
+                    View comments
+                </li>
+                <li>
+                    <i class="fas fa-solid fa-flag"></i>
+                    Report
+                </li>
+            </ul>
+            <div class="cancel-btn">
+                Cancel
+            </div>
+        </div>
+
         <!-- Navigation -->
         <div class="library main-window not-active-screen" id="library">
             <div class="library home-screen">
                 <div class="header">
-                    <i class="btn-back fas fa-thin fa-chevron-left"></i>
-                    <p>Library</p>
                     <i class="btn-gear fas fa-regular fa-gear"></i>
+                    <p>Library</p>
+                    <i class="fas fa-regular fa-bell"></i>
                 </div>
                     
                 <ul class="more-options">
@@ -384,12 +391,15 @@
                         <i class="fas fa-sharp fa-solid fa-circle-pause icon-pause"></i>
                     </div>
                 </div>
+                <div class="favourite-btn">
+                    <i class="fas fa-regular fa-heart"></i>
+                </div>
             </div>
         </div>
 
-        <div class="profile main-window not-active-screen" id="profile">
+        <!-- <div class="profile main-window not-active-screen" id="profile">
             <div class="header">
-                <i class="btn-back fas fa-thin fa-chevron-left"></i>
+                <i></i>
                 <p>Your profile</p>
                 <i class="btn-gear fas fa-regular fa-gear"></i>
             </div>
@@ -481,18 +491,33 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="more main-window not-active-screen" id="more">
+        <div class="profile main-window not-active-screen" id="profile">
             <div class="header">
-                <i class="btn-back fas fa-thin fa-chevron-left"></i>
-                <p>More</p>
-                <i></i>
+                <i class="btn-gear fas fa-regular fa-gear"></i>
+                <p>Profile</p>
+                <i class="fas fa-regular fa-bell"></i>
             </div>
             <div class="person-content">
                 <div class="person-info">
                     <img src="/assets/img/img6.jfif" alt="">
-                    <p class="person-name">Anh Tran</p>
+                    <div class="person-data">
+                        <p class="person-name">Anh Tran</p>
+                        <div class="person-des">
+                            <div class="numOfSongs">
+                                10 songs
+                            </div>
+                            <p>.</p>
+                            <div class="numOfPlaylists">
+                                25 playlists
+                            </div>
+                            <p>.</p>
+                            <div class="numOfFriends">
+                                40 friends
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <i class="fas fa-thin fa-chevron-right"></i>
             </div>   
@@ -532,7 +557,7 @@
 
         <div class="home main-window not-active-screen" id="home">
             <div class="header">
-                <i>&nbsp; &nbsp;</i>
+                <i class="fas fa-solid fa-arrow-up-from-bracket"></i>
                 <p>Home</p>
                 <i class="fas fa-light fa-bell"></i>
             </div>
@@ -596,9 +621,9 @@
         
         <div class="search main-window not-active-screen" id="search">
             <div class="header">
-                <i class="btn-back fas fa-thin fa-chevron-left"></i>
-                <p>Search</p>
                 <i class="btn-gear fas fa-regular fa-gear"></i>
+                <p>Search</p>
+                <i class="fas fa-regular fa-bell"></i>
             </div>
             <div class="search-bar">
                 <label for="search"></label>

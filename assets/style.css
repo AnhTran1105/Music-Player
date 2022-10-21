@@ -625,6 +625,7 @@
 
   .profile {
     margin-bottom: 116px;
+    
   }
 
   .person-content {
@@ -642,26 +643,24 @@
     border-radius: 50% ;
   }
 
-  .person-info {
-    padding: 8px 16px;
-
+  .person-des {
+    display: flex;
+    margin-left: 6px;
   }
 
-  .person-data {
-    display: flex;
-    
+  .person-des div {
+    margin: 0 6px;
+  }
+
+  .person-des > p {
+    line-height: 9px;
   }
 
   .person-data > div {
     color: var(--primary-color);
     font-size: 12px;
   }
-
-  .person-data p {
-    line-height: 50%;
-    padding: 0 8px;
-    color: var(--primary-color);
-  }
+ 
 
   .person-options {
     color: #fff;
@@ -776,28 +775,28 @@
 
   /* -------------------Setting---------------------- */
 
-  .more .person-info {
+  .profile .person-info {
     padding: 8px 0;
     display: flex;
     align-items: center;
   }
 
-  .more .person-name {
-    padding-left: 16px;
+  .profile .person-name {
+    margin: 0 12px;
   }
 
-  .more .person-info img {
+  .profile .person-info img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
   }
 
-  .more .person-content {
+  .profile .person-content {
     align-items: center;
     justify-content: space-between;
   }
 
-  .more .person-content i {
+  .profile .person-content i {
     color: var(--primary-color);
     font-size: 22px;
   }
@@ -963,7 +962,7 @@
     cursor: pointer;
   }
 
-  .library .more-options > li:hover {
+  .more-options > li:hover {
     opacity: 0.7;
     cursor: pointer;
   }
@@ -1145,7 +1144,76 @@
     opacity: 0.7;
     cursor: pointer;
   }
+
+  /* -----------------------Favourites-------------------- */
+
+  .song-selections {
+    margin: 12px;
+  }
+
+  .current-song {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .current-song .song {
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+  }
+
+  .current-song .song .body {
+    padding: 0 12px;
+  }
+
+  .current-song .song .thumb {
+    border-radius: 8px;
+    margin: 0;
+    width: 68px;
+    height: 68px;
+  }
+
+  .current-song .song .option {
+    display: none;
+  }
+
+  .sharing-ways {
+    display: flex;
+    padding: 12px 0;
+  }
+
+  .sharing-ways .sharing-btn {
+    
+  }
+
+  .sharing-btn .sharing-icon i {
+
+  }
+
+  .cancel-btn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 16px;
+  }
+
+
+  .feature-selections {
+    list-style: none;
   
+  }
+  
+  .feature-selections li {
+    padding: 16px 0;
+  }
+
+  .feature-selections li > i {
+    margin-right: 8px;
+    width: 16px;
+  }
 
 
 

@@ -23,6 +23,8 @@ const homePlaylists = $('.content-playlists.home');
 const personSocial = $('.person-social');
 const contentPlaylists = $('.content-playlists')
 const songHistory = $('.song-history');
+const currentSong = $('.current-song');
+
 
 
 // list of buttons
@@ -77,8 +79,7 @@ const app = {
     isPlaying: false,
     isRandom: false,
     isRepeat: false,
-    isInDashBoard: true,
-    isInBrowser: false,
+    isPlayed: false,
     config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
     setConfig: function(key, value) {
         this.config[key] = value;
@@ -250,8 +251,7 @@ const app = {
             }
         }
 
-        goToPage = function(link, classAtt) {
-            var hrefAtt = link;
+        goToPage = function(hrefAtt, classAtt) {
             if (hrefAtt && hrefAtt.charAt(0) === '#' && hrefAtt.length > 1) {
                 screenStorage.push(hrefAtt);
 
@@ -271,10 +271,13 @@ const app = {
                         }
                     })
                     // Activate footer btn
-                    // footerBtns.forEach(btn => {
-                    //     btn.classList.remove('active');
-                    // })
-                    // tag.classList.add('active');
+                    footerBtns.forEach(btn => {
+                        btn.classList.remove('active');
+                    })
+                    footerBtns.forEach(btn =>{
+                        if (btn.getAttribute('href') === hrefAtt)
+                            btn.classList.add('active');
+                    })
                 } else {
 
                     subWindowSelectors.forEach(selector => {
@@ -290,213 +293,42 @@ const app = {
                     })
                 }
             }
-
-            // mainWindowSelectors.forEach(function(selector) {
-            //     if (link && link === '#' + selector.getAttribute('id')) {
-            //         selector.classList.remove('not-active-screen');
-            //     }
-            // })
         }
 
 
-        goBackPage = function(link, classAtt) {
-            var hrefAtt = link;
-            if (hrefAtt && hrefAtt.charAt(0) === '#' && hrefAtt.length > 1) {
-                // screenStorage.push(hrefAtt);
-                
-                if (classAtt && classAtt.includes('footer-btn')) {
-                    
-                    mainWindowSelectors.forEach(selector => {
-                        selector.classList.add('not-active-screen');
-                    })
-                    
-                    mainWindowSelectors.forEach(selector => {
-                        if ("#" + selector.getAttribute('id') === hrefAtt) {
-                            selector.classList.remove('not-active-screen');
-                            if (selector.getAttribute('id') === 'main')  {
-                                AudioInProgress.classList.add('not-active-screen');
-                            }
-                            else {
-                            console.log('success');
-                                AudioInProgress.classList.remove('not-active-screen');
-                            }
-                        }
-                    })
-                    // Activate footer btn
-                    // footerBtns.forEach(btn => {
-                    //     btn.classList.remove('active');
-                    // })
-                    // tag.classList.add('active');
-                } else {
+        goBackPage = function(hrefAtt) {
+            mainWindowSelectors.forEach(selector => {
+                if ('#' + selector.getAttribute('id') === hrefAtt) {
+                    var homeScreen = selector.querySelector('.home-screen');
+                    var subScreens = selector.querySelectorAll('.sub-window');
 
-                    subWindowSelectors.forEach(selector => {
-                        selector.classList.add('not-active-screen');
+                    subScreens.forEach(screen => {
+                        screen.classList.add('not-active-screen');
                     })
-
-                    subWindowSelectors.forEach(selector => {
-                        if ("#" + selector.getAttribute('id') === hrefAtt) {
-                            var getHomeScreen = getParent(selector, hrefAtt).querySelector('.home-screen');
-                            getHomeScreen.classList.add('not-active-screen');
-                            selector.classList.remove('not-active-screen');
-                        }
-                    })
+                    
+                    homeScreen.classList.remove('not-active-screen');
                 }
-            }
-
-            // mainWindowSelectors.forEach(function(selector) {
-            //     if (link && link === '#' + selector.getAttribute('id')) {
-            //         selector.classList.remove('not-active-screen');
-            //     }
-            // })
+            })
         }
 
         var screenStorage = [];
-        var allScreens = Array.from(mainWindowSelectors).concat(Array.from(subWindowSelectors));
 
         aTags.forEach(function(tag) {
             tag.onclick = function() {
-                var href = tag.getAttribute('href');
+                var hrefAtt = tag.getAttribute('href');
                 var classAtt = tag.getAttribute('class');
-                if (href) {
-                    window.location.href = location.origin + location.pathname + href;
-                    var currentLink = location.origin + location.pathname + href;
-                }
-                if (currentLink) {
-                    var hrefAtt = currentLink.substring(currentLink.indexOf('#'));
-                    console.log(hrefAtt);
-                }
-                goToPage(href || window.location.href.substring(window.location.href.indexOf('#')), classAtt);
-    
-                // mainWindowSelectors.forEach(function(selector) {
-                //     if (hrefAtt && hrefAtt === '#' + selector.getAttribute('id')) {
-                //         selector.classList.remove('not-active-screen');
-                //         console.log('success');
-                //     }
-                // })
-                // var classAtt = tag.getAttribute('class');
-                // console.log(hrefAtt);
-
-                // if (hrefAtt && hrefAtt.charAt(0) === '#' && hrefAtt.length > 1) {
-                //     screenStorage.push(hrefAtt);
-
-                //     if (classAtt && classAtt.includes('footer-btn')) {
-
-                //         mainWindowSelectors.forEach(selector => {
-                //             selector.classList.add('not-active-screen');
-                //         })
-                        
-                //         mainWindowSelectors.forEach(selector => {
-                //             if ("#" + selector.getAttribute('id') === hrefAtt) {
-                //                 selector.classList.remove('not-active-screen');
-                //                 if (selector.getAttribute('id') === 'main') 
-                //                     AudioInProgress.classList.add('not-active-screen');
-                //                 else 
-                //                     AudioInProgress.classList.remove('not-active-screen');
-                //             }
-                //         })
-                //         // Activate footer btn
-                //         footerBtns.forEach(btn => {
-                //             btn.classList.remove('active');
-                //         })
-                //         tag.classList.add('active');
-                //     } else {
-
-                //         subWindowSelectors.forEach(selector => {
-                //             selector.classList.add('not-active-screen');
-                //         })
-
-                //         subWindowSelectors.forEach(selector => {
-                //             if ("#" + selector.getAttribute('id') === hrefAtt) {
-                //                 var getHomeScreen = getParent(selector, hrefAtt).querySelector('.home-screen');
-                //                 getHomeScreen.classList.add('not-active-screen');
-                //                 selector.classList.remove('not-active-screen');
-                //             }
-                //         })
-                //     }
-                // }
+                goToPage(hrefAtt, classAtt);
             }
         })
 
         backBtns.forEach(backBtn => {
             backBtn.onclick = function() {
-                // console.log(screenStorage);
-                var href = screenStorage[screenStorage.length - 2];
+                var hrefAtt = screenStorage[screenStorage.length - 2];
                 screenStorage.pop();
-                var classAtt;
-                aTags.forEach(screen => {
-                    if (screen.getAttribute('href') === href) {
-                        classAtt = screen.getAttribute('class');
-                    }
-                })
-                // console.log(classAtt);
-                if (href) {
-                    window.location.href = location.origin + location.pathname + href;
-                    var currentLink = location.origin + location.pathname + href;
-                }
-                if (currentLink) {
-                    var hrefAtt = currentLink.substring(currentLink.indexOf('#'));
-                    // console.log(hrefAtt);
-                }
-                goBackPage(href || window.location.href.substring(window.location.href.indexOf('#')), classAtt);
+                goBackPage(hrefAtt);
             }
         })
         
-        // aTags.forEach(tag => {
-        //     tag.onclick = function () {
-        //         var hrefAtt = tag.getAttribute('href');
-        //         var classAtt = tag.getAttribute('class');
-
-        //         if (hrefAtt && hrefAtt.charAt(0) === '#' && hrefAtt.length > 1) {
-        //             screenStorage.push(hrefAtt);
-
-        //             if (classAtt && classAtt.includes('footer-btn')) {
-
-        //                 mainWindowSelectors.forEach(selector => {
-        //                     selector.classList.add('not-active-screen');
-        //                 })
-                        
-        //                 mainWindowSelectors.forEach(selector => {
-        //                     if ("#" + selector.getAttribute('id') === hrefAtt) {
-        //                         selector.classList.remove('not-active-screen');
-        //                         if (selector.getAttribute('id') === 'main') 
-        //                             AudioInProgress.classList.add('not-active-screen');
-        //                         else 
-        //                             AudioInProgress.classList.remove('not-active-screen');
-        //                     }
-        //                 })
-        //                 // Activate footer btn
-        //                 footerBtns.forEach(btn => {
-        //                     btn.classList.remove('active');
-        //                 })
-        //                 tag.classList.add('active');
-        //             } else {
-
-        //                 subWindowSelectors.forEach(selector => {
-        //                     selector.classList.add('not-active-screen');
-        //                 })
-
-        //                 subWindowSelectors.forEach(selector => {
-        //                     if ("#" + selector.getAttribute('id') === hrefAtt) {
-        //                         var getHomeScreen = getParent(selector, hrefAtt).querySelector('.home-screen');
-        //                         getHomeScreen.classList.add('not-active-screen');
-        //                         selector.classList.remove('not-active-screen');
-        //                     }
-        //                 })
-        //             }
-        //         }
-        //     }
-        // })
-
-        // // function getCurrentLink() {
-        // //     return window.location.href;
-        // // }
-
-        // backBtns.forEach(btn => {
-        //     btn.onclick = function () {
-        //         window.location.replace(location.origin + location.pathname + screenStorage[screenStorage.length - 2]);
-        //     }
-        // })      
-
         // Xu li khi click play
         for (var playBtn of playBtns) {
             playBtn.onclick = function() {
@@ -511,6 +343,61 @@ const app = {
                     _this.loadSongHistory();
                 }
             }
+        }
+
+        const favouriteBtn = $('.favourite-btn');
+
+        favouriteBtn.onclick = function() {
+            songSelectionsScreen.classList.remove('not-active-screen');
+            footerBtns.forEach(btn => {
+                if (btn.classList.contains('active')) {
+                    var href = btn.getAttribute('href');
+                    mainWindowSelectors.forEach(selector => {
+                        if ('#' + selector.getAttribute('id') === href) {
+                            selector.classList.add('not-active-screen');
+                        }
+                    })
+                }
+            })
+            footer.classList.add('not-active-screen');
+            AudioInProgress.classList.add('not-active-screen');
+
+
+
+            var html =
+                `<div class="song fix-margin-error" >
+                    <div class="thumb"
+                    style="background-image: url('${_this.currentSong.image}');">
+                    </div>
+                    <div class="body">
+                        <h3 class="title">${_this.currentSong.name}</h3>
+                        <p class="author">${_this.currentSong.singer}</p>
+                    </div>
+                    <div class="option">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                </div>`
+            if (currentSong.childElementCount === 0) {
+                currentSong.insertAdjacentHTML('beforeend', html);
+            } else {
+                currentSong.innerHTML = html;
+            }
+        }
+
+        $('.cancel-btn').onclick = function() {
+            songSelectionsScreen.classList.add('not-active-screen');
+            footerBtns.forEach(btn => {
+                if (btn.classList.contains('active')) {
+                    var href = btn.getAttribute('href');
+                    mainWindowSelectors.forEach(selector => {
+                        if ('#' + selector.getAttribute('id') === href) {
+                            selector.classList.remove('not-active-screen');
+                        }
+                    })
+                }
+            })
+            footer.classList.remove('not-active-screen');
+            AudioInProgress.classList.remove('not-active-screen');
         }
         
         // Khi bai hat duoc play
@@ -658,7 +545,7 @@ const app = {
     },
   
     loadCurrentSong: function() {
-        played = true;
+        this.isPlayed = true;
         heading.textContent = this.currentSong.name;
         cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`;
         audio.src = this.currentSong.path;
