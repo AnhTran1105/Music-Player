@@ -1184,11 +1184,21 @@
   }
 
   .sharing-ways .sharing-btn {
+    text-align: center;
+  }
+
+  .sharing-btn .sharing-icon {
+    width: 64px;
+    height: 64px;
+    align-content: center;
+    border-radius: 50%;
     
   }
 
-  .sharing-btn .sharing-icon i {
-
+  .sharing-icon i {
+    font-size: 30px;
+    
+    
   }
 
   .cancel-btn {
@@ -1214,6 +1224,45 @@
     margin-right: 8px;
     width: 16px;
   }
+
+
+
+  /* --------------Scrollbar----------------------- */
+  .sharing-ways {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .sharing-ways .sharing-btn {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 100%;
+    padding-right: 20px;
+  }
+  
+  .sharing-btn p {
+    font-size: 10px;
+    padding-top: 12px;
+  }
+
+  /* Hide scrollbar but keep functionality on website  */
+  .sharing-ways::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sharing-ways {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .instagram {
+    /* background: #d6249f;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    box-shadow: 0px 3px 10px rgba(0,0,0,.25); */
+  }
+
+
 
 
 

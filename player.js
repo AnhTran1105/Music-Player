@@ -362,8 +362,6 @@ const app = {
             footer.classList.add('not-active-screen');
             AudioInProgress.classList.add('not-active-screen');
 
-
-
             var html =
                 `<div class="song fix-margin-error" >
                     <div class="thumb"
@@ -384,7 +382,9 @@ const app = {
             }
         }
 
-        $('.cancel-btn').onclick = function() {
+
+        const cancelBtn = $('.cancel-btn');
+        cancelBtn.onclick = function() {
             songSelectionsScreen.classList.add('not-active-screen');
             footerBtns.forEach(btn => {
                 if (btn.classList.contains('active')) {
