@@ -275,8 +275,10 @@ const app = {
                         btn.classList.remove('active');
                     })
                     footerBtns.forEach(btn =>{
-                        if (btn.getAttribute('href') === hrefAtt)
+                        if (btn.getAttribute('href') === hrefAtt) {
                             btn.classList.add('active');
+                            swapFooterImg(btn);
+                        }
                     })
                 } else {
 
@@ -292,6 +294,14 @@ const app = {
                         }
                     })
                 }
+            }
+        }
+
+        swapFooterImg = function(aSelector) {
+            var imgs = aSelector.querySelectorAll('img');
+            if (aSelector.classList.contains('active')) {
+                imgs[0].classList.add('not-active-screen');
+                imgs[1].classList.remove('not-active-screen');
             }
         }
 
@@ -351,6 +361,7 @@ const app = {
             songSelectionsScreen.classList.remove('not-active-screen');
             footerBtns.forEach(btn => {
                 if (btn.classList.contains('active')) {
+                    swapFooterImg(btn);
                     var href = btn.getAttribute('href');
                     mainWindowSelectors.forEach(selector => {
                         if ('#' + selector.getAttribute('id') === href) {
@@ -388,6 +399,7 @@ const app = {
             songSelectionsScreen.classList.add('not-active-screen');
             footerBtns.forEach(btn => {
                 if (btn.classList.contains('active')) {
+                    swapFooterImg(btn);
                     var href = btn.getAttribute('href');
                     mainWindowSelectors.forEach(selector => {
                         if ('#' + selector.getAttribute('id') === href) {
