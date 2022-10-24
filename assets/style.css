@@ -581,7 +581,6 @@
 
   .song-IP .body {
     flex: 1;
-    padding: 0 20px;
   }
 
   .song-IP .body .title {
@@ -595,18 +594,17 @@
   }
   
   .song-IP .option {
-    margin: 0 8px;
     font-size: 32px;
     color: var(--primary-color);
     
   }
 
   .thumb-IP {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
     background-size: cover;
-    margin: 0 8px 0 16px;
+    margin: 0 16px;
   }
   
   .audio-progress {
@@ -1154,6 +1152,7 @@
 
   .song-selections {
     margin: 12px;
+    height: 100vh;
   }
 
   .current-song {
@@ -1186,7 +1185,16 @@
   .sharing-ways {
     display: flex;
     padding: 12px 0;
+    /* border-bottom: 2px solid;
+    border-top: 2px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b); */
   }
+
+  /* background: #aa4b6b;  /* fallback for old browsers */
+/* background: -webkit-linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b);  Chrome 10-25, Safari 5.1-6 */
+   /* background: linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b);  */
+
 
   .sharing-ways .sharing-btn {
     text-align: center;
@@ -1212,10 +1220,10 @@
   }
 
   .cancel-btn {
-    position: fixed;
+    position: absolute;
     bottom: 0;
-    left: 0;
     right: 0;
+    left: 0;
     text-align: center;
     padding: 16px;
   }
@@ -1223,16 +1231,20 @@
 
   .feature-selections {
     list-style: none;
-  
   }
   
   .feature-selections li {
     padding: 16px 0;
+    display: flex;
+  }
+  
+  .feature-selections li > img {
+    margin-right: 8px;
+    width: 24px;
   }
 
-  .feature-selections li > i {
-    margin-right: 8px;
-    width: 16px;
+  .feature-selections li > p {
+    padding-top: 3px;
   }
 
 

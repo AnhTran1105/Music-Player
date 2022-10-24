@@ -25,8 +25,6 @@ const contentPlaylists = $('.content-playlists')
 const songHistory = $('.song-history');
 const currentSong = $('.current-song');
 
-
-
 // list of buttons
 const profileBtn = $('.btn-profile');
 const dashboardBtn = $('.btn-dashboard');
@@ -53,7 +51,6 @@ const albumsBtn = $('.albums-btn');
 const likedTracksOptionBtn = $('.liked-tracks-option');
 const yourInsightsOptionBtn = $('.your-insights-option');
 const filterTimeOverViewBtn = $('.filter-time');
-const songOptionBtn = $('.song .option');
 const songHistoryBtn = $('.listening-history h5');
 const mainWindowSelectors = $$('.main-window');
 const subWindowSelectors = $$('.sub-window');
@@ -73,6 +70,7 @@ const albumsScreen = $('.albums');
 const likedTracksScreen = $('.liked-tracks');
 const yourInsightsScreen = $('.your-insights');
 const songSelectionsScreen = $('.song-selections');
+var songList;
 
 const app = {
     currentIndex: 0,
@@ -163,7 +161,9 @@ const app = {
         if (playlist.querySelector('.song') === null) 
             playlist.insertAdjacentHTML('beforeend', htmls.join(''));
         else 
-            playlist.innerHTML = htmls.join('');
+            playlist.innerHTML = htmls.join('');;
+        songList = $$('.song');
+        songControl(songList);
     },
 
     renderProfilePlaylists: function() {
@@ -231,16 +231,7 @@ const app = {
             }
             );
         cdThumbAnimate.pause();    
-        const cdThumbIPAnimate = thumbIP.animate([
-            {
-                transform: 'rotate(360deg)'
-            }],
-            {
-                duration: 10000,
-                iterations: Infinity
-            }
-        )
-        cdThumbIPAnimate.pause();
+        
 
 
         getParent = function(element, selector) {
@@ -273,6 +264,7 @@ const app = {
                     // Activate footer btn
                     footerBtns.forEach(btn => {
                         btn.classList.remove('active');
+                            swapFooterImg(btn);
                     })
                     footerBtns.forEach(btn =>{
                         if (btn.getAttribute('href') === hrefAtt) {
@@ -302,6 +294,9 @@ const app = {
             if (aSelector.classList.contains('active')) {
                 imgs[0].classList.add('not-active-screen');
                 imgs[1].classList.remove('not-active-screen');
+            } else {
+                imgs[0].classList.remove('not-active-screen');
+                imgs[1].classList.add('not-active-screen');
             }
         }
 
@@ -355,69 +350,116 @@ const app = {
             }
         }
 
-        const favouriteBtn = $('.favourite-btn');
+        // const favouriteBtn = $('.favourite-btn');
 
-        favouriteBtn.onclick = function() {
-            songSelectionsScreen.classList.remove('not-active-screen');
-            footerBtns.forEach(btn => {
-                if (btn.classList.contains('active')) {
-                    swapFooterImg(btn);
-                    var href = btn.getAttribute('href');
-                    mainWindowSelectors.forEach(selector => {
-                        if ('#' + selector.getAttribute('id') === href) {
-                            selector.classList.add('not-active-screen');
+        // favouriteBtn.onclick = function() {
+        //     songSelectionsScreen.classList.remove('not-active-screen');
+        //     footerBtns.forEach(btn => {
+        //         if (btn.classList.contains('active')) {
+        //             swapFooterImg(btn);
+        //             var href = btn.getAttribute('href');
+        //             mainWindowSelectors.forEach(selector => {
+        //                 if ('#' + selector.getAttribute('id') === href) {
+        //                     selector.classList.add('not-active-screen');
+        //                 }
+        //             })
+        //         }
+        //     })
+        //     footer.classList.add('not-active-screen');
+        //     AudioInProgress.classList.add('not-active-screen');
+
+        //     var html =
+        //         `<div class="song fix-margin-error" >
+        //             <div class="thumb"
+        //             style="background-image: url('${_this.currentSong.image}');">
+        //             </div>
+        //             <div class="body">
+        //                 <h3 class="title">${_this.currentSong.name}</h3>
+        //                 <p class="author">${_this.currentSong.singer}</p>
+        //             </div>
+        //             <div class="option">
+        //                 <i class="fas fa-ellipsis-h"></i>
+        //             </div>
+        //         </div>`
+        //     if (currentSong.childElementCount === 0) {
+        //         currentSong.insertAdjacentHTML('beforeend', html);
+        //     } else {
+        //         currentSong.innerHTML = html;
+        //     }
+        // }
+
+        songControl = function (songList) {
+            console.log(songList[1]);
+
+            const option = songList[0].querySelector('.control');
+            console.log(option);
+            
+            if (_this.isPlayed) {
+                songList.forEach(option => {
+                    option.onclick = function() {
+                        songSelectionsScreen.classList.remove('not-active-screen');
+                        footerBtns.forEach(btn => {
+                            if (btn.classList.contains('active')) {
+                                swapFooterImg(btn);
+                                var href = btn.getAttribute('href');
+                                mainWindowSelectors.forEach(selector => {
+                                    if ('#' + selector.getAttribute('id') === href) {
+                                        selector.classList.add('not-active-screen');
+                                    }
+                                })
+                            }
+                        })
+                        footer.classList.add('not-active-screen');
+                        AudioInProgress.classList.add('not-active-screen');
+        
+                        var html =
+                            `<div class="song fix-margin-error" >
+                                <div class="thumb"
+                                style="background-image: url('${_this.currentSong.image}');">
+                                </div>
+                                <div class="body">
+                                    <h3 class="title">${_this.currentSong.name}</h3>
+                                    <p class="author">${_this.currentSong.singer}</p>
+                                </div>
+                                <div class="option">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </div>
+                            </div>`
+                        if (currentSong.childElementCount === 0) {
+                            currentSong.insertAdjacentHTML('beforeend', html);
+                        } else {
+                            currentSong.innerHTML = html;
+                        }
+                    }
+                })
+
+                const cancelBtn = $('.cancel-btn');
+                cancelBtn.onclick = function() {
+                    songSelectionsScreen.classList.add('not-active-screen');
+                    footerBtns.forEach(btn => {
+                        if (btn.classList.contains('active')) {
+                            swapFooterImg(btn);
+                            var href = btn.getAttribute('href');
+                            mainWindowSelectors.forEach(selector => {
+                                if ('#' + selector.getAttribute('id') === href) {
+                                    selector.classList.remove('not-active-screen');
+                                }
+                            })
                         }
                     })
+                    footer.classList.remove('not-active-screen');
+                    AudioInProgress.classList.remove('not-active-screen');
                 }
-            })
-            footer.classList.add('not-active-screen');
-            AudioInProgress.classList.add('not-active-screen');
-
-            var html =
-                `<div class="song fix-margin-error" >
-                    <div class="thumb"
-                    style="background-image: url('${_this.currentSong.image}');">
-                    </div>
-                    <div class="body">
-                        <h3 class="title">${_this.currentSong.name}</h3>
-                        <p class="author">${_this.currentSong.singer}</p>
-                    </div>
-                    <div class="option">
-                        <i class="fas fa-ellipsis-h"></i>
-                    </div>
-                </div>`
-            if (currentSong.childElementCount === 0) {
-                currentSong.insertAdjacentHTML('beforeend', html);
-            } else {
-                currentSong.innerHTML = html;
             }
         }
-
-
-        const cancelBtn = $('.cancel-btn');
-        cancelBtn.onclick = function() {
-            songSelectionsScreen.classList.add('not-active-screen');
-            footerBtns.forEach(btn => {
-                if (btn.classList.contains('active')) {
-                    swapFooterImg(btn);
-                    var href = btn.getAttribute('href');
-                    mainWindowSelectors.forEach(selector => {
-                        if ('#' + selector.getAttribute('id') === href) {
-                            selector.classList.remove('not-active-screen');
-                        }
-                    })
-                }
-            })
-            footer.classList.remove('not-active-screen');
-            AudioInProgress.classList.remove('not-active-screen');
-        }
+        
         
         // Khi bai hat duoc play
         audio.onplay = function() {
             _this.isPlaying = true;
             player.classList.add('playing');
             cdThumbAnimate.play();
-            cdThumbIPAnimate.play();
+            // cdThumbIPAnimate.play();
         }
 
         // Khi pause bai hat
@@ -425,7 +467,7 @@ const app = {
             _this.isPlaying = false;
             player.classList.remove('playing');
             cdThumbAnimate.pause();
-            cdThumbIPAnimate.pause();
+            // cdThumbIPAnimate.pause();
         }
 
         // Khi tien do bai hat thay doi
@@ -523,28 +565,28 @@ const app = {
         }
 
         // Lang nghe hanh vi click vao playlist 
-        playlist.onclick = function(e) {
-            const songNode = e.target.closest('.song:not(.active)');
-            // Xu li khi click vao bai hat thi chuyen den bai do 
-            if (songNode || e.target.closest('.option')) {
-                if (songNode) {
-                    _this.currentIndex = Number(songNode.dataset.index);
-                    _this.loadCurrentSong();
-                    _this.render();
-                    audio.play();
-                }
+        // playlist.onclick = function(e) {
+        //     const songNode = e.target.closest('.song:not(.active)');
+        //     // Xu li khi click vao bai hat thi chuyen den bai do 
+        //     if (songNode || e.target.closest('.option')) {
+        //         if (songNode) {
+        //             _this.currentIndex = Number(songNode.dataset.index);
+        //             _this.loadCurrentSong();
+        //             _this.render();
+        //             audio.play();
+        //         }
 
-                if (e.target.closest('.option')) {
+        //         if (e.target.closest('.option')) {
 
-                }
+        //         }
 
-                if (songHistory.childElementCount === 0) {
-                    const node = document.createElement('div')
-                    songHistory.appendChild(node);
-                    _this.loadSongHistory();
-                }
-            }
-        }
+        //         if (songHistory.childElementCount === 0) {
+        //             const node = document.createElement('div')
+        //             songHistory.appendChild(node);
+        //             _this.loadSongHistory();
+        //         }
+        //     }
+        // }
     },
 
     scrollToActiveSong: function() {
@@ -558,6 +600,7 @@ const app = {
   
     loadCurrentSong: function() {
         this.isPlayed = true;
+        // songControl([this.currentIndex]);
         heading.textContent = this.currentSong.name;
         cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`;
         audio.src = this.currentSong.path;
@@ -602,7 +645,6 @@ const app = {
         }
 
         songHistoryBtn.onclick = function () {
-            console.log(songHistoryBtn);
             songNodes.forEach(function (node) {
                 if (node.classList.contains('hidden-song') || node.classList.contains('margin-bottom')) {
                     node.classList.remove('hidden-song');
