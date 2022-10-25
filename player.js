@@ -161,8 +161,9 @@ const app = {
         if (playlist.querySelector('.song') === null) 
             playlist.insertAdjacentHTML('beforeend', htmls.join(''));
         else 
-            playlist.innerHTML = htmls.join('');;
-        songList = $$('.song');
+            playlist.innerHTML = htmls.join('');
+
+        songList = $$('.option');
         songControl(songList);
     },
 
@@ -350,53 +351,23 @@ const app = {
             }
         }
 
-        // const favouriteBtn = $('.favourite-btn');
+        const favouriteBtn = $('.favourite-btn');
 
-        // favouriteBtn.onclick = function() {
-        //     songSelectionsScreen.classList.remove('not-active-screen');
-        //     footerBtns.forEach(btn => {
-        //         if (btn.classList.contains('active')) {
-        //             swapFooterImg(btn);
-        //             var href = btn.getAttribute('href');
-        //             mainWindowSelectors.forEach(selector => {
-        //                 if ('#' + selector.getAttribute('id') === href) {
-        //                     selector.classList.add('not-active-screen');
-        //                 }
-        //             })
-        //         }
-        //     })
-        //     footer.classList.add('not-active-screen');
-        //     AudioInProgress.classList.add('not-active-screen');
+        favouriteBtn.onclick = function() {
+            var imgSelectors = this.querySelectorAll('img');
+            imgSelectors[0].classList.toggle('not-active-screen');
+            imgSelectors[1].classList.toggle('not-active-screen');
+        }
 
-        //     var html =
-        //         `<div class="song fix-margin-error" >
-        //             <div class="thumb"
-        //             style="background-image: url('${_this.currentSong.image}');">
-        //             </div>
-        //             <div class="body">
-        //                 <h3 class="title">${_this.currentSong.name}</h3>
-        //                 <p class="author">${_this.currentSong.singer}</p>
-        //             </div>
-        //             <div class="option">
-        //                 <i class="fas fa-ellipsis-h"></i>
-        //             </div>
-        //         </div>`
-        //     if (currentSong.childElementCount === 0) {
-        //         currentSong.insertAdjacentHTML('beforeend', html);
-        //     } else {
-        //         currentSong.innerHTML = html;
-        //     }
-        // }
+        songControl = function (songOptions) {
 
-        songControl = function (songList) {
-            console.log(songList[1]);
+            // Chua fix loi khi an vao control o bai hat khac thi khong chuyen den bai hat do 
 
-            const option = songList[0].querySelector('.control');
-            console.log(option);
-            
             if (_this.isPlayed) {
-                songList.forEach(option => {
+
+                songOptions.forEach(option => {
                     option.onclick = function() {
+                        
                         songSelectionsScreen.classList.remove('not-active-screen');
                         footerBtns.forEach(btn => {
                             if (btn.classList.contains('active')) {
@@ -411,15 +382,20 @@ const app = {
                         })
                         footer.classList.add('not-active-screen');
                         AudioInProgress.classList.add('not-active-screen');
-        
+
+                        var songSelector = option.parentElement;
+                        var img = songSelector.querySelector('.thumb').getAttribute('style');
+                        var title = songSelector.querySelector('.body .title').textContent;
+                        var singer = songSelector.querySelector('.body .author').textContent;
+                    
                         var html =
                             `<div class="song fix-margin-error" >
                                 <div class="thumb"
-                                style="background-image: url('${_this.currentSong.image}');">
+                                style="${img}">
                                 </div>
                                 <div class="body">
-                                    <h3 class="title">${_this.currentSong.name}</h3>
-                                    <p class="author">${_this.currentSong.singer}</p>
+                                    <h3 class="title">${title}</h3>
+                                    <p class="author">${singer}</p>
                                 </div>
                                 <div class="option">
                                     <i class="fas fa-ellipsis-h"></i>
@@ -435,6 +411,7 @@ const app = {
 
                 const cancelBtn = $('.cancel-btn');
                 cancelBtn.onclick = function() {
+                
                     songSelectionsScreen.classList.add('not-active-screen');
                     footerBtns.forEach(btn => {
                         if (btn.classList.contains('active')) {
@@ -565,28 +542,28 @@ const app = {
         }
 
         // Lang nghe hanh vi click vao playlist 
-        // playlist.onclick = function(e) {
-        //     const songNode = e.target.closest('.song:not(.active)');
-        //     // Xu li khi click vao bai hat thi chuyen den bai do 
-        //     if (songNode || e.target.closest('.option')) {
-        //         if (songNode) {
-        //             _this.currentIndex = Number(songNode.dataset.index);
-        //             _this.loadCurrentSong();
-        //             _this.render();
-        //             audio.play();
-        //         }
+        playlist.onclick = function(e) {
+            const songNode = e.target.closest('.song:not(.active)');
+            // Xu li khi click vao bai hat thi chuyen den bai do 
+            if (songNode || e.target.closest('.option')) {
+                if (songNode) {
+                    _this.currentIndex = Number(songNode.dataset.index);
+                    _this.loadCurrentSong();
+                    _this.render();
+                    audio.play();
+                }
 
-        //         if (e.target.closest('.option')) {
+                if (e.target.closest('.option')) {
 
-        //         }
+                }
 
-        //         if (songHistory.childElementCount === 0) {
-        //             const node = document.createElement('div')
-        //             songHistory.appendChild(node);
-        //             _this.loadSongHistory();
-        //         }
-        //     }
-        // }
+                if (songHistory.childElementCount === 0) {
+                    const node = document.createElement('div')
+                    songHistory.appendChild(node);
+                    _this.loadSongHistory();
+                }
+            }
+        }
     },
 
     scrollToActiveSong: function() {
@@ -600,7 +577,6 @@ const app = {
   
     loadCurrentSong: function() {
         this.isPlayed = true;
-        // songControl([this.currentIndex]);
         heading.textContent = this.currentSong.name;
         cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`;
         audio.src = this.currentSong.path;
@@ -610,7 +586,6 @@ const app = {
         thumbIP.style.backgroundImage = `url('${this.currentSong.image}')`;
 
         this.loadSongHistory();
-
     },
 
     loadSongHistory: function() {
