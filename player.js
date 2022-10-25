@@ -87,56 +87,56 @@ const app = {
         {
         name: "Nàng Thơ",
         singer: "Hoàng Dũng",
-        path: "/assets/music/song1.mp3",
-        image: "/assets/img/img1.jfif"
+        path: "./assets/music/song1.mp3",
+        image: "./assets/img/img1.jfif"
         },
         {
         name: "Có khi",
         singer: "Hoài Lâm",
-        path: "/assets/music/song2.mp3",
-        image:"/assets/img/img2.jfif"
+        path: "./assets/music/song2.mp3",
+        image:"./assets/img/img2.jfif"
         },
         {
         name: "Như những phút ban đầu",
         singer: "Hoài Lâm",
-        path: "/assets/music/song3.mp3",
-        image: "/assets/img/img3.jfif"
+        path: "./assets/music/song3.mp3",
+        image: "./assets/img/img3.jfif"
         },
         {
         name: "Hẹn một mai",
         singer: "Bùi Anh Tuấn",
-        path: "/assets/music/song4.mp3",
-        image: "/assets/img/img4.jfif"
+        path: "./assets/music/song4.mp3",
+        image: "./assets/img/img4.jfif"
         },
         {
         name: "Tháng tư là lời nói dối của em",
         singer: "Hà Anh Tuấn",
-        path: "/assets/music/song5.mp3",
-        image: "/assets/img/img5.jfif"
+        path: "./assets/music/song5.mp3",
+        image: "./assets/img/img5.jfif"
         },
         {
         name: "Vài câu nói có khiến người thay đổi",
         singer: "GreyD ft Tlinh",
-        path: "/assets/music/song6.mp3",
-        image: "/assets/img/img6.jfif"
+        path: "./assets/music/song6.mp3",
+        image: "./assets/img/img6.jfif"
         },
         {
         name: "Lời tạm biệt chưa nói",
         singer: "GreyD",
-        path: "/assets/music/song8.mp3",
-        image: "/assets/img/img8.jfif"
+        path: "./assets/music/song8.mp3",
+        image: "./assets/img/img8.jfif"
         },
         {
         name: "Từng là của nhau",
         singer: "Bảo Anh ft Táo",
-        path: "/assets/music/song9.mp3",
-        image: "/assets/img/img9.jfif"
+        path: "./assets/music/song9.mp3",
+        image: "./assets/img/img9.jfif"
     },
     {
         name: "Có ai thương em như anh",
         singer: "Tóc Tiên",
-        path: "/assets/music/song10.mp3",
-        image: "/assets/img/img10.jfif"
+        path: "./assets/music/song10.mp3",
+        image: "./assets/img/img10.jfif"
     },
     
     ],
