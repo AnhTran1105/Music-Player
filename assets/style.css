@@ -559,6 +559,10 @@
   .genres .type {
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%);
   }
+
+  .liked-tracks .liked-songs {
+    margin: 0 12px;
+  }
   
   /* -------------------Audio In Progress---------------------- */
 

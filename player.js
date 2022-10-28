@@ -163,7 +163,7 @@ const app = {
         else 
             playlist.innerHTML = htmls.join('');
 
-        songList = $$('.option');
+        songList = $$('.playlist .option');
         songControl(songList);
     },
 
@@ -352,22 +352,30 @@ const app = {
         }
 
         const favouriteBtn = $('.favourite-btn');
+        var imgSelectors = favouriteBtn.querySelectorAll('img');
 
         favouriteBtn.onclick = function() {
-            var imgSelectors = this.querySelectorAll('img');
             imgSelectors[0].classList.toggle('not-active-screen');
             imgSelectors[1].classList.toggle('not-active-screen');
+            $$('.playlist .song').forEach(song => {
+                if (song.getAttribute('data-index') == _this.currentIndex ) {
+                    if (!song.classList.contains('liked')) {
+                        likedSongs(song);
+                        song.classList.add('liked'); 
+                    }
+                } 
+            }) 
         }
 
-        songControl = function (songOptions) {
+        
+        
 
-            // Chua fix loi khi an vao control o bai hat khac thi khong chuyen den bai hat do 
-
+        songControl = function(songOptions) {
             if (_this.isPlayed) {
 
                 songOptions.forEach(option => {
-                    option.onclick = function() {
-                        
+                    option.onclick = function(e) {
+                        e.stopPropagation();
                         songSelectionsScreen.classList.remove('not-active-screen');
                         footerBtns.forEach(btn => {
                             if (btn.classList.contains('active')) {
@@ -425,11 +433,14 @@ const app = {
                         }
                     })
                     footer.classList.remove('not-active-screen');
-                    AudioInProgress.classList.remove('not-active-screen');
                 }
             }
         }
-        
+
+        likedSongs = function(songObj) {
+            console.log(songObj);
+            $('.liked-songs').appendChild(songObj);
+        }
         
         // Khi bai hat duoc play
         audio.onplay = function() {
@@ -574,17 +585,36 @@ const app = {
             });
         }, 200)
     },
+    
+    loadSongIP: function() {
+        const favouriteBtn = $('.favourite-btn');
+        var imgSelectors = favouriteBtn.querySelectorAll('img');
+
+        $$('.playlist .song').forEach(song => {
+            if (song.getAttribute('data-index') == this.currentIndex) {
+                if (song.classList.contains('liked')) {
+                    imgSelectors[0].classList.add('not-active-screen');
+                    imgSelectors[1].classList.remove('not-active-screen');
+                    $('.song-IP').classList.add('liked');                    
+                } else {
+                    imgSelectors[0].classList.remove('not-active-screen');
+                    imgSelectors[1].classList.add('not-active-screen');  
+                }
+            } 
+        })
+
+        title.textContent = this.currentSong.name;
+        author.textContent = this.currentSong.singer;
+        thumbIP.style.backgroundImage = `url('${this.currentSong.image}')`;
+    },
   
     loadCurrentSong: function() {
         this.isPlayed = true;
         heading.textContent = this.currentSong.name;
         cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`;
         audio.src = this.currentSong.path;
-        title.textContent = this.currentSong.name;
-        author.textContent = this.currentSong.singer;
-    
-        thumbIP.style.backgroundImage = `url('${this.currentSong.image}')`;
-
+        
+        this.loadSongIP();
         this.loadSongHistory();
     },
 
