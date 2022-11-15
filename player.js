@@ -358,7 +358,7 @@ const app = {
             imgSelectors[0].classList.toggle('not-active-screen');
             imgSelectors[1].classList.toggle('not-active-screen');
             $$('.playlist .song').forEach(song => {
-                if (song.getAttribute('data-index') == _this.currentIndex ) {
+                if (song.getAttribute('data-index') == _this.currentIndex) {
                     if (!song.classList.contains('liked')) {
                         likedSongs(song);
                         song.classList.add('liked'); 
@@ -438,7 +438,9 @@ const app = {
         }
 
         likedSongs = function(songObj) {
-            console.log(songObj);
+            if (songObj.classList.contains('active')) {
+                songObj.classList.remove('active');
+            }
             $('.liked-songs').appendChild(songObj);
         }
         
