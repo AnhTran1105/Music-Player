@@ -354,17 +354,22 @@ const app = {
         const favouriteBtn = $('.favourite-btn');
         var imgSelectors = favouriteBtn.querySelectorAll('img');
 
+
+        //Fix loi an tim bai hat thi mat bai hat o playlist
         favouriteBtn.onclick = function() {
             imgSelectors[0].classList.toggle('not-active-screen');
             imgSelectors[1].classList.toggle('not-active-screen');
             $$('.playlist .song').forEach(song => {
                 if (song.getAttribute('data-index') == _this.currentIndex) {
                     if (!song.classList.contains('liked')) {
-                        likedSongs(song);
                         song.classList.add('liked'); 
+                        if (song.classList.contains('active')) {
+                            song.classList.remove('active');
+                        }
+                        $('.liked-songs').insertAdjacentElement('beforeend', song); 
                     }
                 } 
-            }) 
+            })
         }
 
         
@@ -435,13 +440,6 @@ const app = {
                     footer.classList.remove('not-active-screen');
                 }
             }
-        }
-
-        likedSongs = function(songObj) {
-            if (songObj.classList.contains('active')) {
-                songObj.classList.remove('active');
-            }
-            $('.liked-songs').appendChild(songObj);
         }
         
         // Khi bai hat duoc play
