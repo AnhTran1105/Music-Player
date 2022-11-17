@@ -70,6 +70,7 @@ const albumsScreen = $('.albums');
 const likedTracksScreen = $('.liked-tracks');
 const yourInsightsScreen = $('.your-insights');
 const songSelectionsScreen = $('.song-selections');
+const likedSongs = $('.liked-songs');
 var songList;
 
 const app = {
@@ -354,22 +355,38 @@ const app = {
         const favouriteBtn = $('.favourite-btn');
         var imgSelectors = favouriteBtn.querySelectorAll('img');
 
-
-        //Fix loi an tim bai hat thi mat bai hat o playlist
         favouriteBtn.onclick = function() {
-            imgSelectors[0].classList.toggle('not-active-screen');
-            imgSelectors[1].classList.toggle('not-active-screen');
-            $$('.playlist .song').forEach(song => {
-                if (song.getAttribute('data-index') == _this.currentIndex) {
-                    if (!song.classList.contains('liked')) {
-                        song.classList.add('liked'); 
-                        if (song.classList.contains('active')) {
-                            song.classList.remove('active');
+            if (imgSelectors[1].classList.contains('not-active-screen')) {
+                imgSelectors[0].classList.toggle('not-active-screen');
+                imgSelectors[1].classList.toggle('not-active-screen');
+                $$('.playlist .song').forEach(song => {
+                    if (song.getAttribute('data-index') == _this.currentIndex) {
+                        if (!song.classList.contains('liked')) {
+                            console.log('success');
+                            song.classList.add('liked'); 
+                            var cloneSong = song.cloneNode(true);
+                            if (cloneSong.classList.contains('active')) {
+                                cloneSong.classList.remove('active');
+                            }
+                            //Create a new node for appending to liked songs
+                            likedSongs.appendChild(cloneSong);
                         }
-                        $('.liked-songs').insertAdjacentElement('beforeend', song); 
-                    }
-                } 
-            })
+                    } 
+                })
+            } else {
+                imgSelectors[0].classList.toggle('not-active-screen');
+                imgSelectors[1].classList.toggle('not-active-screen');
+                $$('.liked-songs .song').forEach(song => {
+                    if (song.getAttribute('data-index') == _this.currentIndex) {
+                        song.remove();
+                    } 
+                })
+                $$('.playlist .song').forEach(song => {
+                    if (song.getAttribute('data-index') == _this.currentIndex) {
+                        song.classList.remove('liked');
+                    } 
+                })
+            }
         }
 
         

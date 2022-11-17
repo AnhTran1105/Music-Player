@@ -707,8 +707,9 @@
 
   .album {
     position: relative;
-    width: calc(50% - 12px);
+    width: 120px;
     margin: 6px;
+    flex: 0 0 auto;
   }
   
   .album-image {
@@ -770,9 +771,17 @@
 
   .content-image {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
     justify-content: space-between;
     margin: 0 6px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+
+  .content-image::-webkit-scrollbar {
+    display: none;
   }
 
   .content-playlists.home .song:first-child {
